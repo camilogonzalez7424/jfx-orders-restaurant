@@ -1,8 +1,4 @@
 package model;
-
-<<<<<<< HEAD
-public class Product {
-=======
 /**
  * The type Product.
  */
@@ -18,7 +14,7 @@ public class Product {
      *
      * @param nameP the namep is of type String.
      */
-    public Product(String nameP){
+    public Product(String nameP) {
         this.nameP = nameP;
     }
 
@@ -45,5 +41,4 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
->>>>>>> 7c166e0b8d0abda4b750a5ec0d6ed45bbf77d64a
 }
