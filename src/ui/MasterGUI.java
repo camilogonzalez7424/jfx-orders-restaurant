@@ -1,5 +1,6 @@
 package ui;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -107,5 +108,10 @@ public class MasterGUI {
     void fileBrowser(ActionEvent event) {
 
     }
+
+    //____________________
+    @FXML
+    private JFXButton Button;
+
 
 }
