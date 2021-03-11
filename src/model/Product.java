@@ -1,5 +1,4 @@
 package model;
-
 /**
  * The type Product.
  */
@@ -15,7 +14,7 @@ public class Product {
      *
      * @param nameP the namep is of type String.
      */
-    public Product(String nameP){
+    public Product(String nameP) {
         this.nameP = nameP;
     }
 
