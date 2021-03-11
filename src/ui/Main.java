@@ -15,6 +15,14 @@ import javafx.stage.Stage;
  */
 public class Main extends Application{
 
+    //Relationship.
+
+    private MasterGUI masterGUI;
+
+    public Main() {
+        masterGUI = new MasterGUI();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -23,9 +31,7 @@ public class Main extends Application{
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Main.fxml"));
 
-        //Colocar controladora
-
-        //fxmlLoader.setController(contactManagerGUI);
+        fxmlLoader.setController(masterGUI);
 
         Parent root = fxmlLoader.load();
 
@@ -33,5 +39,11 @@ public class Main extends Application{
         primaryStage.setScene(scene);
         primaryStage.setTitle("LA CASA DORADA");
         primaryStage.show();
+
+        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("login.fxml"));
+        fxmlLoader1.setController(masterGUI);
+        Parent loginPane = fxmlLoader1.load();
+
+        masterGUI.getBorderPane().setCenter(loginPane);
     }
 }
