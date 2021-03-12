@@ -1,10 +1,29 @@
 package model;
 
 /**
- * The enum Type product.
+ * Class Type product.
  */
-public enum TypeProduct {
-    MAIN_COURSE,    //Main course type product.
-    ADDITIONAL,     //Additional type product.
-    DRINK;          //Drink type product.
+public class TypeProduct {
+    private String name;
+    private boolean avalibleT;
+
+    public TypeProduct(String name){
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isAvalibleT() {
+        return avalibleT;
+    }
+
+    public void setAvalibleT(boolean avalibleT) {
+        this.avalibleT = avalibleT;
+    }
 }

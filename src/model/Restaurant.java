@@ -25,6 +25,7 @@ public class Restaurant {
         return clientList;
     }
 
+
     public ArrayList<Product> getProducts() {
         return products;
     }

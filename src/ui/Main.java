@@ -43,7 +43,7 @@ public class Main extends Application{
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("login.fxml"));
         fxmlLoader1.setController(masterGUI);
         Parent loginPane = fxmlLoader1.load();
-
         masterGUI.getBorderPane().setCenter(loginPane);
+
     }
 }
