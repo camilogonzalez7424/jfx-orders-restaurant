@@ -47,7 +47,7 @@
                <children>
                   <VBox layoutX="38.0" layoutY="30.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
+                        <JFXButton fx:id="Button" prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>

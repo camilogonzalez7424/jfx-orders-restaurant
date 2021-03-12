@@ -1,6 +1,8 @@
 package ui;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
+import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +19,14 @@ public class MasterGUI {
     private BorderPane borderPane;
 
     @FXML
-    private TextField txtLoginUser;
+    private JFXTextField txtLoginUser;
 
     @FXML
-    private PasswordField txtLoginPass;
+    private JFXPasswordField txtLoginPass;
+
 
     @FXML
-    public void LogIn(ActionEvent event) throws IOException {
+    public void logIn(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menu.fxml"));
         fxmlLoader1.setController(this);
         Parent logInPane = fxmlLoader1.load();
@@ -32,7 +35,7 @@ public class MasterGUI {
     }
 
     @FXML
-    public void SignUp(ActionEvent event) throws IOException {
+    public void signUp(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("register.fxml"));
         fxmlLoader1.setController(this);
         Parent signUpPane = fxmlLoader1.load();
