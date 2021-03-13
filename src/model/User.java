@@ -1,10 +1,10 @@
 package model;
 
-public class SystemUser extends  Employee{
+public class User extends  Employee{
     private  String userName;
     private String password;
 
-    public SystemUser(String nameE, String lastnameE, String identificationE, String userName , String password) {
+    public User(String nameE, String lastnameE, String identificationE, String userName , String password) {
         super(nameE, lastnameE, identificationE);
         this.userName = userName;
         this.password = password;

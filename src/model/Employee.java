@@ -1,37 +1,11 @@
 package model;
 
-public class Employee {
-    private  String nameE;
-    private  String lastnameE;
-    private  String identificationE;
+public class Employee extends  Person {
 
-    public Employee(String nameE, String lastnameE, String identificationE) {
-        this.nameE = nameE;
-        this.lastnameE = lastnameE;
-        this.identificationE = identificationE;
+    public Employee(String name, String lastname, String identification) {
+        super(name,lastname,identification);
+
     }
 
-    public String getNameE() {
-        return nameE;
-    }
 
-    public void setNameE(String nameE) {
-        this.nameE = nameE;
-    }
-
-    public String getLastnameE() {
-        return lastnameE;
-    }
-
-    public void setLastnameE(String lastnameE) {
-        this.lastnameE = lastnameE;
-    }
-
-    public String getIdentificationE() {
-        return identificationE;
-    }
-
-    public void setIdentificationE(String identificationE) {
-        this.identificationE = identificationE;
-    }
 }
