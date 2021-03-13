@@ -12,47 +12,51 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" AnchorPane.leftAnchor="0.0" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="671.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/password.png" />
-         </image>
-      </ImageView>
-      <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="663.0" layoutY="260.0" promptText="UserName" unFocusColor="#f80000">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </JFXTextField>
-      <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="669.0" layoutY="379.0" promptText="Password" unFocusColor="#f80000">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </JFXPasswordField>
-      <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="567.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/usuario.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="581.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/clave.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="598.0" layoutY="489.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="SignUp" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </JFXButton>
-      <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="794.0" layoutY="489.0" onAction="#logIn" prefHeight="28.0" prefWidth="77.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="LogIn" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </JFXButton>
+      <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="514.0" onAction="#logIn" prefHeight="28.0" prefWidth="77.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="LogIn" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="514.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="SignUp" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/clave.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/usuario.png" />
+               </image>
+            </ImageView>
+            <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="196.0" layoutY="398.0" promptText="Password" unFocusColor="#f80000">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="186.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/password.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="196.0" layoutY="300.0" promptText="UserName" unFocusColor="#f80000">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -6,18 +6,29 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class MasterGUI {
+public class MasterGUI implements Initializable {
     //Attributes
+
+    //_____________ MAIN PANE ____________
     @FXML
     private BorderPane borderPane;
 
+    public BorderPane getBorderPane() {
+        return borderPane;
+    }
+    //____________________________________
+
+    //_____________ LOGIN PANE ___________
     @FXML
     private JFXTextField txtLoginUser;
 
@@ -43,6 +54,7 @@ public class MasterGUI {
         borderPane.setCenter(signUpPane);
 
     }
+    //________________________________________
 
     /**
      * Constructor method.
@@ -51,9 +63,6 @@ public class MasterGUI {
 
     }
 
-    public BorderPane getBorderPane() {
-        return borderPane;
-    }
 
     //___________________________________
     //Corregir
@@ -112,9 +121,22 @@ public class MasterGUI {
 
     }
 
-    //____________________
+    //____________________ MENU _______________
     @FXML
-    private JFXButton Button;
+    private Label Menu;
+
+    @FXML
+    private Label menuBack;
+
+    @FXML
+    private AnchorPane slider;
+
+    @FXML
+    private JFXButton buttonExit;
 
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+    }
 }
