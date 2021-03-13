@@ -37,7 +37,7 @@
             </ImageView>
             <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="83.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="379.0">
                <image>
-                  <Image url="@../img/password.png" />
+                  <Image url="@../img/password1.png" />
                </image>
             </ImageView>
             <JFXButton fx:id="createAccount" layoutX="469.0" layoutY="37.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: gold;" text="Create" />
