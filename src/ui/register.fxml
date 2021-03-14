@@ -50,7 +50,7 @@
                   <Image url="@../img/password1.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="createAccount" layoutX="431.0" layoutY="72.0" onAction="#createUser" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: gold;" text="Create" />
+            <JFXButton layoutX="431.0" layoutY="72.0" onAction="#createUser" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: gold;" text="Create" />
             <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="343.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/domain.png" />

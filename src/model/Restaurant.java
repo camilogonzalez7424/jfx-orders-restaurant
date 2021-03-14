@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -83,7 +82,7 @@ public class Restaurant {
          oos.close();
     }
 
-    public boolean loadDataUser() throws IOException, ClassNotFoundException {
+    public void loadDataUser() throws IOException, ClassNotFoundException {
         File f = new File(SAVE_PATH_FILE_USERS);
         boolean loaded = false;
         if(f.exists()){
@@ -92,7 +91,6 @@ public class Restaurant {
             ois.close();
             loaded = true;
         }
-        return loaded;
 
     }
 

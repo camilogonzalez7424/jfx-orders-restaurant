@@ -3,30 +3,24 @@ package ui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import model.Restaurant;
 import javafx.scene.control.Alert.AlertType;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class MasterGUI implements Initializable {
-    //Attributes
+
+public class MasterGUI {
+    //Attributess
 
     private Restaurant mainRestaurant;
 
@@ -100,6 +94,7 @@ public class MasterGUI implements Initializable {
 
     @FXML
     public void logIn(ActionEvent event) throws IOException {
+
         if (mainRestaurant.canLogin(txtLoginUser.getText())){
             FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menu.fxml"));
             fxmlLoader1.setController(this);
@@ -115,24 +110,24 @@ public class MasterGUI implements Initializable {
 
         }
 
+
     }
 
     @FXML
     public void signUp(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("register.fxml"));
-        fxmlLoader1.setController(this);
-        Parent signUpPane = fxmlLoader1.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+        fxmlLoader.setController(this);
+        Parent signUpPane = fxmlLoader.load();
 
         borderPane.setCenter(signUpPane);
 
     }
 
 
-
+    //________________ REGISTER _________________
 
     public void createUser(ActionEvent event) throws IOException {
         String name , lastName, userName, password, id;
-
         name = txtName.getText();
         lastName = txtLastName.getText();
         userName = txtUserName.getText();
@@ -157,8 +152,18 @@ public class MasterGUI implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    //____________________ MENU _______________
 
+    @FXML
+    public void exitButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        fxmlLoader.setController(this);
+        Parent loginBack = fxmlLoader.load();
+
+        borderPane.setCenter(loginBack);
     }
+    //__________________
+
+
+
 }

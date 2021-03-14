@@ -3,122 +3,78 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="430.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane prefHeight="400.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #F6EE9D;" BorderPane.alignment="CENTER">
-               <children>
-                  <Pane layoutX="22.0" layoutY="-58.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <HBox layoutX="128.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                     <children>
-                        <JFXButton prefHeight="65.0" prefWidth="200.0" text="Button">
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
-                           <font>
-                              <Font name="System Bold Italic" size="13.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </HBox>
-                  <Label fx:id="Menu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/menu1.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold Italic" size="15.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="menuBack" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/menu1.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                     <font>
-                        <Font name="System Bold Italic" size="15.0" />
-                     </font>
-                  </Label>
-               </children>
+      <AnchorPane prefHeight="430.0" prefWidth="225.0" style="-fx-background-color: #f0f7ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="430.0" prefWidth="45.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <effect>
+                  <DropShadow />
+               </effect>
             </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox layoutX="38.0" layoutY="30.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
-                     <children>
-                        <JFXButton alignment="BASELINE_LEFT" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
-                           <font>
-                              <Font name="System Bold Italic" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
-                           <font>
-                              <Font name="System Bold Italic" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="48.0" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
-                           <font>
-                              <Font name="System Bold Italic" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </JFXButton>
-                        <JFXButton fx:id="buttonExit" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="86.0" prefHeight="65.0" prefWidth="200.0" text="Exit" textAlignment="CENTER" textFill="#f6ee9d">
-                           <font>
-                              <Font name="System Bold Italic" size="15.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../img/flecha.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <cursor>
-                              <Cursor fx:constant="OPEN_HAND" />
-                           </cursor>
-                        </JFXButton>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </left>
-      </BorderPane>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="99.0" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Algo" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="159.0" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Algo x2" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="219.0" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Button" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="279.0" onAction="#exitButton" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/flecha.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></JFXButton>
+            <Label fx:id="MenuClose" graphicTextGap="30.0" layoutX="14.0" layoutY="22.0" prefHeight="22.0" prefWidth="210.0" text="MENU" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Carlito Bold Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <Pane layoutX="230.0" prefHeight="430.0" prefWidth="470.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="230.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
    </children>
 </AnchorPane>
