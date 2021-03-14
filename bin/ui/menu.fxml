@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -8,64 +12,107 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane layoutX="63.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="400.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: #F6EE9D;" BorderPane.alignment="CENTER">
                <children>
-                  <Pane layoutX="22.0" layoutY="-58.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <HBox layoutX="128.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+                  <Pane layoutX="22.0" layoutY="-58.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox layoutX="128.0" layoutY="1.0" prefHeight="43.0" prefWidth="525.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                      <children>
-                        <JFXButton prefHeight="38.0" prefWidth="136.0" text="Button">
+                        <JFXButton prefHeight="65.0" prefWidth="200.0" text="Button">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" text="Button">
+                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" text="Button">
+                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" text="Button">
+                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" text="Button">
                            <font>
                               <Font name="System Bold Italic" size="13.0" />
                            </font>
                         </JFXButton>
                      </children>
                   </HBox>
+                  <Label fx:id="Menu" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="menuBack" layoutX="14.0" layoutY="37.0" text="MENU" textFill="#b7b7b7">
+                     <graphic>
+                        <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/menu1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="System Bold Italic" size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </top>
          <left>
-            <AnchorPane prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+            <AnchorPane fx:id="slider" prefHeight="362.0" prefWidth="176.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
                <children>
                   <VBox layoutX="38.0" layoutY="30.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="53.0">
                      <children>
-                        <JFXButton prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
+                        <JFXButton alignment="BASELINE_LEFT" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="48.0" prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
+                        <JFXButton alignment="BASELINE_LEFT" layoutX="10.0" layoutY="48.0" prefHeight="65.0" prefWidth="200.0" textAlignment="CENTER" textFill="#f6ee9d">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </JFXButton>
-                        <JFXButton layoutX="10.0" layoutY="86.0" prefHeight="38.0" prefWidth="176.0" text="Button" textFill="#f6ee9d">
+                        <JFXButton fx:id="buttonExit" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="86.0" prefHeight="65.0" prefWidth="200.0" text="Exit" textAlignment="CENTER" textFill="#f6ee9d">
                            <font>
                               <Font name="System Bold Italic" size="15.0" />
                            </font>
+                           <graphic>
+                              <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/flecha.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </JFXButton>
                      </children>
                   </VBox>

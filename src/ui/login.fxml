@@ -1,75 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="451.0" minWidth="400.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="245.0" minHeight="0.0" prefHeight="109.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="144.0" minHeight="10.0" prefHeight="95.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="94.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button alignment="CENTER" cache="true" contentDisplay="CENTER" depthTest="ENABLE" mnemonicParsing="false" onAction="#SignUp" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: #EDDB91;" text="Sign up" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor>
-      </Button>
-      <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#LogIn" prefHeight="36.0" prefWidth="91.0" style="-fx-background-color: #EDDB91;" text="Log in" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="OPEN_HAND" />
-         </cursor></Button>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Sign in to CASA DORADA" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-         <font>
-            <Font name="System Bold Italic" size="14.5" />
-         </font>
-         <GridPane.margin>
-            <Insets bottom="10.0" />
-         </GridPane.margin>
-      </Label>
-      <TextField fx:id="txtLoginUser" maxWidth="1.7976931348623157E308" promptText="UserName" style="-fx-border-color: #9A0201;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font></TextField>
-      <ImageView fitHeight="66.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-         <image>
-            <Image url="@../img/user.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
-         <image>
-            <Image url="@../img/login1.png" />
-         </image>
-      </ImageView>
-      <PasswordField fx:id="txtLoginPass" promptText="PassWord" style="-fx-border-color: #9A0201;" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </PasswordField>
+      <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0" />
+      <Pane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="514.0" onAction="#logIn" prefHeight="28.0" prefWidth="77.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="LogIn" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="514.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="SignUp" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </JFXButton>
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/clave.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/usuario.png" />
+               </image>
+            </ImageView>
+            <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="196.0" layoutY="398.0" promptText="Password" unFocusColor="#f80000">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXPasswordField>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="186.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/password.png" />
+               </image>
+            </ImageView>
+            <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="196.0" layoutY="300.0" promptText="UserName" unFocusColor="#f80000">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </JFXTextField>
+         </children>
+      </Pane>
    </children>
-</GridPane>
+</AnchorPane>

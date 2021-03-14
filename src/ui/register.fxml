@@ -7,53 +7,69 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane prefHeight="498.0" prefWidth="416.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="285.0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="347.0" AnchorPane.topAnchor="202.0">
+      <AnchorPane prefHeight="680.0" prefWidth="600.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField layoutX="173.0" layoutY="414.0" prefHeight="26.0" prefWidth="159.0" AnchorPane.leftAnchor="173.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="414.0" />
-            <JFXTextField layoutX="188.0" layoutY="101.0" prefHeight="26.0" prefWidth="137.0" AnchorPane.leftAnchor="188.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="101.0" />
-            <ImageView fitHeight="72.0" fitWidth="76.0" layoutX="301.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="301.0" AnchorPane.rightAnchor="227.0" AnchorPane.topAnchor="14.0">
+            <JFXTextField fx:id="txtPassword" alignment="CENTER" layoutX="148.0" layoutY="466.0" prefHeight="26.0" prefWidth="159.0" promptText="Password" AnchorPane.leftAnchor="148.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="466.0">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="txtName" alignment="CENTER" layoutX="163.0" layoutY="150.0" prefHeight="26.0" prefWidth="137.0" promptText="Name" AnchorPane.leftAnchor="163.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="150.0">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font></JFXTextField>
+            <ImageView fitHeight="72.0" fitWidth="76.0" layoutX="328.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="328.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="31.0">
                <image>
                   <Image url="@../img/contrato.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="83.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="445.0" AnchorPane.topAnchor="78.0">
+            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="32.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="496.0" AnchorPane.topAnchor="114.0">
                <image>
                   <Image url="@../img/identity.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="78.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="179.0">
+            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="37.0" layoutY="222.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="491.0" AnchorPane.topAnchor="222.0">
                <image>
                   <Image url="@../img/id%20(2).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="78.0" layoutY="276.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="276.0">
+            <ImageView fitHeight="72.0" fitWidth="84.0" layoutX="32.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="32.0" AnchorPane.rightAnchor="496.0" AnchorPane.topAnchor="339.0">
                <image>
                   <Image url="@../img/id-card%20(1).png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="83.0" layoutY="379.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="83.0" AnchorPane.rightAnchor="455.0" AnchorPane.topAnchor="379.0">
+            <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="37.0" layoutY="435.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="37.0" AnchorPane.rightAnchor="501.0" AnchorPane.topAnchor="435.0">
                <image>
                   <Image url="@../img/password1.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="createAccount" layoutX="469.0" layoutY="37.0" prefHeight="26.0" prefWidth="108.0" style="-fx-background-color: gold;" text="Create" />
-            <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="391.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+            <JFXButton fx:id="createAccount" layoutX="240.0" layoutY="551.0" prefHeight="26.0" prefWidth="176.0" style="-fx-background-color: gold;" text="Create" />
+            <ImageView fitHeight="62.0" fitWidth="65.0" layoutX="163.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/domain.png" />
                </image>
             </ImageView>
-            <Label layoutX="118.0" layoutY="25.0" prefHeight="35.0" prefWidth="140.0" text="Register" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="342.0" AnchorPane.topAnchor="25.0">
+            <Label layoutX="157.0" layoutY="50.0" prefHeight="35.0" prefWidth="140.0" text="Register" AnchorPane.leftAnchor="157.0" AnchorPane.rightAnchor="303.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font name="System Bold Italic" size="28.0" />
                </font>
             </Label>
-            <JFXTextField layoutX="173.0" layoutY="294.0" prefHeight="29.0" prefWidth="185.0" AnchorPane.leftAnchor="173.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="294.0" />
-            <JFXTextField layoutX="181.0" layoutY="202.0" prefHeight="26.0" prefWidth="156.0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="202.0" />
+            <JFXTextField fx:id="txtUserName" alignment="CENTER" layoutX="155.0" layoutY="375.0" prefHeight="29.0" prefWidth="185.0" promptText="Username" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="118.0" AnchorPane.topAnchor="375.0">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></JFXTextField>
+            <JFXTextField fx:id="txtLastName" alignment="CENTER" layoutX="171.0" layoutY="238.0" prefHeight="26.0" prefWidth="156.0" promptText="Last Name" AnchorPane.leftAnchor="171.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="238.0">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font></JFXTextField>
          </children>
       </AnchorPane>
    </center>
+   <right>
+      <Pane prefHeight="680.0" prefWidth="305.0" style="-fx-background-image: url('/img/4.jpg');" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>
