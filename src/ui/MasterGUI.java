@@ -3,21 +3,28 @@ package ui;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.*;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MasterGUI implements Initializable {
-    //Attributes
+public class MasterGUI {
+    //Attributess
+    double x,y = 0;
 
     //_____________ MAIN PANE ____________
     @FXML
@@ -40,9 +47,10 @@ public class MasterGUI implements Initializable {
     public void logIn(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menu.fxml"));
         fxmlLoader1.setController(this);
-        Parent logInPane = fxmlLoader1.load();
+        Parent menuPane = fxmlLoader1.load();
 
-        borderPane.setCenter(logInPane);
+        borderPane.setCenter(menuPane);
+
     }
 
     @FXML
@@ -59,7 +67,7 @@ public class MasterGUI implements Initializable {
     /**
      * Constructor method.
      */
-    public MasterGUI(){
+    public MasterGUI() {
 
     }
 
@@ -67,59 +75,7 @@ public class MasterGUI implements Initializable {
     //___________________________________
     //Corregir
 
-    @FXML
-    private DatePicker date;
 
-    @FXML
-    private RadioButton female;
-
-    @FXML
-    private ToggleGroup genderGrup;
-
-    @FXML
-    private RadioButton other;
-
-    @FXML
-    private RadioButton male;
-
-    @FXML
-    private RadioButton sis;
-
-    @FXML
-    private ToggleGroup careerGrup;
-
-    @FXML
-    private RadioButton tel;
-
-    @FXML
-    private RadioButton ind;
-
-    @FXML
-    private TextField txtUserN;
-
-    @FXML
-    private TextField txtImageURL;
-
-    @FXML
-    private ChoiceBox<?> browser;
-
-    @FXML
-    private TextField txtPass;
-
-    @FXML
-    void SignIn(ActionEvent event) {
-
-    }
-
-    @FXML
-    void createAccount(ActionEvent event) {
-
-    }
-
-    @FXML
-    void fileBrowser(ActionEvent event) {
-
-    }
 
     //____________________ MENU _______________
     @FXML
@@ -135,8 +91,8 @@ public class MasterGUI implements Initializable {
     private JFXButton buttonExit;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
+    //__________________
+
+
 }
