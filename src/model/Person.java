@@ -1,6 +1,9 @@
 package model;
 
-public abstract class Person {
+import java.io.Serializable;
+
+public abstract class Person implements Serializable {
+    private  static final long serialVersionUID = 1;
     private String name;
     private String lastName;
     private String identification;
@@ -34,4 +37,6 @@ public abstract class Person {
     public void setIdentification(String identification) {
         this.identification = identification;
     }
+
+
 }

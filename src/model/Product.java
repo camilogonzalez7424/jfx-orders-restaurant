@@ -9,6 +9,8 @@ public class Product {
     private String size;
     private int price;
 
+    private TypeProduct type;
+
     /**
      * Instantiates a new Product.
      *

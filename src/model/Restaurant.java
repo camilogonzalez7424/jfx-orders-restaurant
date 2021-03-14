@@ -1,9 +1,12 @@
 package model;
 
+import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
 
 public class Restaurant {
 
+    public final static String SAVE_PATH_FILE_USERS = "data/users.txt";
     private ArrayList<Client> clientList;
     private ArrayList<Product> products;
     private ArrayList<Order> orderList;
@@ -57,4 +60,41 @@ public class Restaurant {
     public void setLastUser(User lastUser) {
         this.lastUser = lastUser;
     }
+
+    public Boolean canLogin(String userName){
+        boolean can = false;
+        for (int i = 0; i <users.size() && !can ; i++) {
+            if (userName.equals(users.get(i).getUserName())) {
+                can = true;
+
+            }
+        }
+
+        return  can;
+    }
+
+    public void createUser(String nameE, String lastnameE, String identificationE, String userName , String password){
+        users.add(new User(nameE,lastnameE,identificationE,userName,password));
+    }
+
+    public void saveDataUsers() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_USERS));
+         oos.writeObject(users);
+         oos.close();
+    }
+
+    public boolean loadDataUser() throws IOException, ClassNotFoundException {
+        File f = new File(SAVE_PATH_FILE_USERS);
+        boolean loaded = false;
+        if(f.exists()){
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+            users = (ArrayList<User>) ois.readObject();
+            ois.close();
+            loaded = true;
+        }
+        return loaded;
+
+    }
+
+
 }
