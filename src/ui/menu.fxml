@@ -40,7 +40,7 @@
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font></JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="279.0" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="2.0" layoutY="279.0" onAction="#exitButton" prefHeight="60.0" prefWidth="225.0" ripplerFill="RED" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER">
                <graphic>
                   <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>

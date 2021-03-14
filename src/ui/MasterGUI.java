@@ -7,7 +7,6 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -24,7 +23,6 @@ import java.util.ResourceBundle;
 
 public class MasterGUI {
     //Attributess
-    double x,y = 0;
 
     //_____________ MAIN PANE ____________
     @FXML
@@ -45,9 +43,9 @@ public class MasterGUI {
 
     @FXML
     public void logIn(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menu.fxml"));
-        fxmlLoader1.setController(this);
-        Parent menuPane = fxmlLoader1.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+        fxmlLoader.setController(this);
+        Parent menuPane = fxmlLoader.load();
 
         borderPane.setCenter(menuPane);
 
@@ -55,9 +53,9 @@ public class MasterGUI {
 
     @FXML
     public void signUp(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("register.fxml"));
-        fxmlLoader1.setController(this);
-        Parent signUpPane = fxmlLoader1.load();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
+        fxmlLoader.setController(this);
+        Parent signUpPane = fxmlLoader.load();
 
         borderPane.setCenter(signUpPane);
 
@@ -72,26 +70,19 @@ public class MasterGUI {
     }
 
 
-    //___________________________________
-    //Corregir
-
+    //________________ REGISTER _________________
 
 
     //____________________ MENU _______________
-    @FXML
-    private Label Menu;
 
     @FXML
-    private Label menuBack;
+    public void exitButton(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        fxmlLoader.setController(this);
+        Parent loginBack = fxmlLoader.load();
 
-    @FXML
-    private AnchorPane slider;
-
-    @FXML
-    private JFXButton buttonExit;
-
-
-
+        borderPane.setCenter(loginBack);
+    }
     //__________________
 
 
