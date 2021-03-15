@@ -3,11 +3,14 @@ package model;
 import java.io.Serializable;
 
 public abstract class Person implements Serializable {
-    private  static final long serialVersionUID = 1;
+    private  static final long serialVersionUID = 2;
     //Attributes.
     private String name;
     private String lastName;
     private String identification;
+
+    private User creatorUser;
+    private  User lastUser;
 
     /**
      * Instantiates a new Person.
@@ -23,6 +26,23 @@ public abstract class Person implements Serializable {
     }
 
     //Getters and Setters.
+
+
+    public User getCurrentUser() {
+        return creatorUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.creatorUser = currentUser;
+    }
+
+    public User getLastUser() {
+        return lastUser;
+    }
+
+    public void setLastUser(User lastUser) {
+        this.lastUser = lastUser;
+    }
 
     public String getName() {
         return name;

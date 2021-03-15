@@ -14,25 +14,49 @@ public class Order {
     private  Client clientRequest;
     private ArrayList<Product> productsList;
     private  Employee employee;
+    private  User creatorU;
+    private  User lastU;
+    private Status status;
 
     /**
      * Instantiates a new Order.
      *
      * @param code     the code is type String.
      * @param feedback the feedback is type String.
-     * @param hour     the hour
-     * @param date     the date
      */
-    public Order(String code, String feedback, Date hour, Date date) {
+    public Order(String code, String feedback) {
         this.code = code;
         this.feedback = feedback;
-        this.hour = hour;
-        this.date = date;
+        status = Status.REQUESTED;
         productsList = new ArrayList<>();
 
     }
 
     //Getters and Setters.
+
+    public User getCreatorU() {
+        return creatorU;
+    }
+
+    public void setCreatorU(User creatorU) {
+        this.creatorU = creatorU;
+    }
+
+    public User getLastU() {
+        return lastU;
+    }
+
+    public void setLastU(User lastU) {
+        this.lastU = lastU;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public String getCode() {
         return code;

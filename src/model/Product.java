@@ -11,17 +11,50 @@ public class Product {
 
     //Relationship.
     private TypeProduct type;
+    private User CreatorU;
+    private  User lastUser;
 
     /**
      * Instantiates a new Product.
      *
      * @param nameP the nameP is of type String.
      */
-    public Product(String nameP) {
+
+    public Product(String nameP, String size, int price, TypeProduct type) {
         this.nameP = nameP;
+        this.size = size;
+        this.price = price;
+        this.type = type;
     }
 
+
+
     //Getters and Setters.
+
+
+    public TypeProduct getType() {
+        return type;
+    }
+
+    public void setType(TypeProduct type) {
+        this.type = type;
+    }
+
+    public User getCreatorU() {
+        return CreatorU;
+    }
+
+    public void setCreatorU(User creatorU) {
+        CreatorU = creatorU;
+    }
+
+    public User getLastUser() {
+        return lastUser;
+    }
+
+    public void setLastUser(User lastUser) {
+        this.lastUser = lastUser;
+    }
 
     public String getNameP() {
         return nameP;
