@@ -112,7 +112,6 @@ public class Restaurant {
     * @param update , the new information
     * @param type , for indicating the type of field that will be updated
     * */
-
     public void updateInfo(String username, String password, String update , int type){
         boolean found=false;
         for (int i = 0; i <users.size() && !found; i++) {
@@ -138,8 +137,6 @@ public class Restaurant {
      * @param userName , the username of the user
      * @return  boolean , true if it was found false if it was not found
      */
-
-
     public boolean delete(String userName){
         boolean deleted = false;
         for (int i = 0; i <users.size() && !deleted; i++) {
@@ -157,8 +154,6 @@ public class Restaurant {
      * @param  username , the user name of the user
      * @return  boolean , true if it was found false if it was not found
      */
-
-
     public boolean toDisable(String username){
         boolean disable = false;
         for (int i = 0; i <users.size() && !disable ; i++) {
@@ -207,11 +202,76 @@ public class Restaurant {
    public void  createIngredient() {
    }
 
-    //__________________________ CLIENTES LOGICA ____________________________________-
+   //________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //__________________________ CLIENTS REQUIREMENTS ____________________________________-
 
     public void createClient(String name, String lastName, String identification, String address){
         clientList.add(new Client(name, lastName, identification, address));
-       }
+    }
 
     public void saveDataClients() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_CLIENTS));
@@ -229,4 +289,24 @@ public class Restaurant {
             loaded = true;
         }
     }
+
+   /* public void updateInfoClient(String address, String update){
+        boolean found=false;
+        for (int i = 0; i <users.size() && !found; i++) {
+            if (username.equals(users.get(i).getUserName())&& password.equals(users.get(i).getPassword())){
+                switch (type){
+                    case 0: (users.get(i)).setUserName(update);
+                        break;
+                    case 1: (users.get(i)).setPassword(update);
+                        break;
+                }
+                found = true;
+
+            }
+
+        }
+
+    }
+    */
+
 }
