@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class Restaurant {
     public final static String SAVE_PATH_FILE_USERS = "data/users.txt";
+    public final static String SAVE_PATH_FILE_CLIENTS = "data/clients.txt";
 
     //Relationship.
     private ArrayList<Client> clientList;
@@ -130,6 +131,31 @@ public class Restaurant {
         }
 
     }
+
+    //__________________________ CLIENTES LOGICA ____________________________________-
+
+    public void createClient(String name, String lastName, String identification, String address){
+        clientList.add(new Client(name, lastName, identification, address));
+    }
+
+    public void saveDataClients() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_CLIENTS));
+        oos.writeObject(clientList);
+        oos.close();
+    }
+
+    public void loadDataClients() throws IOException, ClassNotFoundException {
+        File f = new File(SAVE_PATH_FILE_CLIENTS);
+        boolean loaded = false;
+        if(f.exists()){
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+            clientList = (ArrayList<Client>) ois.readObject();
+            ois.close();
+            loaded = true;
+        }
+
+    }
+
 
 
 }

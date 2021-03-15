@@ -38,7 +38,6 @@ public class MasterGUI {
     @FXML
     private BorderPane borderPane;
 
-
     //____________________________________
 
     //_____________ A. LOGIN PANEL ___________
@@ -208,7 +207,8 @@ public class MasterGUI {
 
         borderPane.setCenter(loginBack);
     }
-    //_________________________________
+
+
 
 
 

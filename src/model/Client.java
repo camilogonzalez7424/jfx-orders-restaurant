@@ -20,4 +20,14 @@ public class Client extends Person{
         super(name, lastName, identification);
         this.address = address;
     }
+
+    //Getters and Setters.
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
