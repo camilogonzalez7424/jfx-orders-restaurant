@@ -162,6 +162,7 @@ public class MasterGUI {
             txtLastName.setText("");
             txtUserName.setText("");
             txtPassword.setText("");
+            txtId.setText("");
 
         }else {
             mainRestaurant.createUser(name,lastName,id,userName,password);
