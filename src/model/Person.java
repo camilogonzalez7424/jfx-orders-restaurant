@@ -4,15 +4,25 @@ import java.io.Serializable;
 
 public abstract class Person implements Serializable {
     private  static final long serialVersionUID = 1;
+    //Attributes.
     private String name;
     private String lastName;
     private String identification;
 
+    /**
+     * Instantiates a new Person.
+     *
+     * @param name           the name is type String.
+     * @param lastName       the last name is type String.
+     * @param identification the identification is type String.
+     */
     public Person(String name, String lastName, String identification) {
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
     }
+
+    //Getters and Setters.
 
     public String getName() {
         return name;

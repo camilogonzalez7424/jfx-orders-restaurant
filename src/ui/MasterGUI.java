@@ -20,33 +20,28 @@ import java.io.IOException;
 
 
 public class MasterGUI {
-    //Attributess
 
+    //Relationship.
     private Restaurant mainRestaurant;
 
-    //____________________ MENU _______________
-    @FXML
-    private Label Menu;
+    /* NOTES:
+       Attributes = A.
+       Methods = M.     */
 
-    @FXML
-    private Label menuBack;
+    //____________________ A. MENU PANEL _______________
 
-    @FXML
-    private AnchorPane slider;
 
-    @FXML
-    private JFXButton buttonExit;
 
     //------------------------------------------
 
-    //_____________ MAIN PANE ____________
+    //_____________ A. MAIN PANEL ____________
     @FXML
     private BorderPane borderPane;
 
 
     //____________________________________
 
-    //_____________ LOGIN PANE ___________
+    //_____________ A. LOGIN PANEL ___________
     @FXML
     private JFXTextField txtLoginUser;
 
@@ -55,7 +50,7 @@ public class MasterGUI {
 
     //---------------------------------
 
-    //________________Register_________________
+    //________________ A. REGISTER PANEL _________________
      @FXML
      private JFXTextField txtPassword;
 
@@ -68,11 +63,12 @@ public class MasterGUI {
      @FXML
      private JFXTextField txtLastName;
 
-      @FXML
-      private JFXTextField txtId;
-//------------------------------------------------------------
+     @FXML
+     private JFXTextField txtId;
 
-    //________________________________________
+     //------------------------------------------------------------
+
+    //_________________ MASTERGUI _______________________
 
     /**
      * Constructor method.
@@ -86,26 +82,36 @@ public class MasterGUI {
         try {
             mainRestaurant.loadDataUser();
         }catch (Exception e){
-            System.out.println("nada aun");
+            System.out.println("Nothing yet");
         }
 
         return borderPane;
     }
+    //_________________________________________________
 
+
+//________________ M. LOGIN PANEL __________________
+    /**
+     * Log in.
+     * This method performs an action. This method performs an action.
+     * Open the menu panel if the user exists and enter their data correctly.
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void logIn(ActionEvent event) throws IOException {
 
-        if (mainRestaurant.canLogin(txtLoginUser.getText())){
-            FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("menu.fxml"));
-            fxmlLoader1.setController(this);
-            Parent logInPane = fxmlLoader1.load();
-            borderPane.setCenter(logInPane);
+        if (mainRestaurant.canLogin(txtLoginUser.getText(),txtLoginPass.getText())){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            fxmlLoader.setController(this);
+            Parent menuPane = fxmlLoader.load();
+            borderPane.setCenter(menuPane);
 
         }else{
-            Alert alert = new Alert(AlertType.WARNING);
+            Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("We can not find you :(");
-            alert.setHeaderText(null);
-            alert.setContentText("Please create an account :)");
+            alert.setHeaderText("Look the problem");
+            alert.setContentText("Check your data if have account"+"\n"+"or please create an account :)");
             alert.showAndWait();
 
         }
@@ -113,6 +119,12 @@ public class MasterGUI {
 
     }
 
+    /**
+     * Sign up.
+     * This method performs an action. Open the panel to register.
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void signUp(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
@@ -122,10 +134,17 @@ public class MasterGUI {
         borderPane.setCenter(signUpPane);
 
     }
+    //_____________________________________________
 
 
-    //________________ REGISTER _________________
+    //________________ M. REGISTER PANEL _________________
 
+    /**
+     * Create user.
+     * This method performs an action. Create an user and open menu panel.
+     * @param event the event
+     * @throws IOException the io exception
+     */
     public void createUser(ActionEvent event) throws IOException {
         String name , lastName, userName, password, id;
         name = txtName.getText();
@@ -135,9 +154,10 @@ public class MasterGUI {
         id = txtId.getText();
 
         if (name.equals("")|| lastName.equals("")|| id.equals("")||userName.equals("") || password.equals("") ){
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Please fill all the blanks");
-            alert.setHeaderText(null);
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("¡Incomplete data!");
+            alert.setHeaderText("Look the problem");
+            alert.setContentText("Please fill all the blanks :)");
             alert.showAndWait();
             txtName.setText("");
             txtLastName.setText("");
@@ -148,12 +168,38 @@ public class MasterGUI {
             mainRestaurant.createUser(name,lastName,id,userName,password);
             mainRestaurant.saveDataUsers();
 
-        }
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
+            fxmlLoader.setController(this);
+            Parent menuPane = fxmlLoader.load();
+            borderPane.setCenter(menuPane);
 
+        }
     }
 
-    //____________________ MENU _______________
+    /**
+     * To back.
+     * This method performs an action. Return to the login panel from the register panel.
+     * @param event the event
+     * @throws IOException the io exception
+     */
+    @FXML
+    public void toBack(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+        fxmlLoader.setController(this);
+        Parent loginBack = fxmlLoader.load();
 
+        borderPane.setCenter(loginBack);
+    }
+
+
+    //____________________ M. MENU PANEL _______________
+
+    /**
+     * Exit button.
+     * This method performs an action. Return to the login panel from the menu panel.
+     * @param event the event
+     * @throws IOException the io exception
+     */
     @FXML
     public void exitButton(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
@@ -162,7 +208,7 @@ public class MasterGUI {
 
         borderPane.setCenter(loginBack);
     }
-    //__________________
+    //_________________________________
 
 
 

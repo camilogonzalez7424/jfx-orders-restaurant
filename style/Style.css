@@ -1,5 +1,17 @@
 .menuItem:hover{
-    -fx-background-color: #146886;
-    -fx-border-color: WHITE;
-    -fx-border-width: 0px 0px 0px 3px;
+    -fx-background-color: #c800c8;
+    -fx-border-color: BLACK;
+    -fx-border-width: 0px 0px 0px 5px;
 }
+
+.create:hover{
+    -fx-background-color: #ffff;
+    -fx-border-color: #c800c8;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+/*
+.menu:hover{
+    -fx-border-color: #660099;
+    -fx-border-width: 0px 0px 3px 0px;
+}*/

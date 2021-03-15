@@ -4,12 +4,20 @@ package model;
  * Class Type product.
  */
 public class TypeProduct {
+    //Attributes.
     private String name;
     private boolean avalibleT;
 
-    public TypeProduct(String name){
+    /**
+     * Instantiates a new Type product.
+     *
+     * @param name the name is type String.
+     */
+    public TypeProduct(String name) {
         this.name = name;
     }
+
+    //Getters and Setters.
 
     public String getName() {
         return name;

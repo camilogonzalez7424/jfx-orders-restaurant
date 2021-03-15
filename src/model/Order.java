@@ -4,15 +4,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Order {
+    //Attributes.
     private  String code;//hacerlo autogenerado
     private  String feedback;
     private Date hour;//mirar si sirve
     private  Date date;
 
+    //Relationship.
     private  Client clientRequest;
     private ArrayList<Product> productsList;
     private  Employee employee;
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param code     the code is type String.
+     * @param feedback the feedback is type String.
+     * @param hour     the hour
+     * @param date     the date
+     */
     public Order(String code, String feedback, Date hour, Date date) {
         this.code = code;
         this.feedback = feedback;
@@ -21,6 +31,8 @@ public class Order {
         productsList = new ArrayList<>();
 
     }
+
+    //Getters and Setters.
 
     public String getCode() {
         return code;

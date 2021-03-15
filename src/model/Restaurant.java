@@ -4,8 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Restaurant {
-
     public final static String SAVE_PATH_FILE_USERS = "data/users.txt";
+
+    //Relationship.
     private ArrayList<Client> clientList;
     private ArrayList<Product> products;
     private ArrayList<Order> orderList;
@@ -15,6 +16,9 @@ public class Restaurant {
     private User currentUser;
     private  User lastUser;
 
+    /**
+     * Instantiates a new Restaurant.
+     */
     public Restaurant(){
         clientList = new ArrayList<>();
         products = new ArrayList<>();
@@ -23,10 +27,11 @@ public class Restaurant {
         employees = new ArrayList<>();
     }
 
+    //Getters and Setters.
+
     public ArrayList<Client> getClientList() {
         return clientList;
     }
-
 
     public ArrayList<Product> getProducts() {
         return products;
@@ -60,10 +65,20 @@ public class Restaurant {
         this.lastUser = lastUser;
     }
 
-    public Boolean canLogin(String userName){
+
+    /**
+     * Can login boolean.
+     * This method checks that the user's data is correct for enter the main menu.
+     * <b> pre: </b> previous has to exist a user created.
+     * <b> pos: </b> if the data is correct the user can enter the main menu.
+     * @param userName the userName is type String.
+     * @param passWord the passWord is type String.
+     * @return the can is type boolean.
+     */
+    public Boolean canLogin(String userName , String passWord){
         boolean can = false;
         for (int i = 0; i <users.size() && !can ; i++) {
-            if (userName.equals(users.get(i).getUserName())) {
+            if (userName.equals(users.get(i).getUserName()) && passWord.equals(users.get(i).getPassword())) {
                 can = true;
 
             }
@@ -72,16 +87,38 @@ public class Restaurant {
         return  can;
     }
 
+    /**
+     * Create user.
+     * This method create and add a new user in a arraylist,
+     * @param nameE           the nameE is type String.
+     * @param lastnameE       the lastnameR is type String.
+     * @param identificationE the identificationE is type String.
+     * @param userName        the userName is type String.
+     * @param password        the password is type String.
+     */
     public void createUser(String nameE, String lastnameE, String identificationE, String userName , String password){
         users.add(new User(nameE,lastnameE,identificationE,userName,password));
     }
 
+
+    /**
+     * Save data users.
+     * This method save the data of the users in the system (file.txt)
+     * @throws IOException the io exception
+     */
     public void saveDataUsers() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_USERS));
          oos.writeObject(users);
          oos.close();
     }
 
+
+    /**
+     * Load data user.
+     * This method load the data of the users.
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     public void loadDataUser() throws IOException, ClassNotFoundException {
         File f = new File(SAVE_PATH_FILE_USERS);
         boolean loaded = false;
