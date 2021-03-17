@@ -1,9 +1,12 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class Type product.
  */
-public class TypeProduct {
+public class TypeProduct  implements Serializable {
+    private  static final long serialVersionUID = 1;
     //Attributes.
     private String name;
     private boolean avalibleT;
