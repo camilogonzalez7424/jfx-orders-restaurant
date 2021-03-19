@@ -9,6 +9,8 @@ public class Restaurant {
     public final static String SAVE_PATH_FILE_CLIENTS = "data/clients.txt";
     public final static String SAVE_PATH_FILE_INGREDIENTS = "data/ingredients.txt";
     public final static String SAVE_PATH_FILE_EMPLOYEES = "data/employees.txt";
+    public final static String SAVE_PATH_FILE_PRODUCTS = "data/products.txt";
+    public final static String SAVE_PATH_FILE_ORDERS = "data/orders.txt";
 
     //Relationship.
     private ArrayList<Client> clientList;
@@ -447,6 +449,8 @@ public class Restaurant {
 
 //__________________________ PRODUCTS REQUIREMENTS ____________________________________-
 
-
+    /*public void createProduct(String namep, String size, int price, String address){
+        clientList.add(new Client(name, lastName, identification, address));
+    }*/
 
 }

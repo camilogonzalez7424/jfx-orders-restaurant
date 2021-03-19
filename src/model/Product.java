@@ -1,14 +1,18 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * The type Product.
  */
-public class Product {
+public class Product implements Serializable {
+    private  static final long serialVersionUID = 1;
+
     //Attributes.
     private String nameP;
     private String size;
     private int price;
-    private boolean avalible;
+    private boolean available;
 
     //Relationship.
     private TypeProduct type;
@@ -26,7 +30,7 @@ public class Product {
         this.size = size;
         this.price = price;
         this.type = type;
-        avalible = true;
+        available = true;
     }
 
 
@@ -82,11 +86,11 @@ public class Product {
         this.price = price;
     }
 
-    public boolean isAvalible() {
-        return avalible;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setAvalible(boolean avalible) {
-        this.avalible = avalible;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }
