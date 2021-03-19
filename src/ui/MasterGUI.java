@@ -208,5 +208,23 @@ public class MasterGUI {
 
         borderPane.setCenter(loginBack);
     }
-    
+
+
+
+
+    /*@FXML
+    public void exportContact(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Export File");
+        File file =fileChooser.showSaveDialog(mainPanel.getScene().getWindow());
+        try {
+            contactManager.exportData(file.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+
+        }
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Export Contacts");
+        alert.setContentText("Contacts were export");
+        alert.showAndWait();
+    }*/
 }

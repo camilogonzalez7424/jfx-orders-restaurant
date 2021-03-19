@@ -628,4 +628,121 @@ public class Restaurant {
         }
         return disable;
     }
+
+//_________________________ EXPORT DATA _________________________________________
+
+    /**
+     * Export data user.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataUser(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i<users.size();i++){
+            User myUser = users.get(i);
+            pw.println(myUser.getName()+separator+myUser.getLastName()
+                +separator+myUser.getIdentification()
+                +separator+myUser.getUserName()+separator+myUser.getPassword());
+        }
+
+        pw.close();
+    }
+
+    /**
+     * Export data employee.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataEmployee(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i<employees.size();i++){
+            Employee myEmployee = employees.get(i);
+            pw.println(myEmployee.getName()+separator+myEmployee.getLastName()+separator+myEmployee.getIdentification());
+        }
+
+        pw.close();
+    }
+
+    /**
+     * Export data client.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataClient(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i<clientList.size();i++){
+            Client myClient = clientList.get(i);
+            pw.println(myClient.getName()+separator+myClient.getLastName()
+                    +separator+myClient.getIdentification()+separator+myClient.getAddress());
+        }
+
+        pw.close();
+    }
+
+    /**
+     * Export data ingredient.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataIngredient(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i<ingredientsList.size();i++){
+            Ingredient myIngredient = ingredientsList.get(i);
+            pw.println(myIngredient.getNameI());
+        }
+
+        pw.close();
+    }
+
+    /**
+     * Export data product.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataProduct(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i< products.size();i++){
+            Product myProduct = products.get(i);
+            pw.println(myProduct.getNameP()+separator+myProduct.getSize()+separator+
+                    myProduct.getPrice()+separator+myProduct.getType());
+        }
+
+        pw.close();
+    }
+
+    /**
+     * Export data order.
+     *
+     * @param fileName  the file name
+     * @param separator the separator
+     * @throws FileNotFoundException the file not found exception
+     */
+    public void exportDataOrder(String fileName,String separator) throws FileNotFoundException{
+        PrintWriter pw = new PrintWriter(fileName);
+
+        for(int i=0;i<orderList.size();i++){
+            Order myOrder = orderList.get(i);
+            pw.println(myOrder.getCode()+separator+myOrder.getFeedback());
+        }
+
+        pw.close();
+    }
+
+
+//_______________________________________________________________________________
 }
