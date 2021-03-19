@@ -1,14 +1,18 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
+    private  static final long serialVersionUID = 1;
+
     //Attributes.
     private  String code;//hacerlo autogenerado
     private  String feedback;
     private Date hour;//mirar si sirve
     private  Date date;
+    private boolean available;
 
     //Relationship.
     private  Client clientRequest;
@@ -29,6 +33,7 @@ public class Order {
         this.feedback = feedback;
         status = Status.REQUESTED;
         productsList = new ArrayList<>();
+        available = true;
 
     }
 
@@ -112,5 +117,13 @@ public class Order {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

@@ -1,12 +1,15 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class Type product.
  */
-public class TypeProduct {
+public class TypeProduct  implements Serializable {
+    private  static final long serialVersionUID = 1;
     //Attributes.
     private String name;
-    private boolean avalibleT;
+    private boolean availableT;
 
     private User creatorUser;
     private User lastUser;
@@ -30,12 +33,12 @@ public class TypeProduct {
         this.name = name;
     }
 
-    public boolean isAvalibleT() {
-        return avalibleT;
+    public boolean isAvailableT() {
+        return availableT;
     }
 
-    public void setAvalibleT(boolean avalibleT) {
-        this.avalibleT = avalibleT;
+    public void setAvailableT(boolean availableT) {
+        this.availableT = availableT;
     }
 
     public User getCreatorUser() {

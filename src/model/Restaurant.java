@@ -447,10 +447,185 @@ public class Restaurant {
 
 //------------------------------------------------------------------------------------------------------------------------
 
-//__________________________ PRODUCTS REQUIREMENTS ____________________________________-
+//__________________________ PRODUCTS REQUIREMENTS _______________________________________________________________________
 
-    /*public void createProduct(String namep, String size, int price, String address){
-        clientList.add(new Client(name, lastName, identification, address));
-    }*/
+    /**
+     * Create product.
+     *
+     * @param nameP the nameP is type String
+     * @param size  the size
+     * @param price the price
+     * @param nameT the nameT
+     */
+    public void createProduct(String nameP, String size, int price, String nameT){
+       TypeProduct nameType = new TypeProduct(nameT);
+        products.add(new Product(nameP,size,price,nameType));
+    }
 
+    /**
+     * Save data product.
+     *
+     * @throws IOException the io exception
+     */
+    public void saveDataProduct() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_PRODUCTS));
+        oos.writeObject(products);
+        oos.close();
+    }
+
+    /**
+     * Load data product.
+     *
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
+    public void loadDataProduct() throws IOException, ClassNotFoundException {
+        File f = new File(SAVE_PATH_FILE_PRODUCTS);
+        boolean loaded = false;
+        if(f.exists()){
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+            products = (ArrayList<Product>) ois.readObject();
+            ois.close();
+            loaded = true;
+        }
+    }
+
+    /**
+     * Update info product.
+     *
+     * @param update the update
+     * @param nameP  the name p
+     * @param type   the type
+     */
+    public void updateInfoProduct(String update , String nameP, int type){
+        boolean found = false;
+        for (int i = 0; i <products.size() && !found; i++) {
+            if (nameP.equals(products.get(i).getNameP())){
+                switch (type){
+                    case 1: products.get(i).setNameP(update);
+                        break;
+                    case 2: products.get(i).setSize(update);
+                        break;
+                    case 3: products.get(i).setPrice(Integer.parseInt(update));
+                        break;
+                    case 4: products.get(i).setType(new TypeProduct(update));
+                    default:
+                }
+                found =true;
+            }
+        }
+
+    }
+
+    /**
+     * Delete product boolean.
+     *
+     * @param nameP the nameP
+     * @return the boolean
+     */
+    public boolean deleteProduct(String nameP){
+        boolean deleProduct = false;
+        for (int i = 0; i <products.size() && !deleProduct; i++) {
+            if(nameP.equals(products.get(i).getNameP())){
+                products.remove(i);
+                deleProduct=true;
+            }
+        }
+        return deleProduct;
+
+    }
+
+    /**
+     * Disable product boolean.
+     *
+     * @param nameP the name p
+     * @return the boolean
+     */
+    public boolean disableProduct(String nameP){
+        boolean disable = false;
+        for (int i = 0; i <products.size() && !disable ; i++) {
+            if(nameP.equals(products.get(i).getNameP())){
+                products.get(i).setAvailable(false);
+                disable = true;
+            }
+        }
+        return disable;
+    }
+
+//------------------------------------------------------------------------------------------------------------------------
+
+//__________________________ ORDERS REQUIREMENTS _______________________________________________________________________
+
+    /**
+     * Create order.
+     *
+     * @param code     the code
+     * @param feedback the feedback
+     */
+    public void createOrder(String code, String feedback){
+        orderList.add(new Order(code,feedback));
+    }
+
+    /**
+     * Save data order.
+     *
+     * @throws IOException the io exception
+     */
+    public void saveDataOrder() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_ORDERS));
+        oos.writeObject(orderList);
+        oos.close();
+    }
+
+    /**
+     * Load data order.
+     *
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
+    public void loadDataOrder() throws IOException, ClassNotFoundException {
+        File f = new File(SAVE_PATH_FILE_ORDERS);
+        boolean loaded = false;
+        if(f.exists()){
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+            orderList = (ArrayList<Order>) ois.readObject();
+            ois.close();
+            loaded = true;
+        }
+    }
+
+    /**
+     * Delete order boolean.
+     *
+     * @param code the code
+     * @return the boolean
+     */
+    public boolean deleteOrder(String code){
+        boolean deleOrder = false;
+        for (int i = 0; i <orderList.size() && !deleOrder; i++) {
+            if(code.equals(orderList.get(i).getCode())){
+                orderList.remove(i);
+                deleOrder=true;
+            }
+        }
+        return deleOrder;
+
+    }
+
+    /**
+     * Disable order boolean.
+     *
+     * @param code the code
+     * @return the boolean
+     */
+    public boolean disableOrder(String code){
+        boolean disable = false;
+        for (int i = 0; i <orderList.size() && !disable ; i++) {
+            if(code.equals(orderList.get(i).getCode())){
+                orderList.get(i).setAvailable(false);
+                disable = true;
+            }
+        }
+        return disable;
+    }
 }
