@@ -8,6 +8,7 @@ public abstract class Person implements Serializable {
     private String name;
     private String lastName;
     private String identification;
+
     private boolean habilitate;
 
     private User creatorUser;
@@ -24,11 +25,11 @@ public abstract class Person implements Serializable {
         this.name = name;
         this.lastName = lastName;
         this.identification = identification;
+
         habilitate = true;
     }
 
     //Getters and Setters.
-
 
     public User getCurrentUser() {
         return creatorUser;

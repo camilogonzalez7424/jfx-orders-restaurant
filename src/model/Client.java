@@ -6,6 +6,7 @@ package model;
 public class Client extends Person{
     //Attributes
     private  String address;
+    private boolean work;
 
 
     /**

@@ -8,6 +8,7 @@ public class Product {
     private String nameP;
     private String size;
     private int price;
+    private boolean avalible;
 
     //Relationship.
     private TypeProduct type;
@@ -25,6 +26,7 @@ public class Product {
         this.size = size;
         this.price = price;
         this.type = type;
+        avalible = true;
     }
 
 
@@ -78,5 +80,13 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public boolean isAvalible() {
+        return avalible;
+    }
+
+    public void setAvalible(boolean avalible) {
+        this.avalible = avalible;
     }
 }

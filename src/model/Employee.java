@@ -4,7 +4,7 @@ package model;
  * The type Employee.
  */
 public class Employee extends  Person {
-    private boolean works;
+
     /**
      * Instantiates a new Employee.
      *
@@ -14,15 +14,7 @@ public class Employee extends  Person {
      */
     public Employee(String name, String lastname, String identification) {
         super(name,lastname,identification);
-        works = true;
 
     }
 
-    public boolean isWorks() {
-        return works;
-    }
-
-    public void setWorks(boolean works) {
-        this.works = works;
-    }
 }

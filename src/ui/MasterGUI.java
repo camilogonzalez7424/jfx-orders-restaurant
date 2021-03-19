@@ -208,9 +208,5 @@ public class MasterGUI {
 
         borderPane.setCenter(loginBack);
     }
-
-
-
-
-
+    
 }
