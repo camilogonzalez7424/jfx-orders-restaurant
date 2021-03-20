@@ -4,12 +4,14 @@ import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -179,7 +181,7 @@ public class MasterGUI {
     private TableView<TypeProduct> Ttype;
 
     @FXML
-    private TableColumn<User, String> CnameType;
+    private TableColumn<TypeProduct, String> CnameType;
 
     @FXML
     private TableColumn<TypeProduct, String> CnameAvalibleT;
@@ -743,7 +745,7 @@ public class MasterGUI {
                                           Alert alert2 = new Alert(AlertType.INFORMATION);
                                            alert2.setHeaderText("Result");
                                            alert2.setContentText("Action was made Successfully");
-                                             alert2.showAndWait();
+                                           alert2.showAndWait();
                                            initalizeTables();
                                              }break;
                     case "Orders": if (mainRestaurant.deleteOrder(slelectedOne)){
@@ -906,17 +908,128 @@ public class MasterGUI {
         CuserName.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
 
 
+        ObservableList<Product> productsObservableList;
+        productsObservableList = FXCollections.observableArrayList(mainRestaurant.getProducts());
+        Tproducts.setItems(productsObservableList);
+        CnameP.setCellValueFactory(new PropertyValueFactory<Product,String>("nameP"));
+        CsizeP.setCellValueFactory(new PropertyValueFactory<Product,String>("size"));
+        CpriceP.setCellValueFactory(new PropertyValueFactory<Product,String>("price"));
+        CavalibeP.setCellValueFactory(new PropertyValueFactory<Product,String>("available"));
+        CtypeP.setCellValueFactory(new PropertyValueFactory<Product,String>("type"));
+
+
+        ObservableList<TypeProduct>typeProductObservableList;
+        typeProductObservableList = FXCollections.observableArrayList(mainRestaurant.getTypeProducts());
+        Ttype.setItems(typeProductObservableList);
+        CnameType.setCellValueFactory(new PropertyValueFactory<TypeProduct,String>("name") );
+        CnameAvalibleT.setCellValueFactory(new PropertyValueFactory<TypeProduct,String>("availableT"));
+
+        updateInfoFromTableviewUsers();
+        updateInfoFromTableviewClients();
+        updateInfoFromtableviewEmployees();
+        updateInfoFromTableviewIngredients();
+        updateInfoFromTableviewOrders();
+        updateInfoFromTableviewProducts();
+        updateInfoFromTableviewTypeOfProducts();
+    }
+
+
+
+    //Llamar el metodo cuando cargen las pantallas Nota Borrar metodos update
+    public void updateInfoFromTableviewUsers(){
+        CnameU.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameU.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue()));
+
+        ClastNameU.setCellFactory(TextFieldTableCell.forTableColumn());
+        ClastNameU.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setLastName(event.getNewValue()));
+
+        CIdU.setCellFactory(TextFieldTableCell.forTableColumn());
+        CIdU.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+
+        CuserName.setCellFactory(TextFieldTableCell.forTableColumn());
+        CuserName.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setUserName(event.getNewValue()));
+        TUsers.setEditable(true);
+    }
+
+    public void updateInfoFromtableviewEmployees(){
+        CnameE.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameE.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue()));
+
+        CLastnameE.setCellFactory(TextFieldTableCell.forTableColumn());
+        CLastnameE.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setLastName(event.getNewValue()));
+
+        CIdE.setCellFactory(TextFieldTableCell.forTableColumn());
+        CIdE.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+
+        TEmployee.setEditable(true);
+    }
+    public void updateInfoFromTableviewClients(){
+        CnameC.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameC.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue()));
+
+        ClastNameC.setCellFactory(TextFieldTableCell.forTableColumn());
+        ClastNameC.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setLastName(event.getNewValue()));
+
+        CidC.setCellFactory(TextFieldTableCell.forTableColumn());
+        CidC.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+
+        Caddress.setCellFactory(TextFieldTableCell.forTableColumn());
+        Caddress.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+        TClients.setEditable(true);
+    }
+
+    //Dejar de ultimo
+    public void updateInfoFromTableviewOrders(){
+
+    }
+
+    /**
+     * <b> Pre: para cambiar el si esta disponible debe escribir 'true' o 'false'</b>
+     *
+     *
+     */
+    public void updateInfoFromTableviewProducts() {
+        CnameP.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameP.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setNameP(event.getNewValue()));
+
+        CsizeP.setCellFactory(TextFieldTableCell.forTableColumn());
+        CsizeP.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setSize(event.getNewValue()));
+
+        CavalibeP.setCellFactory(TextFieldTableCell.forTableColumn());
+        CavalibeP.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setAvailable(Boolean.parseBoolean(event.getNewValue())));
+
+        CtypeP.setCellFactory(TextFieldTableCell.forTableColumn());
+        CtypeP.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setType(event.getNewValue()));
+
+        Tproducts.setEditable(true);
+    }
+
+    /**
+     * <b> Pre: para cambiar el si esta disponible debe escribir 'true' o 'false'</b>
+     *
+     *
+     */
+
+    public void updateInfoFromTableviewIngredients(){
+         CnameI.setCellFactory(TextFieldTableCell.forTableColumn());
+         CnameI.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setNameI(event.getNewValue()));
+
+         CavalibleI.setCellFactory(TextFieldTableCell.forTableColumn());
+         CavalibleI.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setAvalible(Boolean.parseBoolean(event.getNewValue())));
+
+         TIngredients.setEditable(true);
+    }
+
+    public void updateInfoFromTableviewTypeOfProducts(){
+        CnameType.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameType.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setName(event.getNewValue()));
+
+        CavalibleI.setCellFactory(TextFieldTableCell.forTableColumn());
+        CnameType.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setAvailableT(Boolean.parseBoolean(event.getNewValue())));
+
+        Ttype.setEditable(true);
 
     }
 
 
-    @FXML
-    public void updateInfoFromTableview(ActionEvent event){
-
-    }
-
-
-
-
-    
 }

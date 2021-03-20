@@ -38,12 +38,12 @@ public class Product implements Serializable {
     //Getters and Setters.
 
 
-    public TypeProduct getType() {
-        return type;
+    public String getType() {
+        return type.getName();
     }
 
-    public void setType(TypeProduct type) {
-        this.type = type;
+    public void setType(String ntype){
+        type = new TypeProduct(ntype);
     }
 
     public User getCreatorU() {
@@ -93,4 +93,6 @@ public class Product implements Serializable {
     public void setAvailable(boolean available) {
         this.available = available;
     }
+
+
 }

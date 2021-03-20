@@ -78,7 +78,7 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="229.0" layoutY="14.0" text="Orders List">
+                  <Label layoutX="208.0" layoutY="39.0" text="Orders List">
                      <font>
                         <Font name="System Bold Italic" size="25.0" />
                      </font>

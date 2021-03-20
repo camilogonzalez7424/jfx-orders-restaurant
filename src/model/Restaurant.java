@@ -230,16 +230,7 @@ public class Restaurant {
         ingredientsList.add(new Ingredient(name));
    }
 
-   public void updateInfoIngredients(String update , String name){
-        boolean found = false;
-       for (int i = 0; i <ingredientsList.size() && !found; i++) {
-           if (name.equals(ingredientsList.get(i).getNameI())){
-               ingredientsList.get(i).setNameI(update);
-               found =true;
-           }
-       }
 
-   }
     public boolean deleteIngredient(String name){
         boolean deletedIngredient = false;
         for (int i = 0; i <ingredientsList.size() && !deletedIngredient; i++) {
@@ -335,7 +326,7 @@ public class Restaurant {
     }
 
     public void loadDataEmployees() throws IOException, ClassNotFoundException {
-        File f1 = new File(SAVE_PATH_FILE_INGREDIENTS);
+        File f1 = new File(SAVE_PATH_FILE_EMPLOYEES);
         if(f1.exists()){
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_PATH_FILE_EMPLOYEES));
             employees = (ArrayList<Employee>) ois.readObject();
@@ -516,7 +507,7 @@ public class Restaurant {
                         break;
                     case 3: products.get(i).setPrice(Integer.parseInt(update));
                         break;
-                    case 4: products.get(i).setType(new TypeProduct(update));
+                    case 4: products.get(i);
                     default:
                 }
                 found =true;
