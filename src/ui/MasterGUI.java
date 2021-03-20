@@ -351,7 +351,7 @@ public class MasterGUI {
 
         }else {
             mainRestaurant.createUser(name,lastName,id,userName,password);
-            mainRestaurant.saveDataUsers();
+
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
             fxmlLoader.setController(this);
@@ -374,6 +374,8 @@ public class MasterGUI {
         Parent loginBack = fxmlLoader.load();
 
         borderPane.setCenter(loginBack);
+
+        mainRestaurant.saveDataUsers();
     }
 
 

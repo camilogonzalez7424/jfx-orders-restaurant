@@ -150,7 +150,7 @@
                   <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="227.0" layoutY="172.0" promptText="New Type" visible="false" />
                   <JFXComboBox fx:id="comboType" layoutX="248.0" layoutY="292.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
                   <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="359.0" promptText="product's name" visible="false" />
-                  <JFXButton layoutX="33.0" layoutY="110.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
+                  <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
                </children>
             </Pane>
          </right>
