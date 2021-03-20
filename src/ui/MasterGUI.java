@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -271,6 +272,9 @@ public class MasterGUI {
     public BorderPane getBorderPane() {
         try {
             mainRestaurant.loadDataUser();
+            mainRestaurant.loadDataClients();
+            mainRestaurant.loadDataEmployees();
+            mainRestaurant.loadDataIngredients();
         } catch (Exception e) {
             System.out.println("Nothing yet");
         }
@@ -361,6 +365,7 @@ public class MasterGUI {
 
         } else {
             mainRestaurant.createUser(name, lastName, id, userName, password);
+            mainRestaurant.saveDataUsers();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
             fxmlLoader.setController(this);
             Parent menuPane = fxmlLoader.load();
@@ -384,7 +389,7 @@ public class MasterGUI {
 
         borderPane.setCenter(loginBack);
 
-        mainRestaurant.saveDataUsers();
+
     }
 
 
@@ -429,7 +434,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabUser = management.getTabs().get(0);
         managementTabs.getTabs().addAll(TabUser);
-        initalizeTables();
+        initializeTables();
 
 
     }
@@ -441,7 +446,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabEmployee = management.getTabs().get(1);
         managementTabs.getTabs().addAll(TabEmployee);
-
+        initializeTables();
 
     }
 
@@ -452,7 +457,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabClients = management.getTabs().get(2);
         managementTabs.getTabs().addAll(TabClients);
-        initalizeTables();
+        initializeTables();
 
     }
 
@@ -463,7 +468,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabOrders = management.getTabs().get(3);
         managementTabs.getTabs().addAll(TabOrders);
-
+        initializeTables();
 
     }
 
@@ -474,7 +479,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabProduct = management.getTabs().get(4);
         managementTabs.getTabs().addAll(TabProduct);
-
+        initializeTables();
 
     }
 
@@ -485,7 +490,7 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabIngredients = management.getTabs().get(5);
         managementTabs.getTabs().addAll(TabIngredients);
-
+        initializeTables();
 
     }
 
@@ -496,16 +501,44 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabType = management.getTabs().get(6);
         managementTabs.getTabs().addAll(TabType);
-
+        initializeTables();
 
     }
 
     @FXML
-    public void newEmployee(ActionEvent event) {
+    public void newEmployee(ActionEvent event) throws IOException {
         if (txtNameM.isVisible() && txtLastNameM.isVisible() && txtIdM.isVisible()) {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("A new Employee has been created");
-            alert.showAndWait();
+            String nameE, lastNameE, idE;
+
+            nameE = txtNameM.getText();
+            lastNameE = txtLastNameM.getText();
+            idE = txtIdM.getText();
+
+            if(txtNameM.getText().equals("") || txtLastNameM.getText().equals("") || txtIdM.getText().equals("")){
+
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("¡Incomplete data!");
+                alert.setHeaderText("Look the problem");
+                alert.setContentText("Please fill all the blanks :)");
+                alert.showAndWait();
+
+                txtNameM.setText("");
+                txtLastNameM.setText("");
+                txtIdM.setText("");
+
+            } else if(!nameE.equals("") && !lastNameE.equals("") && !idE.equals("")){
+                mainRestaurant.createEmployee(nameE,lastNameE,idE);
+                mainRestaurant.saveDataEmployees();
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setContentText("A new Employee has been created");
+                alert.showAndWait();
+
+                txtNameM.setText("");
+                txtLastNameM.setText("");
+                txtIdM.setText("");
+                txtAdreesM.setText("");
+            }
         } else {
             currentManage.setText("Employee");
             txtNameM.setVisible(true);
@@ -524,7 +557,7 @@ public class MasterGUI {
     }
 
     @FXML
-    public void newClient(ActionEvent event) {
+    public void newClient(ActionEvent event) throws IOException {
         if (txtNameM.isVisible() && txtLastNameM.isVisible() && txtIdM.isVisible() && txtAdreesM.isVisible()) {
             String nameC, lastNameC, idC, addressC ;
 
@@ -549,6 +582,7 @@ public class MasterGUI {
 
             } else if(!nameC.equals("") && !lastNameC.equals("") && !idC.equals("") && !addressC.equals("")){
                 mainRestaurant.createClient(nameC,lastNameC,idC,addressC);
+                mainRestaurant.saveDataClients();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setContentText("A new Client has been created");
@@ -577,11 +611,34 @@ public class MasterGUI {
     }
 
     @FXML
-    public void newIngredient(ActionEvent event) {
+    public void newIngredient(ActionEvent event) throws IOException {
         if (txtIngredient.isVisible()) {
-            Alert alert = new Alert(AlertType.INFORMATION);
-            alert.setContentText("A new Ingredient has been created");
-            alert.showAndWait();
+            String nameI;
+
+            nameI = txtIngredient.getText();
+
+            if(txtIngredient.getText().equals("")){
+
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("¡Incomplete data!");
+                alert.setHeaderText("Look the problem");
+                alert.setContentText("Please fill all the blanks :)");
+                alert.showAndWait();
+
+                txtIngredient.setText("");
+
+
+            } else if(!nameI.equals("")){
+                mainRestaurant.createIngredient(nameI);
+                mainRestaurant.saveIngredients();
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setContentText("A new Ingredient has been created");
+                alert.showAndWait();
+
+                txtIngredient.setText("");
+
+            }
         } else {
             currentManage.setText("Ingredient");
             txtIngredient.setVisible(true);
@@ -647,14 +704,15 @@ public class MasterGUI {
     }
 
     @FXML
-    public void create(ActionEvent event) {
+    public void create(ActionEvent event) throws IOException {
         switch (currentManage.getText()) {
             case "Employee":
                 newEmployee(event);
+                initializeTables();
                 break;
             case "Client":
                 newClient(event);
-                initalizeTables();
+                initializeTables();
                 break;
             case "Product":
                 newProduct(event);
@@ -662,8 +720,9 @@ public class MasterGUI {
             case "Type of product":
                 newType(event);
                 break;
-            case "Ingredients":
+            case "Ingredient":
                 newIngredient(event);
+                initializeTables();
                 break;
             default:
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -779,7 +838,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         } else {
                             Alert alert2 = new Alert(AlertType.WARNING);
                             alert2.setHeaderText("Result");
@@ -793,7 +852,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
                     case "Clients":
@@ -802,7 +861,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
                     case "Orders":
@@ -811,7 +870,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
                     case "Ingredients":
@@ -820,7 +879,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
                     case "Products":
@@ -829,7 +888,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
 
@@ -839,7 +898,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
 
@@ -909,7 +968,7 @@ public class MasterGUI {
                             alert2.setHeaderText("Result");
                             alert2.setContentText("Action was made Successfully");
                             alert2.showAndWait();
-                            initalizeTables();
+                            initializeTables();
                         }
                         break;
                     case "Employees":
@@ -973,9 +1032,8 @@ public class MasterGUI {
     }
 
 
-    public void initalizeTables() {
-        //formato para que agregue los usarios hablitados
-        //Hacer lo mismo con las otras tablas
+    public void initializeTables() {
+        //___________________________ USER TABLE __________________________________________________________
         ObservableList<User> userObservableList;
         List<User> availableUsers = new ArrayList<>();
         for (int i = 0; i < mainRestaurant.getUsers().size(); i++) {
@@ -990,7 +1048,7 @@ public class MasterGUI {
         CIdU.setCellValueFactory(new PropertyValueFactory<User, String>("identification"));
         CuserName.setCellValueFactory(new PropertyValueFactory<User, String>("userName"));
 
-//______________________________________________________________________________________________
+    //_______________________________ CLIENT TABLE ________________________________________________________
 
         ObservableList<Client> clientObservableList;
         ArrayList<Client> availableClients = new ArrayList<>();
@@ -1005,6 +1063,38 @@ public class MasterGUI {
         ClastNameC.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
         CidC.setCellValueFactory(new PropertyValueFactory<Client, String>("identification"));
         Caddress.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
+
+    //_____________________________ EMPLOYEE TABLE ________________________________________________________
+        ObservableList<Employee> employeeObservableList;
+        ArrayList<Employee> availableEmployees = new ArrayList<>();
+        for (int i = 0; i < mainRestaurant.getEmployees().size() ; i++) {
+            if(mainRestaurant.getEmployees().get(i).isHabilitate()){
+                availableEmployees.add(mainRestaurant.getEmployees().get(i));
+            }
+        }
+        employeeObservableList = FXCollections.observableArrayList(availableEmployees);
+        TEmployee.setItems(employeeObservableList);
+        CnameE.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
+        CLastnameE.setCellValueFactory(new PropertyValueFactory<Employee, String>("lastName"));
+        CIdE.setCellValueFactory(new PropertyValueFactory<Employee, String>("identification"));
+
+    //_____________________________ INGREDIENTS TABLE ______________________________________________________
+
+        ObservableList<Ingredient> ingredientObservableList;
+        ingredientObservableList = FXCollections.observableList(mainRestaurant.getIngredientsList());
+        TIngredients.setItems(ingredientObservableList);
+        CnameI.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("nameI"));
+        CavalibleI.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("available"));
+
+
+
+
+
+
+
+
+
+
 
     }
 
