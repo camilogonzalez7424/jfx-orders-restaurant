@@ -1,20 +1,27 @@
 package ui;
 
 import com.jfoenix.controls.*;
-import javafx.animation.TranslateTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.*;
 import javafx.scene.control.Alert.AlertType;
+import model.Client;
+import model.Employee;
+import model.Ingredient;
+import model.Order;
+import model.Product;
+import model.Restaurant;
+import model.TypeProduct;
+import model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -172,7 +179,7 @@ public class MasterGUI {
     private TableView<TypeProduct> Ttype;
 
     @FXML
-    private TableColumn<TypeProduct, String> CnameType;
+    private TableColumn<User, String> CnameType;
 
     @FXML
     private TableColumn<TypeProduct, String> CnameAvalibleT;
@@ -351,8 +358,6 @@ public class MasterGUI {
 
         }else {
             mainRestaurant.createUser(name,lastName,id,userName,password);
-
-
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
             fxmlLoader.setController(this);
             Parent menuPane = fxmlLoader.load();
@@ -419,6 +424,8 @@ public class MasterGUI {
         management = fxmlLoader.load();
         TabUser = management.getTabs().get(0);
         managementTabs.getTabs().addAll(TabUser);
+        initalizeTables();
+
 
 
     }
@@ -718,6 +725,7 @@ public class MasterGUI {
                                            alert2.setHeaderText("Result");
                                            alert2.setContentText("Action was made Successfully");
                                            alert2.showAndWait();
+                                           initalizeTables();
                                           }else{
                                             Alert alert2 = new Alert(AlertType.WARNING);
                                             alert2.setHeaderText("Result");
@@ -729,30 +737,35 @@ public class MasterGUI {
                                             alert2.setHeaderText("Result");
                                             alert2.setContentText("Action was made Successfully");
                                             alert2.showAndWait();
+                                            initalizeTables();
                                         } break;
                     case "Clients": if (mainRestaurant.deleteClient(slelectedOne)){
                                           Alert alert2 = new Alert(AlertType.INFORMATION);
                                            alert2.setHeaderText("Result");
                                            alert2.setContentText("Action was made Successfully");
                                              alert2.showAndWait();
+                                           initalizeTables();
                                              }break;
                     case "Orders": if (mainRestaurant.deleteOrder(slelectedOne)){
                                          Alert alert2 = new Alert(AlertType.INFORMATION);
                                          alert2.setHeaderText("Result");
                                           alert2.setContentText("Action was made Successfully");
                                           alert2.showAndWait();
+                                          initalizeTables();
                                          } break;
                     case "Ingredients": if(mainRestaurant.deleteIngredient(slelectedOne)){
                                          Alert alert2 = new Alert(AlertType.INFORMATION);
                                          alert2.setHeaderText("Result");
                                          alert2.setContentText("Action was made Successfully");
                                          alert2.showAndWait();
+                                         initalizeTables();
                                          } break;
                     case "Products": if (mainRestaurant.deleteProduct(slelectedOne)){
                                       Alert alert2 = new Alert(AlertType.INFORMATION);
                                        alert2.setHeaderText("Result");
                                        alert2.setContentText("Action was made Successfully");
                                         alert2.showAndWait();
+                                        initalizeTables();
                                             } break;
 
                     case "Type of products": if (mainRestaurant.deleteType(slelectedOne)){
@@ -760,6 +773,7 @@ public class MasterGUI {
                                                  alert2.setHeaderText("Result");
                                                  alert2.setContentText("Action was made Successfully");
                                                   alert2.showAndWait();
+                                                  initalizeTables();
                                                 } break;
 
                 }
@@ -820,6 +834,7 @@ public class MasterGUI {
                         alert2.setHeaderText("Result");
                         alert2.setContentText("Action was made Successfully");
                         alert2.showAndWait();
+                        initalizeTables();
                     } break;
                     case "Employees": if(mainRestaurant.disableEmployee(slelectedOne)){
                         Alert alert2 = new Alert(AlertType.INFORMATION);
@@ -869,6 +884,34 @@ public class MasterGUI {
 
 
 
+
+    }
+
+
+    public void initalizeTables(){
+        //formato para que agregue los usarios hablitados
+        //Hacer lo mismo con las otras tablas
+        ObservableList<User> userObservableList;
+        List<User> avalibleUsers = new ArrayList<>();
+        for (int i = 0; i <mainRestaurant.getUsers().size() ; i++) {
+              if(mainRestaurant.getUsers().get(i).isHabilitate()){
+                  avalibleUsers.add(mainRestaurant.getUsers().get(i));
+              }
+        }
+        userObservableList = FXCollections.observableArrayList(avalibleUsers);
+        TUsers.setItems(userObservableList);
+        CnameU.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
+        ClastNameU.setCellValueFactory(new PropertyValueFactory<User,String>("lastName"));
+        CIdU.setCellValueFactory(new PropertyValueFactory<User,String>("identification"));
+        CuserName.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
+
+
+
+    }
+
+
+    @FXML
+    public void updateInfoFromTableview(ActionEvent event){
 
     }
 
