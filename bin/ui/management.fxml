@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <tabs>
+      <Tab fx:id="TabUser" text="Users">
+         <content>
+            <Pane disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="634.0">
+               <children>
+                  <TableView fx:id="TUsers" layoutX="-3.0" layoutY="109.0" prefHeight="295.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="CnameU" prefWidth="155.0" text="Name" />
+                        <TableColumn fx:id="ClastNameU" prefWidth="142.0" text="Last name" />
+                        <TableColumn fx:id="CIdU" prefWidth="152.0" text="Identification" />
+                        <TableColumn fx:id="CuserName" prefWidth="191.0" text="Username" />
+                     </columns>
+                  </TableView>
+                  <Label layoutX="214.0" layoutY="48.0" prefHeight="41.0" prefWidth="230.0" text="Users List">
+                     <font>
+                        <Font name="System Bold Italic" size="34.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="34.0" layoutY="68.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+               </children>
+            </Pane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabEmployee" text="Employees">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="207.0" layoutY="14.0" text="Employees List">
+                     <font>
+                        <Font name="System Bold Italic" size="22.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="41.0" layoutY="40.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="TEmployee" layoutY="87.0" prefHeight="321.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="CnameE" prefWidth="203.0" text="Name" />
+                        <TableColumn fx:id="CLastnameE" prefWidth="161.0" text="Last name" />
+                        <TableColumn fx:id="CIdE" prefWidth="261.0" text="Identification" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabClients" text="Clients">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="223.0" layoutY="21.0" text="Clients List">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="53.0" layoutY="51.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="TClients" layoutY="99.0" prefHeight="310.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="CnameC" prefWidth="127.0" text="Name" />
+                        <TableColumn fx:id="ClastNameC" prefWidth="140.0" text="Last Name" />
+                        <TableColumn fx:id="CidC" prefWidth="183.0" text="Identification" />
+                        <TableColumn fx:id="Caddress" prefWidth="180.0" text="Address" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabOrders" text="Orders">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="229.0" layoutY="14.0" text="Orders List">
+                     <font>
+                        <Font name="System Bold Italic" size="25.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="39.0" layoutY="44.0" mnemonicParsing="false" text="Action">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="Torders" layoutY="96.0" prefHeight="312.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="Ccode" prefWidth="89.0" text="Code" />
+                        <TableColumn fx:id="Cdate" prefWidth="101.0" text="Date" />
+                        <TableColumn fx:id="Cclient" prefWidth="125.0" text="Client" />
+                        <TableColumn fx:id="Cemployee" prefWidth="124.0" text="Employee" />
+                        <TableColumn fx:id="Cstatus" prefWidth="194.0" text="Status" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabProduct" text="Products">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="206.0" layoutY="14.0" text="Products List">
+                     <font>
+                        <Font name="System Bold Italic" size="30.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="52.0" layoutY="57.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="Tproducts" layoutX="-3.0" layoutY="95.0" prefHeight="314.0" prefWidth="643.0">
+                     <columns>
+                        <TableColumn fx:id="CnameP" prefWidth="110.0" text="Name" />
+                        <TableColumn fx:id="CsizeP" prefWidth="123.0" text="Size" />
+                        <TableColumn fx:id="CpriceP" prefWidth="129.0" text="Price" />
+                        <TableColumn fx:id="CavalibeP" prefWidth="116.0" text="is avalible?" />
+                        <TableColumn fx:id="CtypeP" prefWidth="154.0" text="Type" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabIngredients" text="Ingredients">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="168.0" layoutY="14.0" text="Ingredients List">
+                     <font>
+                        <Font name="System Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="36.0" layoutY="72.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="TIngredients" layoutY="112.0" prefHeight="298.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="CnameI" prefWidth="302.0" text="Name" />
+                        <TableColumn fx:id="CavalibleI" prefWidth="331.0" text="Is avalible?" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab fx:id="TabType" text="Type of producs">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="223.0" layoutY="20.0" text="Type of products">
+                     <font>
+                        <Font name="System Bold Italic" size="26.0" />
+                     </font>
+                  </Label>
+                  <SplitMenuButton layoutX="50.0" layoutY="62.0" mnemonicParsing="false" text="Actions">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="Disable" />
+                        <MenuItem mnemonicParsing="false" text="Delete" />
+                     </items>
+                  </SplitMenuButton>
+                  <TableView fx:id="Ttype" layoutY="116.0" prefHeight="290.0" prefWidth="634.0">
+                     <columns>
+                        <TableColumn fx:id="CnameType" prefWidth="286.0" text="Name" />
+                        <TableColumn fx:id="CnameAvalibleT" prefWidth="347.0" text="Is avalible?" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+   </tabs>
+   <cursor>
+      <Cursor fx:constant="OPEN_HAND" />
+   </cursor>
+</JFXTabPane>
