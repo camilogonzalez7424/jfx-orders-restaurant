@@ -17,6 +17,9 @@ import model.*;
 import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 public class MasterGUI {
@@ -410,6 +413,7 @@ public class MasterGUI {
     @FXML
     public void setTabUsers(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabUser = management.getTabs().get(0);
         managementTabs.getTabs().addAll(TabUser);
@@ -420,6 +424,7 @@ public class MasterGUI {
     @FXML
     public void setTabEmployee(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabEmployee = management.getTabs().get(1);
         managementTabs.getTabs().addAll(TabEmployee);
@@ -430,6 +435,7 @@ public class MasterGUI {
     @FXML
     public void setTabClients(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabClients = management.getTabs().get(2);
         managementTabs.getTabs().addAll(TabClients);
@@ -439,6 +445,7 @@ public class MasterGUI {
     @FXML
     public void setTabOrders(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabOrders = management.getTabs().get(3);
         managementTabs.getTabs().addAll(TabOrders);
@@ -448,6 +455,7 @@ public class MasterGUI {
     @FXML
     public void setTabProduct(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabProduct = management.getTabs().get(4);
         managementTabs.getTabs().addAll(TabProduct);
@@ -457,6 +465,7 @@ public class MasterGUI {
     @FXML
     public void setTabIngredients(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabIngredients = management.getTabs().get(5);
         managementTabs.getTabs().addAll(TabIngredients);
@@ -466,6 +475,7 @@ public class MasterGUI {
     @FXML
     public void setTabType(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("management.fxml"));
+        fxmlLoader.setController(this);
         management = fxmlLoader.load();
         TabType = management.getTabs().get(6);
         managementTabs.getTabs().addAll(TabType);
@@ -620,6 +630,248 @@ public class MasterGUI {
         stage.showAndWait();
 
     }
+
+    @FXML
+    public void mainActions(ActionEvent event){
+
+        String election ="";
+        String slelectedOne;
+
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation of main Actions");
+        alert.setHeaderText("Confirm what you want to do");
+        alert.setContentText("Choose your option.");
+
+        ButtonType buttonTypeOne = new ButtonType("Delete");
+        ButtonType buttonTypeTwo = new ButtonType("Disable");
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+
+        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        List<String> choices1 = new ArrayList<>();
+        choices1.add("Users");
+        choices1.add("Employees");
+        choices1.add("Clients");
+        choices1.add("Orders");
+        choices1.add("Ingredients");
+        choices1.add("Products");
+        choices1.add("Type of products");
+        ChoiceDialog<String> dialog1 = new ChoiceDialog<>(null, choices1);
+
+
+
+        if (result.get() == buttonTypeOne){
+            dialog1.setTitle("Choice Delete");
+            dialog1.setHeaderText("Want do you want to delete? (The orders will be managed by their code)");
+            dialog1.setContentText("Choose an option:");
+            Optional<String> result1 = dialog1.showAndWait();
+            List<String> choices2 = new ArrayList<>();
+            if(result1.isPresent()){
+                election = result1.get();
+                switch (election){
+                    case "Users": for (int i = 0; i <mainRestaurant.getUsers().size() ; i++) {
+                        choices2.add(mainRestaurant.getUsers().get(i).getUserName());
+                    }
+                        break;
+                    case "Employees":  for (int i = 0; i <mainRestaurant.getEmployees().size() ; i++) {
+                        choices2.add(mainRestaurant.getEmployees().get(i).getName());
+                    }
+                        break;
+                    case "Clients":  for (int i = 0; i <mainRestaurant.getClientList().size() ; i++) {
+                        choices2.add(mainRestaurant.getClientList().get(i).getName());
+                    }
+                        break;
+
+                    case "Orders":  for (int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+                        choices2.add(mainRestaurant.getOrderList().get(i).getCode());
+                    }
+                        break;
+                    case "Ingredients":  for (int i = 0; i <mainRestaurant.getIngredientsList().size() ; i++) {
+                        choices2.add(mainRestaurant.getIngredientsList().get(i).getNameI());
+                       }
+                        break;
+                    case "Products":  for (int i = 0; i <mainRestaurant.getProducts().size() ; i++) {
+                                       choices2.add(mainRestaurant.getProducts().get(i).getNameP());
+                                            }
+                        break;
+                    case "Type of products":  for (int i = 0; i <mainRestaurant.getTypeProducts().size() ; i++) {
+                                               choices2.add(mainRestaurant.getTypeProducts().get(i).getName());
+                                                          }
+                        break;
+                }
+            }
+
+            ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
+            dialog2.setTitle("Delete");
+            dialog2.setHeaderText("Which one will be deleted?");
+            dialog2.setContentText("Choose an "+election+":");
+            Optional<String> result2 = dialog2.showAndWait();
+            if(result2.isPresent()){
+                slelectedOne = result2.get();
+                switch (election){
+                    case "Users":   if(mainRestaurant.delete(slelectedOne)){
+                                           Alert alert2 = new Alert(AlertType.INFORMATION);
+                                           alert2.setHeaderText("Result");
+                                           alert2.setContentText("Action was made Successfully");
+                                           alert2.showAndWait();
+                                          }else{
+                                            Alert alert2 = new Alert(AlertType.WARNING);
+                                            alert2.setHeaderText("Result");
+                                            alert2.setContentText("Something went wrong");
+                                            alert2.showAndWait();
+                                          } break;
+                    case "Employees": if(mainRestaurant.deleteEmployee(slelectedOne)){
+                                            Alert alert2 = new Alert(AlertType.INFORMATION);
+                                            alert2.setHeaderText("Result");
+                                            alert2.setContentText("Action was made Successfully");
+                                            alert2.showAndWait();
+                                        } break;
+                    case "Clients": if (mainRestaurant.deleteClient(slelectedOne)){
+                                          Alert alert2 = new Alert(AlertType.INFORMATION);
+                                           alert2.setHeaderText("Result");
+                                           alert2.setContentText("Action was made Successfully");
+                                             alert2.showAndWait();
+                                             }break;
+                    case "Orders": if (mainRestaurant.deleteOrder(slelectedOne)){
+                                         Alert alert2 = new Alert(AlertType.INFORMATION);
+                                         alert2.setHeaderText("Result");
+                                          alert2.setContentText("Action was made Successfully");
+                                          alert2.showAndWait();
+                                         } break;
+                    case "Ingredients": if(mainRestaurant.deleteIngredient(slelectedOne)){
+                                         Alert alert2 = new Alert(AlertType.INFORMATION);
+                                         alert2.setHeaderText("Result");
+                                         alert2.setContentText("Action was made Successfully");
+                                         alert2.showAndWait();
+                                         } break;
+                    case "Products": if (mainRestaurant.deleteProduct(slelectedOne)){
+                                      Alert alert2 = new Alert(AlertType.INFORMATION);
+                                       alert2.setHeaderText("Result");
+                                       alert2.setContentText("Action was made Successfully");
+                                        alert2.showAndWait();
+                                            } break;
+
+                    case "Type of products": if (mainRestaurant.deleteType(slelectedOne)){
+                                                 Alert alert2 = new Alert(AlertType.INFORMATION);
+                                                 alert2.setHeaderText("Result");
+                                                 alert2.setContentText("Action was made Successfully");
+                                                  alert2.showAndWait();
+                                                } break;
+
+                }
+
+            }
+
+        } else if (result.get() == buttonTypeTwo) {
+            dialog1.setTitle("Choice Disable");
+            dialog1.setHeaderText("Want do you want to disable? (The orders will be managed by their code)");
+            dialog1.setContentText("Choose one:");
+            Optional<String> result2 = dialog1.showAndWait();
+            List<String> choices2 = new ArrayList<>();
+            if(result2.isPresent()){
+                election = result2.get();
+                switch (election){
+                    case "Users": for (int i = 0; i <mainRestaurant.getUsers().size() ; i++) {
+                        choices2.add(mainRestaurant.getUsers().get(i).getUserName());
+                    }
+                        break;
+                    case "Employees":  for (int i = 0; i <mainRestaurant.getEmployees().size() ; i++) {
+                        choices2.add(mainRestaurant.getEmployees().get(i).getName());
+                    }
+                        break;
+                    case "Clients":  for (int i = 0; i <mainRestaurant.getClientList().size() ; i++) {
+                        choices2.add(mainRestaurant.getClientList().get(i).getName());
+                    }
+                        break;
+
+                    case "Orders":  for (int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+                        choices2.add(mainRestaurant.getOrderList().get(i).getCode());
+                    }
+                        break;
+                    case "Ingredients": for (int i = 0; i <mainRestaurant.getIngredientsList().size() ; i++) {
+                        choices2.add(mainRestaurant.getIngredientsList().get(i).getNameI());
+                                     }
+                        break;
+                    case "Products": for (int i = 0; i <mainRestaurant.getProducts().size() ; i++) {
+                                     choices2.add(mainRestaurant.getProducts().get(i).getNameP());
+                             }
+                        break;
+                    case "Type of products": for (int i = 0; i <mainRestaurant.getTypeProducts().size() ; i++) {
+                                     choices2.add(mainRestaurant.getOrderList().get(i).getCode());
+                    }
+                        break;
+                }
+            }
+
+            ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
+            dialog2.setTitle("Disable");
+            dialog2.setHeaderText("Which one will be disable?");
+            dialog2.setContentText("Choose an"+election+":");
+            Optional<String> result3 = dialog2.showAndWait();
+            if(result3.isPresent()){
+                slelectedOne = result3.get();
+                switch (election){
+                    case "Users": if(mainRestaurant.toDisable(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+                    case "Employees": if(mainRestaurant.disableEmployee(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+                    case "Clients": if (mainRestaurant.disableClient(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    }break;
+                    case "Orders": if (mainRestaurant.disableOrder(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+                    case "Ingredients": if(mainRestaurant.disableIngredients(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+                    case "Products": if (mainRestaurant.disableProduct(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+
+                    case "Type of products": if (mainRestaurant.disableType(slelectedOne)){
+                        Alert alert2 = new Alert(AlertType.INFORMATION);
+                        alert2.setHeaderText("Result");
+                        alert2.setContentText("Action was made Successfully");
+                        alert2.showAndWait();
+                    } break;
+
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+    }
+
+
+
 
     
 }

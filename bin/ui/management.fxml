@@ -3,8 +3,6 @@
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -31,12 +29,6 @@
                         <Font name="System Bold Italic" size="34.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="34.0" layoutY="68.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
                </children>
             </Pane>
          </content>
@@ -50,12 +42,6 @@
                         <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="41.0" layoutY="40.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
                   <TableView fx:id="TEmployee" layoutY="87.0" prefHeight="321.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameE" prefWidth="203.0" text="Name" />
@@ -76,12 +62,6 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="53.0" layoutY="51.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
                   <TableView fx:id="TClients" layoutY="99.0" prefHeight="310.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameC" prefWidth="127.0" text="Name" />
@@ -103,12 +83,6 @@
                         <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="39.0" layoutY="44.0" mnemonicParsing="false" text="Action">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
                   <TableView fx:id="Torders" layoutY="96.0" prefHeight="312.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="Ccode" prefWidth="89.0" text="Code" />
@@ -131,12 +105,6 @@
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="52.0" layoutY="57.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
                   <TableView fx:id="Tproducts" layoutX="-3.0" layoutY="95.0" prefHeight="314.0" prefWidth="643.0">
                      <columns>
                         <TableColumn fx:id="CnameP" prefWidth="110.0" text="Name" />
@@ -154,18 +122,12 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="168.0" layoutY="14.0" text="Ingredients List">
+                  <Label layoutX="193.0" layoutY="27.0" text="Ingredients List">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="36.0" layoutY="72.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
-                  <TableView fx:id="TIngredients" layoutY="112.0" prefHeight="298.0" prefWidth="634.0">
+                  <TableView fx:id="TIngredients" layoutY="87.0" prefHeight="323.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameI" prefWidth="302.0" text="Name" />
                         <TableColumn fx:id="CavalibleI" prefWidth="331.0" text="Is avalible?" />
@@ -179,21 +141,15 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="223.0" layoutY="20.0" text="Type of products">
+                  <Label layoutX="166.0" layoutY="28.0" text="Type of products">
                      <font>
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Label>
-                  <SplitMenuButton layoutX="50.0" layoutY="62.0" mnemonicParsing="false" text="Actions">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Disable" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                     </items>
-                  </SplitMenuButton>
-                  <TableView fx:id="Ttype" layoutY="116.0" prefHeight="290.0" prefWidth="634.0">
+                  <TableView fx:id="Ttype" layoutY="85.0" prefHeight="321.0" prefWidth="634.0">
                      <columns>
-                        <TableColumn fx:id="CnameType" prefWidth="286.0" text="Name" />
-                        <TableColumn fx:id="CnameAvalibleT" prefWidth="347.0" text="Is avalible?" />
+                        <TableColumn fx:id="CnameType" prefWidth="300.0" text="Name" />
+                        <TableColumn fx:id="CnameAvalibleT" prefWidth="333.0" text="Is avalible?" />
                      </columns>
                   </TableView>
                </children>

@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="700.0" minWidth="1260.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="700.0" minWidth="1260.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="430.0" prefWidth="225.0" style="-fx-background-color: #f0f7ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1033.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -150,6 +150,7 @@
                   <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="227.0" layoutY="172.0" promptText="New Type" visible="false" />
                   <JFXComboBox fx:id="comboType" layoutX="248.0" layoutY="292.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
                   <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="359.0" promptText="product's name" visible="false" />
+                  <JFXButton layoutX="33.0" layoutY="110.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
                </children>
             </Pane>
          </right>

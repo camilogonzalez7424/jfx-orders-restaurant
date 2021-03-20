@@ -11,6 +11,7 @@ public class Restaurant {
     public final static String SAVE_PATH_FILE_EMPLOYEES = "data/employees.txt";
     public final static String SAVE_PATH_FILE_PRODUCTS = "data/products.txt";
     public final static String SAVE_PATH_FILE_ORDERS = "data/orders.txt";
+    public final static String SAVE_PATH_FILE_TYPES = "data/types.txt";
 
     //Relationship.
     private ArrayList<Client> clientList;
@@ -19,6 +20,7 @@ public class Restaurant {
     private List<User> users;
     private ArrayList<Employee> employees;
     private ArrayList<Ingredient> ingredientsList;
+    private ArrayList<TypeProduct> typeProducts;
 
     private User currentUser;
     private  User lastUser;
@@ -33,10 +35,15 @@ public class Restaurant {
         users = new ArrayList<>();
         employees = new ArrayList<>();
         ingredientsList = new ArrayList<>();
+        typeProducts = new ArrayList<>();
     }
 
     //Getters and Setters.
 
+
+    public ArrayList<TypeProduct> getTypeProducts() {
+        return typeProducts;
+    }
 
     public ArrayList<Ingredient> getIngredientsList() {
         return ingredientsList;
@@ -745,4 +752,84 @@ public class Restaurant {
 
 
 //_______________________________________________________________________________
+
+//______________________TYPE REQUIREMNTS__________________________________________
+
+   public void createType(String name){
+        typeProducts.add(new TypeProduct(name));
+   }
+
+    public void updateInfoType(String update , String name){
+        boolean found = false;
+        for (int i = 0; i <typeProducts.size() && !found; i++) {
+            if (name.equals(typeProducts.get(i).getName())){
+                typeProducts.get(i).setName(update);
+                found =true;
+            }
+        }
+
+    }
+
+    public boolean deleteType(String name){
+        boolean deletedType = false;
+        for (int i = 0; i <typeProducts.size() && !deletedType; i++) {
+            if(name.equals(typeProducts.get(i).getName())){
+                typeProducts.remove(i);
+                deletedType=true;
+            }
+        }
+        return deletedType;
+
+    }
+
+    public boolean disableType(String name){
+        boolean disable = false;
+        for (int i = 0; i <typeProducts.size() && !disable ; i++) {
+            if(name.equals(typeProducts.get(i).getName())){
+                typeProducts.get(i).setAvailableT(false);
+                disable = true;
+            }
+        }
+        return disable;
+    }
+
+    public void saveTypes() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_TYPES));
+        oos.writeObject(typeProducts);
+        oos.close();
+    }
+
+    public void loadDataType() throws IOException, ClassNotFoundException {
+        File f1 = new File(SAVE_PATH_FILE_TYPES);
+        if(f1.exists()){
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_PATH_FILE_TYPES));
+            typeProducts = (ArrayList<TypeProduct>) ois.readObject();
+            ois.close();
+        }
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
