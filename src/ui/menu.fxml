@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
@@ -134,23 +133,23 @@
                         <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="33.0" layoutY="372.0" onAction="#create" style="-fx-background-color: gray;" text="Create" />
+                  <JFXButton layoutX="44.0" layoutY="77.0" onAction="#create" style="-fx-background-color: gray;" text="Create" />
                   <JFXTextField fx:id="txtNameM" alignment="CENTER" layoutX="44.0" layoutY="136.0" promptText="Name" visible="false" />
                   <JFXTextField fx:id="txtLastNameM" alignment="CENTER" layoutX="44.0" layoutY="198.0" promptText="Last name" visible="false" />
                   <JFXTextField fx:id="txtIdM" alignment="CENTER" layoutX="44.0" layoutY="279.0" promptText="Identification" visible="false" />
                   <JFXTextField fx:id="txtAdreesM" alignment="CENTER" layoutX="213.0" layoutY="136.0" promptText="Address" visible="false" />
-                  <JFXSlider fx:id="Ssize" layoutX="227.0" layoutY="216.0" snapToTicks="true" visible="false" />
-                  <ImageView fitHeight="150.0" fitWidth="225.0" layoutX="206.0" layoutY="416.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="225.0" layoutX="22.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/4.jpg" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="395.0" layoutY="136.0" promptText="Price" visible="false" />
-                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="220.0" layoutY="231.0" promptText="New Ingredient" visible="false" />
-                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="227.0" layoutY="172.0" promptText="New Type" visible="false" />
-                  <JFXComboBox fx:id="comboType" layoutX="248.0" layoutY="292.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
-                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="359.0" promptText="product's name" visible="false" />
+                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="204.0" layoutY="385.0" promptText="Price" visible="false" />
+                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="226.0" layoutY="279.0" promptText="New Ingredient" visible="false" />
+                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="220.0" layoutY="205.0" promptText="New Type" visible="false" />
+                  <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
+                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="336.0" promptText="product's name" visible="false" />
                   <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
+                  <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Size" visible="false" />
                </children>
             </Pane>
          </right>

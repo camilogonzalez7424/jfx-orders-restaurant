@@ -16,9 +16,9 @@
          <content>
             <Pane disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="634.0">
                <children>
-                  <TableView fx:id="TUsers" layoutX="-3.0" layoutY="109.0" prefHeight="295.0" prefWidth="634.0">
+                  <TableView fx:id="TUsers" layoutX="-3.0" layoutY="109.0" onMouseExited="#saveDataUpdated" prefHeight="295.0" prefWidth="634.0">
                      <columns>
-                        <TableColumn fx:id="CnameU" onEditCommit="#updateInfoFromTableview" prefWidth="155.0" text="Name" />
+                        <TableColumn fx:id="CnameU" prefWidth="155.0" text="Name" />
                         <TableColumn fx:id="ClastNameU" prefWidth="142.0" text="Last name" />
                         <TableColumn fx:id="CIdU" prefWidth="152.0" text="Identification" />
                         <TableColumn fx:id="CuserName" prefWidth="191.0" text="Username" />
@@ -42,7 +42,7 @@
                         <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TEmployee" layoutY="87.0" prefHeight="321.0" prefWidth="634.0">
+                  <TableView fx:id="TEmployee" layoutY="87.0" onMouseExited="#saveDataUpdated" prefHeight="321.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameE" prefWidth="203.0" text="Name" />
                         <TableColumn fx:id="CLastnameE" prefWidth="161.0" text="Last name" />
@@ -62,7 +62,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TClients" layoutY="99.0" prefHeight="310.0" prefWidth="634.0">
+                  <TableView fx:id="TClients" layoutY="99.0" onMouseExited="#saveDataUpdated" prefHeight="310.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameC" prefWidth="127.0" text="Name" />
                         <TableColumn fx:id="ClastNameC" prefWidth="140.0" text="Last Name" />
@@ -83,7 +83,7 @@
                         <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Torders" layoutY="96.0" prefHeight="312.0" prefWidth="634.0">
+                  <TableView fx:id="Torders" layoutY="96.0" onMouseExited="#saveDataUpdated" prefHeight="312.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="Ccode" prefWidth="89.0" text="Code" />
                         <TableColumn fx:id="Cdate" prefWidth="101.0" text="Date" />
@@ -105,7 +105,7 @@
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Tproducts" layoutX="-3.0" layoutY="95.0" prefHeight="314.0" prefWidth="643.0">
+                  <TableView fx:id="Tproducts" layoutX="-3.0" layoutY="95.0" onMouseExited="#saveDataUpdated" prefHeight="314.0" prefWidth="643.0">
                      <columns>
                         <TableColumn fx:id="CnameP" prefWidth="110.0" text="Name" />
                         <TableColumn fx:id="CsizeP" prefWidth="123.0" text="Size" />
@@ -127,7 +127,7 @@
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TIngredients" layoutY="87.0" prefHeight="323.0" prefWidth="634.0">
+                  <TableView fx:id="TIngredients" layoutY="87.0" onMouseExited="#saveDataUpdated" prefHeight="323.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameI" prefWidth="302.0" text="Name" />
                         <TableColumn fx:id="CavalibleI" prefWidth="331.0" text="Is avalible?" />
@@ -146,7 +146,7 @@
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Ttype" layoutY="85.0" prefHeight="321.0" prefWidth="634.0">
+                  <TableView fx:id="Ttype" layoutY="85.0" onMouseExited="#saveDataUpdated" prefHeight="321.0" prefWidth="634.0">
                      <columns>
                         <TableColumn fx:id="CnameType" prefWidth="300.0" text="Name" />
                         <TableColumn fx:id="CnameAvalibleT" prefWidth="333.0" text="Is avalible?" />

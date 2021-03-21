@@ -7,7 +7,8 @@ public class Ingredient  implements Serializable {
 
     //Attributes
     private String nameI;
-    private boolean avalible;
+    private String isAvailable;
+    private boolean available;
 
     private User creatorU;
     private User lastU;
@@ -19,14 +20,23 @@ public class Ingredient  implements Serializable {
      */
     public Ingredient(String nameI){
        this.nameI = nameI;
-       avalible = true;
+       available = true;
+       isAvailable = "Yes";
     }
 
     //Getters and Setters.
 
 
-    public void setAvalible(boolean avalible) {
-        this.avalible = avalible;
+    public String getIsAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(String isAvailable) {
+        this.isAvailable = isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public User getCreatorU() {
@@ -53,7 +63,7 @@ public class Ingredient  implements Serializable {
         this.nameI = nameI;
     }
 
-    public boolean isAvalible() {
-        return avalible;
+    public boolean isAvailable() {
+        return available;
     }
 }

@@ -10,6 +10,7 @@ public class TypeProduct  implements Serializable {
     //Attributes.
     private String name;
     private boolean availableT;
+    private String isAvalibleT;
 
     private User creatorUser;
     private User lastUser;
@@ -21,9 +22,18 @@ public class TypeProduct  implements Serializable {
      */
     public TypeProduct(String name) {
         this.name = name;
+        isAvalibleT = "yes";
     }
 
     //Getters and Setters.
+
+    public String getIsAvalibleT() {
+        return isAvalibleT;
+    }
+
+    public void setIsAvalibleT(String isAvalibleT) {
+        this.isAvalibleT = isAvalibleT;
+    }
 
     public String getName() {
         return name;

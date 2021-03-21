@@ -11,8 +11,11 @@ public class Product implements Serializable {
     //Attributes.
     private String nameP;
     private String size;
+    private String isAvailableP;
     private int price;
     private boolean available;
+
+    private String auxPrice;
 
     //Relationship.
     private TypeProduct type;
@@ -31,12 +34,34 @@ public class Product implements Serializable {
         this.price = price;
         this.type = type;
         available = true;
+        isAvailableP = "YES";
+        auxPrice = String.valueOf(price);
     }
 
 
 
     //Getters and Setters.
 
+
+    public void setAuxPrice(String auxPrice) {
+        this.auxPrice = auxPrice;
+    }
+
+    public String getAuxPrice() {
+        return auxPrice;
+    }
+
+    public String getIsAvailableP() {
+        return isAvailableP;
+    }
+
+    public void setIsAvailableP(String isAvailableP) {
+        this.isAvailableP = isAvailableP;
+    }
+
+    public void setType(TypeProduct type) {
+        this.type = type;
+    }
 
     public String getType() {
         return type.getName();
@@ -82,8 +107,9 @@ public class Product implements Serializable {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPrice(String price) {
+        int newPrice = Integer.parseInt(price);
+        this.price = newPrice;
     }
 
     public boolean isAvailable() {

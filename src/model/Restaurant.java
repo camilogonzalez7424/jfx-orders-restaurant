@@ -246,7 +246,7 @@ public class Restaurant {
         boolean disable = false;
         for (int i = 0; i <ingredientsList.size() && !disable ; i++) {
             if(name.equals(ingredientsList.get(i).getNameI())){
-                ingredientsList.get(i).setAvalible(false);
+                ingredientsList.get(i).setAvailable(false);
                 disable = true;
             }
         }
@@ -262,7 +262,7 @@ public class Restaurant {
     public void loadDataIngredients() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_INGREDIENTS);
         if(f1.exists()){
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_PATH_FILE_INGREDIENTS));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f1));
             ingredientsList = (ArrayList<Ingredient>) ois.readObject();
             ois.close();
         }
@@ -319,7 +319,7 @@ public class Restaurant {
         return disable;
     }
 
-    public void saveEmployees() throws IOException {
+    public void saveDataEmployees() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_EMPLOYEES));
         oos.writeObject(employees);
         oos.close();
@@ -328,7 +328,7 @@ public class Restaurant {
     public void loadDataEmployees() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_EMPLOYEES);
         if(f1.exists()){
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_PATH_FILE_EMPLOYEES));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f1));
             employees = (ArrayList<Employee>) ois.readObject();
             ois.close();
         }
@@ -454,11 +454,19 @@ public class Restaurant {
      * @param nameP the nameP is type String
      * @param size  the size
      * @param price the price
-     * @param nameT the nameT
+     * @param name the nameT
      */
-    public void createProduct(String nameP, String size, int price, String nameT){
-       TypeProduct nameType = new TypeProduct(nameT);
-        products.add(new Product(nameP,size,price,nameType));
+    public void createProduct(String nameP, String size, int price, String name){
+        TypeProduct nameT;
+        boolean found=false;
+        for (int i = 0; i <typeProducts.size() && !found; i++) {
+            if (typeProducts.get(i).getName().equals(name)){
+                nameT = typeProducts.get(i);
+                products.add(new Product(nameP,size,price,nameT));
+                found = true;
+            }
+        }
+
     }
 
     /**
@@ -505,7 +513,7 @@ public class Restaurant {
                         break;
                     case 2: products.get(i).setSize(update);
                         break;
-                    case 3: products.get(i).setPrice(Integer.parseInt(update));
+                    case 3: products.get(i);
                         break;
                     case 4: products.get(i);
                     default:
@@ -794,7 +802,7 @@ public class Restaurant {
     public void loadDataType() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_TYPES);
         if(f1.exists()){
-            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(SAVE_PATH_FILE_TYPES));
+            ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f1));
             typeProducts = (ArrayList<TypeProduct>) ois.readObject();
             ois.close();
         }
