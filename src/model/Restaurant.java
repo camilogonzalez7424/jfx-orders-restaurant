@@ -2,6 +2,7 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Restaurant {
@@ -13,6 +14,8 @@ public class Restaurant {
     public final static String SAVE_PATH_FILE_ORDERS = "data/orders.txt";
     public final static String SAVE_PATH_FILE_TYPES = "data/types.txt";
 
+    //Atributes
+    private  int clientSearchedIndex; // es el indice del cliente que se busca a la hora de hacer una orden
     //Relationship.
     private ArrayList<Client> clientList;
     private ArrayList<Product> products;
@@ -36,10 +39,19 @@ public class Restaurant {
         employees = new ArrayList<>();
         ingredientsList = new ArrayList<>();
         typeProducts = new ArrayList<>();
+        clientSearchedIndex=0;
     }
 
     //Getters and Setters.
 
+
+    public int getClientSearched() {
+        return clientSearchedIndex;
+    }
+
+    public void setClientSearchedIndex(int clientSearched) {
+        clientSearchedIndex = clientSearched;
+    }
 
     public ArrayList<TypeProduct> getTypeProducts() {
         return typeProducts;
@@ -340,16 +352,35 @@ public class Restaurant {
 // __________________________ CLIENTS REQUIREMENTS ____________________________________-
 
 
+
+
     /**
      * Create client.
-     *
      * @param name           the name
      * @param lastName       the last name
      * @param identification the identification
      * @param address        the address
      */
-    public void createClient(String name, String lastName, String identification, String address){
-        clientList.add(new Client(name, lastName, identification, address));
+    public void createClient(String name, String lastName, String identification, String address,String telephone){
+        Client newClient = new Client(name, lastName, identification, address,telephone);
+        Collections.sort(clientList);
+        addSorted(newClient);
+    }
+
+    /**
+     * <b> Pre: the list musts be sorted</b>
+     */
+
+    public void addSorted(Client newClient){
+          if(clientList.isEmpty()){
+              clientList.add(newClient);
+          }else{
+             int i=0;
+             while (i<clientList.size() && newClient.compareTo(clientList.get(i))>0){
+                 i++;
+             }
+             clientList.add(i,newClient);
+          }
     }
 
 
@@ -563,15 +594,50 @@ public class Restaurant {
 
 //__________________________ ORDERS REQUIREMENTS _______________________________________________________________________
 
+
+    public void createOrder(String employee, int client, String address, ArrayList<Product> productsIn){
+        Client newClient = clientList.get(client);
+        Employee employeeAttending=null;
+        boolean out=false;
+        for (int i = 0; i <employees.size() && !out ; i++) {
+            if (employee.equals(employees.get(i).getName())){
+                employeeAttending = employees.get(i);
+                out= true;
+            }
+        }
+
+
+
+
+
+
+    }
+
     /**
      * Create order.
      *
-     * @param code     the code
      * @param feedback the feedback
      */
-    public void createOrder(String code, String feedback){
-        orderList.add(new Order(code,feedback));
+    public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn){
+
+        Client newClient1 = clientList.get(client);
+        Employee employeeAttending=null;
+        boolean out=false;
+        for (int i = 0; i <employees.size() && !out ; i++) {
+            if (employee.equals(employees.get(i).getName())){
+                employeeAttending = employees.get(i);
+                out= true;
+            }
+        }
+
+
+
+
+
+
     }
+
+
 
     /**
      * Save data order.

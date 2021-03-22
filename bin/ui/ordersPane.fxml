@@ -4,60 +4,74 @@
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="401.0" prefWidth="823.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="509.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="73.0" layoutY="23.0" text="New Order">
+      <Label layoutX="41.0" layoutY="24.0" text="Nueva orden">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtClientName" alignment="CENTER" layoutX="172.0" layoutY="127.0" prefHeight="33.0" prefWidth="210.0" promptText="Your name">
+      <JFXTextField fx:id="txtClientName" alignment="CENTER" layoutX="26.0" layoutY="126.0" prefHeight="33.0" prefWidth="210.0" promptText="Nombre del cliente">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </JFXTextField>
-      <ImageView fitHeight="78.0" fitWidth="94.0" layoutX="46.0" layoutY="94.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="78.0" fitWidth="94.0" layoutX="264.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/testimonios.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="comboEmployee" layoutX="185.0" layoutY="222.0" prefHeight="26.0" prefWidth="202.0" />
-      <Label layoutX="14.0" layoutY="225.0" text="Who's delivering">
+      <JFXComboBox fx:id="comboEmployee" layoutX="202.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" />
+      <Label layoutX="21.0" layoutY="244.0" text="¿Quien lo entrega?">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="404.0" layoutY="14.0" text="Your Products">
+      <Label layoutX="473.0" layoutY="26.0" text="Productos">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comboProducts" layoutX="622.0" layoutY="172.0" prefHeight="26.0" prefWidth="134.0" />
-      <JFXButton layoutX="651.0" layoutY="248.0" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: gray;" text="Add" />
-      <TableView fx:id="TorderProduct" layoutX="404.0" layoutY="59.0" prefHeight="342.0" prefWidth="200.0">
+      <JFXComboBox fx:id="comboProducts" layoutX="700.0" layoutY="231.0" prefHeight="26.0" prefWidth="134.0" promptText="Productos" />
+      <JFXButton buttonType="RAISED" layoutX="728.0" layoutY="294.0" onAction="#addProductToOrder" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: gray;" text="Agregar" />
+      <TableView fx:id="TorderProduct" layoutX="459.0" layoutY="73.0" prefHeight="342.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="CproductsOrder" prefWidth="199.0" text="Products" />
+          <TableColumn fx:id="CproductsOrder" prefWidth="199.0" text="Productos" />
         </columns>
       </TableView>
-      <JFXButton layoutX="187.0" layoutY="308.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: gray;" text="Finish my order" />
-      <JFXTextField fx:id="txtAddressOrder" alignment="CENTER" layoutX="172.0" layoutY="182.0" prefHeight="33.0" prefWidth="210.0" promptText="Address">
+      <JFXButton buttonType="RAISED" layoutX="465.0" layoutY="448.0" onAction="#createOrder" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: gray;" text="Terminar la orden" />
+      <JFXTextField fx:id="txtAddressOrder" alignment="CENTER" layoutX="26.0" layoutY="174.0" prefHeight="33.0" prefWidth="210.0" promptText="Direccion">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="284.0" prefHeight="100.0" prefWidth="127.0" wrapText="true" />
-      <Label layoutX="49.0" layoutY="265.0" text="feedback">
+      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="351.0" prefHeight="148.0" prefWidth="200.0" style="-fx-border-color: gray;" visible="false" wrapText="true" />
+      <Label layoutX="30.0" layoutY="305.0" prefHeight="30.0" prefWidth="184.0" text="Comentarios" visible="false">
          <font>
-            <Font name="System Bold Italic" size="14.0" />
+            <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
+      <JFXButton buttonType="RAISED" layoutX="264.0" layoutY="143.0" onAction="#searchClient" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: gray;" text="Buscar">
+         <ripplerFill>
+            <LinearGradient endX="1.0">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <JFXToggleButton fx:id="orderFeedback" layoutX="215.0" layoutY="401.0" text="Quiero dar un comentario" />
    </children>
 </AnchorPane>

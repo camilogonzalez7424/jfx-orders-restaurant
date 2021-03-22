@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="684.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab fx:id="TabUser" text="Users">
          <content>
@@ -55,19 +55,20 @@
       </Tab>
       <Tab fx:id="TabClients" text="Clients">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="678.0">
                <children>
-                  <Label layoutX="223.0" layoutY="21.0" text="Clients List">
+                  <Label layoutX="254.0" layoutY="14.0" text="Clients List">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TClients" layoutY="99.0" onMouseExited="#saveDataUpdated" prefHeight="310.0" prefWidth="634.0">
+                  <TableView fx:id="TClients" layoutY="57.0" onMouseExited="#saveDataUpdated" prefHeight="341.0" prefWidth="690.0">
                      <columns>
-                        <TableColumn fx:id="CnameC" prefWidth="127.0" text="Name" />
-                        <TableColumn fx:id="ClastNameC" prefWidth="140.0" text="Last Name" />
-                        <TableColumn fx:id="CidC" prefWidth="183.0" text="Identification" />
-                        <TableColumn fx:id="Caddress" prefWidth="180.0" text="Address" />
+                        <TableColumn fx:id="CnameC" prefWidth="108.0" text="Name" />
+                        <TableColumn fx:id="ClastNameC" prefWidth="136.0" text="Last Name" />
+                        <TableColumn fx:id="CidC" minWidth="0.0" prefWidth="120.0" text="Identification" />
+                        <TableColumn minWidth="0.0" prefWidth="137.0" text="Telefono" />
+                        <TableColumn fx:id="Caddress" prefWidth="204.0" text="Address" />
                      </columns>
                   </TableView>
                </children>

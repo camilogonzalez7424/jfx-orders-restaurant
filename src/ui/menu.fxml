@@ -145,11 +145,12 @@
                   </ImageView>
                   <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="204.0" layoutY="385.0" promptText="Price" visible="false" />
                   <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="226.0" layoutY="279.0" promptText="New Ingredient" visible="false" />
-                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="220.0" layoutY="205.0" promptText="New Type" visible="false" />
+                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="212.0" layoutY="435.0" promptText="New Type" visible="false" />
                   <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
                   <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="336.0" promptText="product's name" visible="false" />
                   <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
                   <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Size" visible="false" />
+                  <JFXTextField fx:id="txtTelephoneU" alignment="CENTER" layoutX="213.0" layoutY="205.0" promptText="Telefono" visible="false" />
                </children>
             </Pane>
          </right>

@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * The type Product.
@@ -19,6 +20,7 @@ public class Product implements Serializable {
 
     //Relationship.
     private TypeProduct type;
+    private ArrayList<Ingredient> ingredients;
     private User CreatorU;
     private  User lastUser;
 
@@ -36,12 +38,21 @@ public class Product implements Serializable {
         available = true;
         isAvailableP = "YES";
         auxPrice = String.valueOf(price);
+        ingredients = new ArrayList<>();
     }
 
 
 
     //Getters and Setters.
 
+
+    public ArrayList<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(ArrayList<Ingredient> ingredients) {
+        this.ingredients = ingredients;
+    }
 
     public void setAuxPrice(String auxPrice) {
         this.auxPrice = auxPrice;
