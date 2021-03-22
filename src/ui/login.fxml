@@ -15,7 +15,7 @@
       <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0" />
       <Pane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="514.0" onAction="#logIn" prefHeight="28.0" prefWidth="77.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="LogIn" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="510.0" onAction="#logIn" prefHeight="28.0" prefWidth="100.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="Ingresar" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -23,7 +23,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="119.0" layoutY="514.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="SignUp" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="510.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="Registrarse" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Image url="@../img/usuario.png" />
                </image>
             </ImageView>
-            <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="196.0" layoutY="398.0" promptText="Password" unFocusColor="#f80000">
+            <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="196.0" layoutY="398.0" promptText="Contraseña" unFocusColor="#f80000">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -51,7 +51,7 @@
                   <Image url="@../img/password.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="196.0" layoutY="300.0" promptText="UserName" unFocusColor="#f80000">
+            <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="196.0" layoutY="300.0" promptText="Usuario" unFocusColor="#f80000">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

@@ -10,146 +10,147 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
-      <Tab fx:id="TabUser" text="Users">
+      <Tab fx:id="TabUser" text="Usuarios">
          <content>
             <Pane disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="634.0">
                <children>
-                  <TableView fx:id="TUsers" layoutX="-3.0" layoutY="109.0" onMouseExited="#saveDataUpdated" prefHeight="295.0" prefWidth="634.0">
+                  <TableView fx:id="TUsers" layoutX="-13.0" layoutY="45.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameU" prefWidth="155.0" text="Name" />
-                        <TableColumn fx:id="ClastNameU" prefWidth="142.0" text="Last name" />
-                        <TableColumn fx:id="CIdU" prefWidth="152.0" text="Identification" />
-                        <TableColumn fx:id="CuserName" prefWidth="191.0" text="Username" />
+                        <TableColumn fx:id="CnameU" prefWidth="155.0" text="Nombre" />
+                        <TableColumn fx:id="ClastNameU" prefWidth="142.0" text="Apellido" />
+                        <TableColumn fx:id="CIdU" prefWidth="152.0" text="Identidicacion" />
+                        <TableColumn fx:id="CuserName" prefWidth="191.0" text="Usuario" />
                      </columns>
                   </TableView>
-                  <Label layoutX="214.0" layoutY="48.0" prefHeight="41.0" prefWidth="230.0" text="Users List">
+                  <Label layoutX="202.0" layoutY="-6.0" prefHeight="41.0" prefWidth="230.0" text="Lista de Usuarios">
                      <font>
-                        <Font name="System Bold Italic" size="34.0" />
+                        <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
          </content>
       </Tab>
-      <Tab fx:id="TabEmployee" text="Employees">
+      <Tab fx:id="TabEmployee" text="Empleados">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Pane>
                <children>
-                  <Label layoutX="207.0" layoutY="14.0" text="Employees List">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <Label layoutX="200.0" layoutY="97.0" text="Lista de Empleados">
                      <font>
                         <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TEmployee" layoutY="87.0" onMouseExited="#saveDataUpdated" prefHeight="321.0" prefWidth="634.0">
+                  <TableView fx:id="TEmployee" layoutY="152.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameE" prefWidth="203.0" text="Name" />
-                        <TableColumn fx:id="CLastnameE" prefWidth="161.0" text="Last name" />
-                        <TableColumn fx:id="CIdE" prefWidth="261.0" text="Identification" />
+                        <TableColumn fx:id="CnameE" prefWidth="185.0" text="Nombre" />
+                        <TableColumn fx:id="CLastnameE" prefWidth="212.0" text="Apellido" />
+                        <TableColumn fx:id="CIdE" prefWidth="228.0" text="Identificacion" />
                      </columns>
                   </TableView>
                </children>
-            </AnchorPane>
+            </Pane>
          </content>
       </Tab>
-      <Tab fx:id="TabClients" text="Clients">
+      <Tab fx:id="TabClients" text="Clientes">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="223.0" layoutY="21.0" text="Clients List">
+                  <Label layoutX="217.0" layoutY="101.0" text="Lista de Clientes">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TClients" layoutY="99.0" onMouseExited="#saveDataUpdated" prefHeight="310.0" prefWidth="634.0">
+                  <TableView fx:id="TClients" layoutY="160.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameC" prefWidth="127.0" text="Name" />
-                        <TableColumn fx:id="ClastNameC" prefWidth="140.0" text="Last Name" />
-                        <TableColumn fx:id="CidC" prefWidth="183.0" text="Identification" />
-                        <TableColumn fx:id="Caddress" prefWidth="180.0" text="Address" />
+                        <TableColumn fx:id="CnameC" prefWidth="143.0" text="Name" />
+                        <TableColumn fx:id="ClastNameC" prefWidth="151.0" text="Last Name" />
+                        <TableColumn fx:id="CidC" prefWidth="163.0" text="Identification" />
+                        <TableColumn fx:id="Caddress" prefWidth="173.0" text="Address" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabOrders" text="Orders">
+      <Tab fx:id="TabOrders" text="Pedidos">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="208.0" layoutY="39.0" text="Orders List">
+                  <Label layoutX="214.0" layoutY="95.0" text="Lista de Pedidos">
                      <font>
                         <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Torders" layoutY="96.0" onMouseExited="#saveDataUpdated" prefHeight="312.0" prefWidth="634.0">
+                  <TableView fx:id="Torders" layoutY="154.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="Ccode" prefWidth="89.0" text="Code" />
-                        <TableColumn fx:id="Cdate" prefWidth="101.0" text="Date" />
-                        <TableColumn fx:id="Cclient" prefWidth="125.0" text="Client" />
-                        <TableColumn fx:id="Cemployee" prefWidth="124.0" text="Employee" />
-                        <TableColumn fx:id="Cstatus" prefWidth="194.0" text="Status" />
+                        <TableColumn fx:id="Ccode" prefWidth="125.0" text="Codigo" />
+                        <TableColumn fx:id="Cdate" prefWidth="118.0" text="Fecha" />
+                        <TableColumn fx:id="Cclient" prefWidth="121.0" text="Cliente" />
+                        <TableColumn fx:id="Cemployee" prefWidth="132.0" text="Empleado" />
+                        <TableColumn fx:id="Cstatus" prefWidth="137.0" text="Estado" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabProduct" text="Products">
+      <Tab fx:id="TabProduct" text="Productos">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="206.0" layoutY="14.0" text="Products List">
+                  <Label layoutX="178.0" layoutY="102.0" text="Lista de Productos">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Tproducts" layoutX="-3.0" layoutY="95.0" onMouseExited="#saveDataUpdated" prefHeight="314.0" prefWidth="643.0">
+                  <TableView fx:id="Tproducts" layoutY="175.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameP" prefWidth="110.0" text="Name" />
-                        <TableColumn fx:id="CsizeP" prefWidth="123.0" text="Size" />
-                        <TableColumn fx:id="CpriceP" prefWidth="129.0" text="Price" />
-                        <TableColumn fx:id="CavalibeP" prefWidth="116.0" text="is avalible?" />
-                        <TableColumn fx:id="CtypeP" prefWidth="154.0" text="Type" />
+                        <TableColumn fx:id="CnameP" prefWidth="156.0" text="Nombre" />
+                        <TableColumn fx:id="CsizeP" prefWidth="129.0" text="Tamaño" />
+                        <TableColumn fx:id="CpriceP" prefWidth="119.0" text="Precio" />
+                        <TableColumn fx:id="CavalibeP" prefWidth="132.0" text="Esta Disponible" />
+                        <TableColumn fx:id="CtypeP" prefWidth="96.0" text="Tipo" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabIngredients" text="Ingredients">
+      <Tab fx:id="TabIngredients" text="Ingredientes">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="193.0" layoutY="27.0" text="Ingredients List">
+                  <Label layoutX="186.0" layoutY="81.0" text="Lista de Ingredientes">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TIngredients" layoutY="87.0" onMouseExited="#saveDataUpdated" prefHeight="323.0" prefWidth="634.0">
+                  <TableView fx:id="TIngredients" layoutY="146.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameI" prefWidth="302.0" text="Name" />
-                        <TableColumn fx:id="CavalibleI" prefWidth="331.0" text="Is avalible?" />
+                        <TableColumn fx:id="CnameI" prefWidth="314.0" text="Nombre" />
+                        <TableColumn fx:id="CavalibleI" prefWidth="319.0" text="Esta Disponible" />
                      </columns>
                   </TableView>
                </children>
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabType" text="Type of producs">
+      <Tab fx:id="TabType" text="Tipos de Producto">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="166.0" layoutY="28.0" text="Type of products">
+                  <Label layoutX="191.0" layoutY="85.0" text="Tipos de Productos">
                      <font>
                         <Font name="System Bold Italic" size="26.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Ttype" layoutY="85.0" onMouseExited="#saveDataUpdated" prefHeight="321.0" prefWidth="634.0">
+                  <TableView fx:id="Ttype" layoutX="1.0" layoutY="165.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
                      <columns>
-                        <TableColumn fx:id="CnameType" prefWidth="300.0" text="Name" />
-                        <TableColumn fx:id="CnameAvalibleT" prefWidth="333.0" text="Is avalible?" />
+                        <TableColumn fx:id="CnameType" prefWidth="322.0" text="Nombre" />
+                        <TableColumn fx:id="CnameAvalibleT" prefWidth="311.0" text="Esta Disponible" />
                      </columns>
                   </TableView>
                </children>
