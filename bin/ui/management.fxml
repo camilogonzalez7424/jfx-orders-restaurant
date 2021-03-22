@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="778.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab fx:id="TabUser" text="Usuarios">
          <content>
@@ -56,19 +57,20 @@
       </Tab>
       <Tab fx:id="TabClients" text="Clientes">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="678.0">
                <children>
                   <Label layoutX="217.0" layoutY="101.0" text="Lista de Clientes">
                      <font>
                         <Font name="System Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="TClients" layoutY="160.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
+                  <TableView fx:id="TClients" layoutY="160.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="697.0">
                      <columns>
-                        <TableColumn fx:id="CnameC" prefWidth="143.0" text="Name" />
-                        <TableColumn fx:id="ClastNameC" prefWidth="151.0" text="Last Name" />
-                        <TableColumn fx:id="CidC" prefWidth="163.0" text="Identification" />
-                        <TableColumn fx:id="Caddress" prefWidth="173.0" text="Address" />
+                        <TableColumn fx:id="CnameC" prefWidth="128.0" text="Nombre" />
+                        <TableColumn fx:id="ClastNameC" prefWidth="142.0" text="Apellido" />
+                        <TableColumn fx:id="CidC" prefWidth="155.0" text="Identificacion" />
+                        <TableColumn fx:id="Caddress" prefWidth="114.0" text="Direccion" />
+                        <TableColumn fx:id="Ctelefono" prefWidth="166.0" text="Telefono" />
                      </columns>
                   </TableView>
                </children>
@@ -77,20 +79,21 @@
       </Tab>
       <Tab fx:id="TabOrders" text="Pedidos">
          <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="762.0">
                <children>
                   <Label layoutX="214.0" layoutY="95.0" text="Lista de Pedidos">
                      <font>
                         <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Torders" layoutY="154.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
+                  <TableView fx:id="Torders" layoutY="154.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="771.0">
                      <columns>
                         <TableColumn fx:id="Ccode" prefWidth="125.0" text="Codigo" />
                         <TableColumn fx:id="Cdate" prefWidth="118.0" text="Fecha" />
                         <TableColumn fx:id="Cclient" prefWidth="121.0" text="Cliente" />
                         <TableColumn fx:id="Cemployee" prefWidth="132.0" text="Empleado" />
                         <TableColumn fx:id="Cstatus" prefWidth="137.0" text="Estado" />
+                        <TableColumn fx:id="CamountP" prefWidth="128.0" text="Cantidad " />
                      </columns>
                   </TableView>
                </children>
@@ -115,6 +118,7 @@
                         <TableColumn fx:id="CtypeP" prefWidth="96.0" text="Tipo" />
                      </columns>
                   </TableView>
+                  <JFXButton buttonType="RAISED" layoutX="534.0" layoutY="102.0" onAction="#sortProduct" style="-fx-background-color: gray;" text="Ordenar" />
                </children>
             </AnchorPane>
          </content>

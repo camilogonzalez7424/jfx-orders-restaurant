@@ -192,20 +192,24 @@
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor></JFXButton>
-                  <JFXTextField fx:id="txtNameM" alignment="CENTER" layoutX="44.0" layoutY="136.0" promptText="Nombre" visible="false" />
-                  <JFXTextField fx:id="txtLastNameM" alignment="CENTER" layoutX="44.0" layoutY="198.0" promptText="Apellido" visible="false" />
-                  <JFXTextField fx:id="txtIdM" alignment="CENTER" layoutX="44.0" layoutY="279.0" promptText="Identificación" visible="false" />
-                  <JFXTextField fx:id="txtAdreesM" alignment="CENTER" layoutX="213.0" layoutY="136.0" promptText="Dirrección" visible="false" />
+                  <JFXTextField fx:id="txtNameM" alignment="CENTER" layoutX="56.0" layoutY="136.0" promptText="Nombre" visible="false" />
+                  <JFXTextField fx:id="txtLastNameM" alignment="CENTER" layoutX="56.0" layoutY="198.0" promptText="Apellido" visible="false" />
+                  <JFXTextField fx:id="txtIdM" alignment="CENTER" layoutX="56.0" layoutY="279.0" promptText="Identificación" visible="false" />
+                  <JFXTextField fx:id="txtAdreesM" alignment="CENTER" layoutX="240.0" layoutY="136.0" promptText="Dirrección" visible="false" />
                   <ImageView fitHeight="150.0" fitWidth="225.0" layoutX="22.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/4.jpg" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="204.0" layoutY="385.0" promptText="Precio" visible="false" />
-                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="226.0" layoutY="279.0" promptText="Nuevo Ingrediente" visible="false" />
-                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="220.0" layoutY="205.0" promptText="Nuevo Tipo" visible="false" />
-                  <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Tipo" visible="false" />
-                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="336.0" promptText="Nombre del Prodcto" visible="false" />
+
+                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="240.0" layoutY="385.0" promptText="Precio" visible="false" />
+                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="240.0" layoutY="279.0" promptText="Nuevo Ingrediente" visible="false" />
+                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="240.0" layoutY="426.0" promptText="Nuevo Tipo" visible="false" />
+                  <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Tipo" visible="false">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor></JFXComboBox>
+                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="240.0" layoutY="336.0" promptText="Nombre del Producto" visible="false" />
                   <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Acciones">
                      <font>
                         <Font name="System Bold Italic" size="14.0" />
@@ -213,7 +217,11 @@
                      <cursor>
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor></JFXButton>
-                  <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Tamaño" visible="false" />
+                  <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Tamaño" visible="false">
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor></JFXComboBox>
+                  <JFXTextField fx:id="txtTelephoneU" alignment="CENTER" layoutX="240.0" layoutY="198.0" promptText="Telefono" visible="false" />
                </children>
             </Pane>
          </right>
@@ -230,9 +238,11 @@
                     <MenuItem mnemonicParsing="false" text="Nuevo Reporte" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Crear Pedido">
+                <Menu mnemonicParsing="false" text="Gestion Pedidos">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#orderPane" text="Nuevo Pedido" />
+                        <MenuItem mnemonicParsing="false" text="Actualizar estado de pedido" />
+                        <MenuItem mnemonicParsing="false" text="Cancelar peido" />
                   </items>
                 </Menu>
               </menus>

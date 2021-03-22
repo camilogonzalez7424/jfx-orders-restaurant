@@ -5,6 +5,8 @@ package model;
  */
 public class Employee extends  Person {
 
+    private int amountOfOrders;
+
     /**
      * Instantiates a new Employee.
      *
@@ -14,7 +16,7 @@ public class Employee extends  Person {
      */
     public Employee(String name, String lastname, String identification) {
         super(name,lastname,identification);
-
+         amountOfOrders = 0;
     }
 
 }

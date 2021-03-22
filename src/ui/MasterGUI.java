@@ -5,16 +5,13 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -30,10 +27,11 @@ import model.TypeProduct;
 import model.User;
 
 import java.io.IOException;
-import java.security.Key;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.*;
 
 
 public class MasterGUI {
@@ -55,6 +53,9 @@ public class MasterGUI {
 
     @FXML
     private JFXTextField txtNameM;
+
+    @FXML
+    private JFXTextField txtTelephoneU;
 
     @FXML
     private JFXTextField txtLastNameM;
@@ -126,6 +127,9 @@ public class MasterGUI {
     private TableColumn<Client, String> Caddress;
 
     @FXML
+    private TableColumn<Client, String> Ctelefono;
+
+    @FXML
     private Tab TabOrders;
 
     @FXML
@@ -145,6 +149,9 @@ public class MasterGUI {
 
     @FXML
     private TableColumn<Order, String> Cstatus;
+
+    @FXML
+    private TableColumn<Order, String> CamountP;
 
     @FXML
     private Tab TabProduct;
@@ -211,7 +218,7 @@ public class MasterGUI {
 
     //________________A.ORDERS PANE_____________
     @FXML
-    private JFXComboBox<Product> comboProducts;
+    private JFXComboBox<String> comboProducts;
 
     @FXML
     private TableView<Product> TorderProduct;
@@ -223,13 +230,23 @@ public class MasterGUI {
     private JFXTextField txtClientName;
 
     @FXML
-    private JFXComboBox<Employee> comboEmployee;
+    private JFXComboBox<String> comboEmployee;
 
     @FXML
     private JFXTextField txtAddressOrder;
 
     @FXML
     private JFXTextArea txtFeedBack;
+
+    @FXML
+    private JFXToggleButton orderFeedback;
+
+    @FXML
+    private Label labelDate;
+
+    @FXML
+    private Label labelPrice;
+
 
 
     //_____________ A. MAIN PANEL ____________
@@ -563,6 +580,7 @@ public class MasterGUI {
             txtType.setVisible(false);
             txtProduct.setVisible(false);
             comboType.setVisible(false);
+            txtTelephoneU.setVisible(false);
 
         }
 
@@ -570,15 +588,16 @@ public class MasterGUI {
 
     @FXML
     public void newClient(ActionEvent event) throws IOException {
-        if (txtNameM.isVisible() && txtLastNameM.isVisible() && txtIdM.isVisible() && txtAdreesM.isVisible()) {
-            String nameC, lastNameC, idC, addressC ;
+        if (txtNameM.isVisible() && txtLastNameM.isVisible() && txtIdM.isVisible() && txtAdreesM.isVisible() && txtTelephoneU.isVisible()) {
+            String nameC, lastNameC, idC, addressC, telephoneC;
 
             nameC = txtNameM.getText();
             lastNameC = txtLastNameM.getText();
             idC = txtIdM.getText();
             addressC = txtAdreesM.getText();
+            telephoneC = txtTelephoneU.getText();
 
-            if(txtNameM.getText().equals("") || txtLastNameM.getText().equals("") || txtIdM.getText().equals("") || txtAdreesM.getText().equals("")){
+            if(txtNameM.getText().equals("") || txtLastNameM.getText().equals("") || txtIdM.getText().equals("") || txtAdreesM.getText().equals("") || txtTelephoneU.getText().equals("")){
 
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("¡Datos Incompletos!");
@@ -590,10 +609,11 @@ public class MasterGUI {
                 txtLastNameM.setText("");
                 txtIdM.setText("");
                 txtAdreesM.setText("");
+                txtTelephoneU.setText("");
 
 
-            } else if(!nameC.equals("") && !lastNameC.equals("") && !idC.equals("") && !addressC.equals("")){
-                mainRestaurant.createClient(nameC,lastNameC,idC,addressC);
+            } else if(!nameC.equals("") && !lastNameC.equals("") && !idC.equals("") && !addressC.equals("") && !telephoneC.equals("")){
+                mainRestaurant.createClient(nameC,lastNameC,idC,addressC,telephoneC);
                 mainRestaurant.saveDataClients();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
@@ -604,6 +624,7 @@ public class MasterGUI {
                 txtLastNameM.setText("");
                 txtIdM.setText("");
                 txtAdreesM.setText("");
+                txtTelephoneU.setText("");
             }
         } else {
             currentManage.setText("Cliente");
@@ -617,6 +638,7 @@ public class MasterGUI {
             txtType.setVisible(false);
             txtProduct.setVisible(false);
             comboType.setVisible(false);
+            txtTelephoneU.setVisible(true);
 
         }
 
@@ -663,6 +685,7 @@ public class MasterGUI {
             txtType.setVisible(false);
             txtProduct.setVisible(false);
             comboType.setVisible(false);
+            txtTelephoneU.setVisible(false);
 
         }
 
@@ -707,6 +730,7 @@ public class MasterGUI {
             txtType.setVisible(true);
             txtProduct.setVisible(false);
             comboType.setVisible(false);
+            txtTelephoneU.setVisible(false);
 
         }
 
@@ -721,8 +745,9 @@ public class MasterGUI {
                 alert.setHeaderText("Mira el problema");
                 alert.setContentText("Por favor llena los datos en blanco :)");
                 alert.showAndWait();
-                txtIngredient.setText("");
+
                 txtPriceM.setText("");
+                txtProduct.setText("");
             }else{
                 try {
                     String name,size;
@@ -745,6 +770,9 @@ public class MasterGUI {
                     Alert alert = new Alert(AlertType.WARNING);
                     alert.setContentText("Selecciona algo y llena los campos.");
                     alert.showAndWait();
+
+                    txtProduct.setText("");
+                    txtPriceM.setText("");
                 }
 
             }
@@ -761,16 +789,31 @@ public class MasterGUI {
             txtType.setVisible(false);
             txtProduct.setVisible(true);
             comboType.setVisible(true);
+            txtTelephoneU.setVisible(false);
 
-            for (int i = 0; i <mainRestaurant.getTypeProducts().size() ; i++) {
+
+           /* for (int i = 0; i <mainRestaurant.getTypeProducts().size(); i++) {
                 comboType.getItems().addAll(mainRestaurant.getTypeProducts().get(i).getName());
+
+            }*/
+
+            for(int i = 0; i < mainRestaurant.getTypeProducts().size(); i++) {
+                if(!comboType.getItems().isEmpty()) {
+                    comboType.getItems().removeAll(mainRestaurant.getTypeProducts().get(i).getName());
+                }
+                comboType.getItems().add(mainRestaurant.getTypeProducts().get(i).getName());
+
             }
+
+
 
             if (comboSize.getItems().isEmpty()){
-                comboSize.getItems().addAll("Familiar", "Mediano","Personal");
+                comboSize.setItems(FXCollections.observableArrayList("Familiar", "Mediano","Personal"));
+            } else if (!comboSize.getItems().isEmpty()) {
+                comboSize.getItems().clear();
+                comboSize.setItems(FXCollections.observableArrayList("Familiar", "Mediano","Personal"));
+
             }
-
-
 
         }
 
@@ -786,6 +829,7 @@ public class MasterGUI {
             case "Cliente":
                 newClient(event);
                 initializeTables();
+                //TClients.refresh();
                 break;
             case "Producto":
                 newProduct(event);
@@ -810,16 +854,216 @@ public class MasterGUI {
 
     @FXML
     public void orderPane(ActionEvent event) throws IOException {
-        FXMLLoader open = new FXMLLoader(getClass().getResource("ordersPane.fxml"));
-        Parent root = open.load();
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.setTitle("Nueva Orden");
-        stage.showAndWait();
+        if (mainRestaurant.getClientList().isEmpty()){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Lo sentimos");
+            alert.setContentText("No hay clientes para hacer pedidos, por favor registra uno");
+        }else{
+            FXMLLoader open = new FXMLLoader(getClass().getResource("ordersPane.fxml"));
+            open.setController(this);
+            Parent root = open.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Nueva orden");
+            if(comboEmployee.getItems().isEmpty()){
+                for (int i = 0; i <mainRestaurant.getEmployees().size() ; i++) {
+                    comboEmployee.getItems().addAll(mainRestaurant.getEmployees().get(i).getName());
+                }
+            }
+
+            if (comboProducts.getItems().isEmpty()){
+                for (int i = 0; i <mainRestaurant.getProducts().size() ; i++) {
+                    comboProducts.getItems().addAll(mainRestaurant.getProducts().get(i).getNameP());
+
+                }
+
+            }
+
+            stage.showAndWait();
+
+        }
+            }
+
+
+
+    @FXML
+    public void searchClient(ActionEvent event){
+        int found=-1;
+        int i =0;
+        int j=mainRestaurant.getClientList().size()-1;
+        String name="";
+        name = txtClientName.getText();
+            long star = System.nanoTime();
+            if (!name.equals("")){
+                while (i<=j && found<0){
+                    int m =(i+j)/2;
+                    if(mainRestaurant.getClientList().get(m).getName().equals(name)){
+                        found = m;
+                    }else if(name.compareTo(mainRestaurant.getClientList().get(m).getName())>0){
+                        i=m+1;
+                    }else{
+                         j = m-1;
+                    }
+
+                }
+            long end = System.nanoTime();
+                if (found>=0){
+                    mainRestaurant.setClientSearchedIndex(found);
+                    txtAddressOrder.setText(mainRestaurant.getClientList().get(found).getAddress());
+
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Informacion");
+                    alert.setHeaderText(null);
+                    alert.setContentText("La busqueda tardó: "+TimeUnit.SECONDS.convert((end-star),TimeUnit.NANOSECONDS)+" Segundos");
+                    alert.showAndWait();
+                }else{
+                    Alert alert = new Alert(AlertType.INFORMATION);
+                    alert.setTitle("Informacion");
+                    alert.setHeaderText(null);
+                    alert.setContentText("No se encontró el cliente,asegurese de haberlo escrito correctamente");
+                    alert.showAndWait();
+                }
+
+            }else{
+                 Alert alert = new Alert(AlertType.INFORMATION);
+                 alert.setTitle("Informacion");
+                 alert.setContentText("Por favor escriba un nombre para buscar");
+                 alert.showAndWait();
+            }
+
 
     }
+
+    @FXML
+    public void addProductToOrder(ActionEvent event){
+        int totalPrice=0;
+        String product= comboProducts.getValue();
+        ArrayList<Product> choosen = new ArrayList<>();
+        boolean out = false;
+        int amount=0;//para las veces que se pide un producto
+        for (int i = 0; i <mainRestaurant.getProducts().size() && !out ; i++) {
+            if (product.equals(mainRestaurant.getProducts().get(i).getNameP())){
+                choosen.add(mainRestaurant.getProducts().get(i));
+                totalPrice+= mainRestaurant.getProducts().get(i).getPrice();
+                amount = mainRestaurant.getProducts().get(i).getAmountOfRequest();//obtiene las veces que se pidio
+                amount+=1;//le suma 1
+                mainRestaurant.getProducts().get(i).setAmountOfRequest(amount);//las vuelve a agregar
+                out = true;
+            }
+        }
+
+        if(TorderProduct.getItems().isEmpty()){
+            ObservableList<Product> productObservableList = FXCollections.observableArrayList(choosen);
+            TorderProduct.setItems(productObservableList);
+            CproductsOrder.setCellValueFactory(new PropertyValueFactory<Product,String>("nameP"));
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Confirmacion");
+            alert.setHeaderText(null);
+            alert.setContentText("El producto se agrego con exito");
+            alert.showAndWait();
+            labelPrice.setText(String.valueOf(totalPrice));
+        }else{
+               initializersSecondment(product);
+        }
+
+
+    }
+    //Para visualizar los cambios en la tabla de productos
+    private void initializersSecondment(String product){
+        boolean out = false;
+        int totalPrice=Integer.parseInt(labelPrice.getText());
+        for (int i = 0; i <mainRestaurant.getProducts().size() && !out ; i++) {
+            if (product.equals(mainRestaurant.getProducts().get(i).getNameP())){
+                ObservableList<Product> productObservableList = TorderProduct.getItems();
+                productObservableList.add(mainRestaurant.getProducts().get(i));
+                totalPrice+= mainRestaurant.getProducts().get(i).getPrice();
+                CproductsOrder.setCellValueFactory(new PropertyValueFactory<Product,String>("nameP"));
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Confirmacion");
+                alert.setHeaderText(null);
+                alert.setContentText("El producto se agrego con exito");
+                alert.showAndWait();
+                labelPrice.setText(String.valueOf(totalPrice));
+                out = true;
+            }
+        }
+
+
+
+
+    }
+
+
+    @FXML
+    public void createOrder(ActionEvent event){
+        ArrayList<Product>pChoosen;
+        String  adrress, employee,feedback;
+        int nameC = mainRestaurant.getClientSearched();
+        adrress = txtAddressOrder.getText();
+        employee = comboEmployee.getValue();
+        feedback = txtFeedBack.getText();
+        String nameNosearched = txtClientName.getText();//para que no dependa de buscar el cliente para crear el pedido
+        if(!feedback.equals("")){
+            if (nameNosearched.equals("") || adrress.equals("") || employee.equals("") || TorderProduct.getItems().isEmpty()) {
+                System.out.println("hay feedback");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Datos incompletos");
+                alert.setHeaderText("Por favor llene todos los campos, no olvide elegir un producto");
+                alert.setContentText("Si no busco al cliente por favor complete el campo de direccion\n"+
+                                      "CONSEJO: si escribe el nombre del cliente y le da a buscar la direccion se completa sola"
+                );
+                alert.showAndWait();
+
+            }else{
+                System.out.println("hay feedback y se creo la orden");
+                pChoosen = new ArrayList<>(TorderProduct.getItems());
+                mainRestaurant.createOrder(employee,nameC,feedback,adrress,pChoosen,nameNosearched);
+                mainRestaurant.setClientSearchedIndex(-1);
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Exito!");
+                alert.setContentText("Se ha creado una nueva orden");
+                alert.showAndWait();
+                //solucionar como resetear los textField
+                txtClientName.setText("");
+                txtAddressOrder.setText("");
+                txtFeedBack.setText("");
+                comboProducts.resetValidation();
+                comboEmployee.resetValidation();
+                TorderProduct.setItems(null);
+                TorderProduct.refresh();
+                //para mañana solucionar lo de las tablas en la interfaz y la clase date en los pedidos
+            }
+        }else{
+
+            if (nameNosearched.equals("") || adrress.equals("") || employee.equals("")) {
+                System.out.println("No hay feedback");
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Datos incompletos");
+                alert.setHeaderText("Por favor llene todos los campos, no olvide elegir un producto");
+                alert.setContentText("Si no busco al cliente por favor complete el campo de direccion\n"+
+                        "CONSEJO: si escribe el nombre del cliente y le da a buscar la direccion se completa sola"
+                );
+                alert.showAndWait();
+            }else{
+                System.out.println("No hay feedback y se creo la orden ");
+                pChoosen = new ArrayList<>(TorderProduct.getItems());
+                mainRestaurant.createOrder(employee,nameC,adrress,pChoosen,nameNosearched);
+                mainRestaurant.setClientSearchedIndex(-1);
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Exito!");
+                alert.setContentText("Se ha creado una nueva orden");
+                alert.showAndWait();
+            }
+
+        }
+
+    }
+
+
+
 
     @FXML
     public void mainActions(ActionEvent event) {
@@ -1138,6 +1382,7 @@ public class MasterGUI {
         ClastNameC.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
         CidC.setCellValueFactory(new PropertyValueFactory<Client, String>("identification"));
         Caddress.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
+        Ctelefono.setCellValueFactory(new PropertyValueFactory<Client,String>("telephone"));
 
     //_____________________________ EMPLOYEE TABLE ________________________________________________________
         ObservableList<Employee> employeeObservableList;
@@ -1237,6 +1482,9 @@ public class MasterGUI {
 
         Caddress.setCellFactory(TextFieldTableCell.forTableColumn());
         Caddress.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+
+        Ctelefono.setCellFactory(TextFieldTableCell.forTableColumn());
+        Ctelefono.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setTelephone(event.getNewValue()));
         TClients.setEditable(true);
     }
 
@@ -1308,6 +1556,34 @@ public class MasterGUI {
         mainRestaurant.saveDataOrder();
        System.out.println("ete es el buenoo");
    }
+
+   /* @FXML
+    public void sortProduct(ActionEvent event) {
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i = 0; i < mainRestaurant.getProducts().size(); i++) {
+            a.add(mainRestaurant.getProducts().get(i).getPrice());
+        }
+        System.out.println(a);
+        Integer[] array = new Integer[a.size()];
+        for(int i = 0; i < array.length; i++){
+            array = a.toArray(new Integer [0]);
+        }
+        //insertionSort
+        System.out.println(Arrays.toString(array));
+
+        for(int i =1; i < array.length; i++) {
+            for(int j = i; j>0 && array[j-1]>array[j];j--) {
+                int temp = array[j];
+                array[j] = array[j-1];
+                array[j-1] = temp;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+
+
+    }*/
+
+
 
 
 

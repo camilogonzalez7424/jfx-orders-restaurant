@@ -13,6 +13,8 @@ public class Order implements Serializable {
     private Date hour;//mirar si sirve
     private  Date date;
     private boolean available;
+    private String orderAddress;
+    private int amountProducts;
 
     //Relationship.
     private  Client clientRequest;
@@ -22,22 +24,26 @@ public class Order implements Serializable {
     private  User lastU;
     private Status status;
 
-    /**
-     * Instantiates a new Order.
-     *
-     * @param code     the code is type String.
-     * @param feedback the feedback is type String.
-     */
-    public Order(String code, String feedback) {
-        this.code = code;
-        this.feedback = feedback;
+
+    public Order(Client clientRequest, Employee employee,String orderAddress) {
+        code = "A";
+        feedback = "";
         status = Status.REQUESTED;
         productsList = new ArrayList<>();
         available = true;
+        this.clientRequest =clientRequest;
+        this.employee = employee;
+        this.orderAddress = orderAddress;
+        amountProducts =0;
 
     }
 
     //Getters and Setters.
+
+    public void setProductsList(ArrayList<Product> productsList) {
+        this.productsList = productsList;
+        amountProducts=productsList.size();
+    }
 
     public User getCreatorU() {
         return creatorU;
@@ -107,9 +113,7 @@ public class Order implements Serializable {
         return productsList;
     }
 
-    public void setProductsList(ArrayList<Product> productsList) {
-        this.productsList = productsList;
-    }
+
 
     public Employee getEmployee() {
         return employee;
