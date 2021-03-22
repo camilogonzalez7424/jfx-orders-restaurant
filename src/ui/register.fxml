@@ -18,11 +18,11 @@
    <center>
       <AnchorPane prefHeight="649.0" prefWidth="621.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-            <JFXTextField fx:id="txtPassword" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="460.0" prefHeight="30.0" prefWidth="160.0" promptText="Password" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="543.0">
+            <JFXTextField fx:id="txtPassword" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="460.0" prefHeight="30.0" prefWidth="160.0" promptText="Contraseña" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="543.0">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="txtName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="140.0" prefHeight="30.0" prefWidth="160.0" promptText="Name" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="142.0">
+            <JFXTextField fx:id="txtName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="140.0" prefHeight="30.0" prefWidth="160.0" promptText="Nombre" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="142.0">
                <font>
                   <Font name="System Bold Italic" size="16.0" />
                </font></JFXTextField>
@@ -51,7 +51,7 @@
                   <Image url="@../img/password1.png" />
                </image>
             </ImageView>
-            <JFXButton alignment="CENTER" layoutX="431.0" layoutY="72.0" onAction="#createUser" prefHeight="26.0" prefWidth="176.0" ripplerFill="WHITE" style="-fx-background-color: gold;" styleClass="create" stylesheets="@../../style/Style.css" text="Create" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" layoutX="431.0" layoutY="72.0" onAction="#createUser" prefHeight="26.0" prefWidth="176.0" ripplerFill="WHITE" style="-fx-background-color: gold;" styleClass="create" stylesheets="@../../style/Style.css" text="Crear" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
@@ -63,16 +63,16 @@
                   <Image url="@../img/domain.png" />
                </image>
             </ImageView>
-            <Label layoutX="51.0" layoutY="50.0" prefHeight="35.0" prefWidth="140.0" text="Register" AnchorPane.leftAnchor="51.0" AnchorPane.rightAnchor="409.0" AnchorPane.topAnchor="50.0">
+            <Label layoutX="31.0" layoutY="50.0" prefHeight="35.0" prefWidth="185.0" text="Registrarse" AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="405.0" AnchorPane.topAnchor="50.0">
                <font>
                   <Font name="System Bold Italic" size="28.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txtUserName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="300.0" prefHeight="30.0" prefWidth="160.0" promptText="Username" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="326.0">
+            <JFXTextField fx:id="txtUserName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="300.0" prefHeight="30.0" prefWidth="160.0" promptText="Usuario" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="326.0">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font></JFXTextField>
-            <JFXTextField fx:id="txtLastName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="160.0" promptText="Last Name" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="224.0">
+            <JFXTextField fx:id="txtLastName" alignment="CENTER" focusColor="BLUE" layoutX="130.0" layoutY="220.0" prefHeight="30.0" prefWidth="160.0" promptText="Apellido" unFocusColor="RED" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="147.0" AnchorPane.topAnchor="224.0">
                <font>
                   <Font name="System Bold Italic" size="15.0" />
                </font></JFXTextField>
@@ -86,7 +86,7 @@
                   <Font name="System Bold Italic" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton alignment="CENTER" layoutX="431.0" layoutY="28.0" onAction="#toBack" prefHeight="26.0" prefWidth="176.0" ripplerFill="WHITE" style="-fx-background-color: gold;" styleClass="create" stylesheets="@../../style/Style.css" text="To Back" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" layoutX="431.0" layoutY="28.0" onAction="#toBack" prefHeight="26.0" prefWidth="176.0" ripplerFill="WHITE" style="-fx-background-color: gold;" styleClass="create" stylesheets="@../../style/Style.css" text="Regresar" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>

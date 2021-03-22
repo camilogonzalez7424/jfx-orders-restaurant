@@ -1,6 +1,7 @@
 package ui;
 
 import com.jfoenix.controls.*;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -125,6 +126,9 @@ public class MasterGUI {
     private TableColumn<Client, String> Caddress;
 
     @FXML
+    private TableColumn<Client, String> Ctelefono;
+
+    @FXML
     private Tab TabOrders;
 
     @FXML
@@ -144,6 +148,9 @@ public class MasterGUI {
 
     @FXML
     private TableColumn<Order, String> Cstatus;
+
+    @FXML
+    private TableColumn<Order, String> CamountP;
 
     @FXML
     private Tab TabProduct;
@@ -233,6 +240,13 @@ public class MasterGUI {
     @FXML
     private JFXToggleButton orderFeedback;
 
+    @FXML
+    private Label labelDate;
+
+    @FXML
+    private Label labelPrice;
+
+
 
     //_____________ A. MAIN PANEL ____________
     @FXML
@@ -317,9 +331,9 @@ public class MasterGUI {
 
         } else {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("We can not find you :(");
-            alert.setHeaderText("Look the problem");
-            alert.setContentText("Check your data if have account" + "\n" + "or please create an account :)");
+            alert.setTitle("No podemos encontrarte :(");
+            alert.setHeaderText("Mira el problema");
+            alert.setContentText("Revisa tus datos" + "\n" + "o crea una cuenta por favor :)");
             alert.showAndWait();
 
         }
@@ -365,9 +379,9 @@ public class MasterGUI {
 
         if (name.equals("") || lastName.equals("") || id.equals("") || userName.equals("") || password.equals("")) {
             Alert alert = new Alert(AlertType.WARNING);
-            alert.setTitle("¡Incomplete data!");
-            alert.setHeaderText("Look the problem");
-            alert.setContentText("Please fill all the blanks :)");
+            alert.setTitle("¡Datos Incompletos!");
+            alert.setHeaderText("Mira el problema");
+            alert.setContentText("Por favor llena los espacios en blanco :)");
             alert.showAndWait();
             txtName.setText("");
             txtLastName.setText("");
@@ -531,9 +545,9 @@ public class MasterGUI {
             if(txtNameM.getText().equals("") || txtLastNameM.getText().equals("") || txtIdM.getText().equals("")){
 
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("¡Incomplete data!");
-                alert.setHeaderText("Look the problem");
-                alert.setContentText("Please fill all the blanks :)");
+                alert.setTitle("¡Datos Incompletos!");
+                alert.setHeaderText("Mira el problema");
+                alert.setContentText("Por favor llena los espacios en blanco :)");
                 alert.showAndWait();
 
                 txtNameM.setText("");
@@ -545,7 +559,7 @@ public class MasterGUI {
                 mainRestaurant.saveDataEmployees();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("A new Employee has been created");
+                alert.setContentText("¡Un nuevo Empleado fue creado!");
                 alert.showAndWait();
 
                 txtNameM.setText("");
@@ -554,7 +568,7 @@ public class MasterGUI {
                 txtAdreesM.setText("");
             }
         } else {
-            currentManage.setText("Employee");
+            currentManage.setText("Empleado");
             txtNameM.setVisible(true);
             txtLastNameM.setVisible(true);
             txtIdM.setVisible(true);
@@ -585,15 +599,16 @@ public class MasterGUI {
             if(txtNameM.getText().equals("") || txtLastNameM.getText().equals("") || txtIdM.getText().equals("") || txtAdreesM.getText().equals("") || txtTelephoneU.getText().equals("")){
 
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("¡Incomplete data!");
-                alert.setHeaderText("Look the problem");
-                alert.setContentText("Please fill all the blanks :)");
+                alert.setTitle("¡Datos Incompletos!");
+                alert.setHeaderText("Mira el problema");
+                alert.setContentText("Por favor llena los datos en blanco :)");
                 alert.showAndWait();
 
                 txtNameM.setText("");
                 txtLastNameM.setText("");
                 txtIdM.setText("");
                 txtAdreesM.setText("");
+                txtTelephoneU.setText("");
 
 
             } else if(!nameC.equals("") && !lastNameC.equals("") && !idC.equals("") && !addressC.equals("") && !telephoneC.equals("")){
@@ -601,16 +616,17 @@ public class MasterGUI {
                 mainRestaurant.saveDataClients();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("A new Client has been created");
+                alert.setContentText("¡Un nuevo Cliente fue creado!");
                 alert.showAndWait();
 
                 txtNameM.setText("");
                 txtLastNameM.setText("");
                 txtIdM.setText("");
                 txtAdreesM.setText("");
+                txtTelephoneU.setText("");
             }
         } else {
-            currentManage.setText("Client");
+            currentManage.setText("Cliente");
             txtNameM.setVisible(true);
             txtLastNameM.setVisible(true);
             txtIdM.setVisible(true);
@@ -637,9 +653,9 @@ public class MasterGUI {
             if(txtIngredient.getText().equals("")){
 
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("¡Incomplete data!");
-                alert.setHeaderText("Look the problem");
-                alert.setContentText("Please fill all the blanks :)");
+                alert.setTitle("¡Datos Incompletos!");
+                alert.setHeaderText("Mira el problema");
+                alert.setContentText("Por favor llena los datos en blanco :)");
                 alert.showAndWait();
 
                 txtIngredient.setText("");
@@ -650,14 +666,14 @@ public class MasterGUI {
                 mainRestaurant.saveIngredients();
 
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("A new Ingredient has been created");
+                alert.setContentText("¡Un nuevo ingrediente fue creado!");
                 alert.showAndWait();
 
                 txtIngredient.setText("");
 
             }
         } else {
-            currentManage.setText("Ingredient");
+            currentManage.setText("Ingrediente");
             txtIngredient.setVisible(true);
             txtNameM.setVisible(false);
             txtLastNameM.setVisible(false);
@@ -683,9 +699,9 @@ public class MasterGUI {
             if(txtType.getText().equals("")){
 
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("¡Incomplete data!");
-                alert.setHeaderText("Look the problem");
-                alert.setContentText("Please fill all the blanks :)");
+                alert.setTitle("¡Datos Incompletos!");
+                alert.setHeaderText("Mira el problema");
+                alert.setContentText("Por favor llena los datos en blanco :)");
                 alert.showAndWait();
 
                 txtIngredient.setText("");
@@ -695,14 +711,14 @@ public class MasterGUI {
                 mainRestaurant.createType(nameT);
                 mainRestaurant.saveTypes();
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("A new Type product has been created");
+                alert.setContentText("¡Un nuevo Tipo de Producto fue creado!");
                 alert.showAndWait();
 
                 txtType.setText("");
 
             }
         } else {
-            currentManage.setText("Type of product");
+            currentManage.setText("Tipo de Producto");
             txtIngredient.setVisible(false);
             txtNameM.setVisible(false);
             txtLastNameM.setVisible(false);
@@ -724,9 +740,9 @@ public class MasterGUI {
         if (comboSize.isVisible() && txtProduct.isVisible() && comboType.isVisible()&& txtPriceM.isVisible()) {
             if(txtProduct.getText().isEmpty() && comboSize.isPressed() && comboType.isPressed()){
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("¡Incomplete data!");
-                alert.setHeaderText("Look the problem");
-                alert.setContentText("Please fill all the blanks :)");
+                alert.setTitle("¡Datos Incompletos!");
+                alert.setHeaderText("Mira el problema");
+                alert.setContentText("Por favor llena los datos en blanco :)");
                 alert.showAndWait();
                 txtIngredient.setText("");
                 txtPriceM.setText("");
@@ -742,7 +758,7 @@ public class MasterGUI {
                     mainRestaurant.createProduct(name,size,price,type);
                     mainRestaurant.saveDataProduct();
                     Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setContentText("A new product has been created");
+                    alert.setContentText("¡Un nuevo Producto fue creado!");
                     alert.showAndWait();
 
                     txtProduct.setText("");
@@ -750,14 +766,14 @@ public class MasterGUI {
 
                 }catch (Exception e){
                     Alert alert = new Alert(AlertType.WARNING);
-                    alert.setContentText("Write a valid number");
+                    alert.setContentText("Selecciona algo y llena los campos.");
                     alert.showAndWait();
                 }
 
             }
 
         } else {
-            currentManage.setText("Product");
+            currentManage.setText("Producto");
             txtNameM.setVisible(false);
             txtLastNameM.setVisible(false);
             txtIdM.setVisible(false);
@@ -775,7 +791,7 @@ public class MasterGUI {
             }
 
             if (comboSize.getItems().isEmpty()){
-                comboSize.getItems().addAll("Big", "Medium","Small");
+                comboSize.getItems().addAll("Familiar", "Mediano","Personal");
             }
 
 
@@ -787,29 +803,30 @@ public class MasterGUI {
     @FXML
     public void create(ActionEvent event) throws IOException {
         switch (currentManage.getText()) {
-            case "Employee":
+            case "Empleado":
                 newEmployee(event);
                 initializeTables();
                 break;
-            case "Client":
+            case "Cliente":
                 newClient(event);
                 initializeTables();
+                //TClients.refresh();
                 break;
-            case "Product":
+            case "Producto":
                 newProduct(event);
                 initializeTables();
                 break;
-            case "Type of product":
+            case "Tipo de Producto":
                 newType(event);
                 initializeTables();
                 break;
-            case "Ingredient":
+            case "Ingrediente":
                 newIngredient(event);
                 initializeTables();
                 break;
             default:
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setContentText("Select something to manage");
+                alert.setContentText("Seleccione algo para administrar.");
                 alert.showAndWait();
 
         }
@@ -819,7 +836,7 @@ public class MasterGUI {
     @FXML
     public void orderPane(ActionEvent event) throws IOException {
         if (mainRestaurant.getClientList().isEmpty()){
-            Alert alert = new Alert(AlertType.NONE);
+            Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Lo sentimos");
             alert.setContentText("No hay clientes para hacer pedidos, por favor registra uno");
         }else{
@@ -873,7 +890,7 @@ public class MasterGUI {
 
                 }
             long end = System.nanoTime();
-                if (found>0){
+                if (found>=0){
                     mainRestaurant.setClientSearchedIndex(found);
                     txtAddressOrder.setText(mainRestaurant.getClientList().get(found).getAddress());
 
@@ -897,19 +914,27 @@ public class MasterGUI {
                  alert.showAndWait();
             }
 
+
     }
 
     @FXML
     public void addProductToOrder(ActionEvent event){
+        int totalPrice=0;
         String product= comboProducts.getValue();
         ArrayList<Product> choosen = new ArrayList<>();
         boolean out = false;
+        int amount=0;//para las veces que se pide un producto
         for (int i = 0; i <mainRestaurant.getProducts().size() && !out ; i++) {
             if (product.equals(mainRestaurant.getProducts().get(i).getNameP())){
                 choosen.add(mainRestaurant.getProducts().get(i));
+                totalPrice+= mainRestaurant.getProducts().get(i).getPrice();
+                amount = mainRestaurant.getProducts().get(i).getAmountOfRequest();//obtiene las veces que se pidio
+                amount+=1;//le suma 1
+                mainRestaurant.getProducts().get(i).setAmountOfRequest(amount);//las vuelve a agregar
                 out = true;
             }
         }
+
         if(TorderProduct.getItems().isEmpty()){
             ObservableList<Product> productObservableList = FXCollections.observableArrayList(choosen);
             TorderProduct.setItems(productObservableList);
@@ -919,6 +944,7 @@ public class MasterGUI {
             alert.setHeaderText(null);
             alert.setContentText("El producto se agrego con exito");
             alert.showAndWait();
+            labelPrice.setText(String.valueOf(totalPrice));
         }else{
                initializersSecondment(product);
         }
@@ -928,16 +954,19 @@ public class MasterGUI {
     //Para visualizar los cambios en la tabla de productos
     private void initializersSecondment(String product){
         boolean out = false;
+        int totalPrice=Integer.parseInt(labelPrice.getText());
         for (int i = 0; i <mainRestaurant.getProducts().size() && !out ; i++) {
             if (product.equals(mainRestaurant.getProducts().get(i).getNameP())){
                 ObservableList<Product> productObservableList = TorderProduct.getItems();
                 productObservableList.add(mainRestaurant.getProducts().get(i));
+                totalPrice+= mainRestaurant.getProducts().get(i).getPrice();
                 CproductsOrder.setCellValueFactory(new PropertyValueFactory<Product,String>("nameP"));
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Confirmacion");
                 alert.setHeaderText(null);
                 alert.setContentText("El producto se agrego con exito");
                 alert.showAndWait();
+                labelPrice.setText(String.valueOf(totalPrice));
                 out = true;
             }
         }
@@ -955,40 +984,59 @@ public class MasterGUI {
         int nameC = mainRestaurant.getClientSearched();
         adrress = txtAddressOrder.getText();
         employee = comboEmployee.getValue();
-
-        if(orderFeedback.isSelected()){
-            System.out.println("hay feedback");
-            txtFeedBack.setVisible(true);
-            feedback = txtFeedBack.getText();
-            if (nameC==-1 || adrress.equals("") || employee.equals("") || feedback.equals("")) {
+        feedback = txtFeedBack.getText();
+        String nameNosearched = txtClientName.getText();//para que no dependa de buscar el cliente para crear el pedido
+        if(!feedback.equals("")){
+            if (nameNosearched.equals("") || adrress.equals("") || employee.equals("") || TorderProduct.getItems().isEmpty()) {
+                System.out.println("hay feedback");
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Datos incompletos");
-                alert.setContentText("Por favor llene todos los campos");
+                alert.setHeaderText("Por favor llene todos los campos, no olvide elegir un producto");
+                alert.setContentText("Si no busco al cliente por favor complete el campo de direccion\n"+
+                                      "CONSEJO: si escribe el nombre del cliente y le da a buscar la direccion se completa sola"
+                );
+                alert.showAndWait();
 
             }else{
+                System.out.println("hay feedback y se creo la orden");
                 pChoosen = new ArrayList<>(TorderProduct.getItems());
-                mainRestaurant.createOrder(employee,nameC,feedback,adrress,pChoosen);
+                mainRestaurant.createOrder(employee,nameC,feedback,adrress,pChoosen,nameNosearched);
                 mainRestaurant.setClientSearchedIndex(-1);
 
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Exito!");
                 alert.setContentText("Se ha creado una nueva orden");
-
+                alert.showAndWait();
+                //solucionar como resetear los textField
+                txtClientName.setText("");
+                txtAddressOrder.setText("");
+                txtFeedBack.setText("");
+                comboProducts.resetValidation();
+                comboEmployee.resetValidation();
+                TorderProduct.setItems(null);
+                TorderProduct.refresh();
+                //para mañana solucionar lo de las tablas en la interfaz y la clase date en los pedidos
             }
         }else{
-            System.out.println("No hay feedback");
-            if (nameC==-1 || adrress.equals("") || employee.equals("")) {
+
+            if (nameNosearched.equals("") || adrress.equals("") || employee.equals("")) {
+                System.out.println("No hay feedback");
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Datos incompletos");
-                alert.setContentText("Por favor llene todos los campos");
-
+                alert.setHeaderText("Por favor llene todos los campos, no olvide elegir un producto");
+                alert.setContentText("Si no busco al cliente por favor complete el campo de direccion\n"+
+                        "CONSEJO: si escribe el nombre del cliente y le da a buscar la direccion se completa sola"
+                );
+                alert.showAndWait();
             }else{
+                System.out.println("No hay feedback y se creo la orden ");
                 pChoosen = new ArrayList<>(TorderProduct.getItems());
-                mainRestaurant.createOrder(employee,nameC,adrress,pChoosen);
+                mainRestaurant.createOrder(employee,nameC,adrress,pChoosen,nameNosearched);
                 mainRestaurant.setClientSearchedIndex(-1);
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Exito!");
                 alert.setContentText("Se ha creado una nueva orden");
+                alert.showAndWait();
             }
 
         }
@@ -1005,150 +1053,151 @@ public class MasterGUI {
         String slelectedOne;
 
         Alert alert = new Alert(AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation of main Actions");
-        alert.setHeaderText("Confirm what you want to do");
-        alert.setContentText("Choose your option.");
+        alert.setTitle("Confirmación de acciones principales");
+        alert.setHeaderText("Confirma lo que quieres hacer");
+        alert.setContentText("Elige tu opción.");
 
-        ButtonType buttonTypeOne = new ButtonType("Delete");
-        ButtonType buttonTypeTwo = new ButtonType("Disable");
-        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        ButtonType buttonTypeOne = new ButtonType("Borrar");
+        ButtonType buttonTypeTwo = new ButtonType("Deshabilitar");
+        ButtonType buttonTypeCancel = new ButtonType("Cancelar", ButtonBar.ButtonData.CANCEL_CLOSE);
 
         alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo, buttonTypeCancel);
 
         Optional<ButtonType> result = alert.showAndWait();
 
         List<String> choices1 = new ArrayList<>();
-        choices1.add("Users");
-        choices1.add("Employees");
-        choices1.add("Clients");
-        choices1.add("Orders");
-        choices1.add("Ingredients");
-        choices1.add("Products");
-        choices1.add("Type of products");
+        choices1.add("Usuario");
+        choices1.add("Empleado");
+        choices1.add("Cliente");
+        choices1.add("Pedido");
+        choices1.add("Ingrediente");
+        choices1.add("Producto");
+        choices1.add("Tipo de Producto");
         ChoiceDialog<String> dialog1 = new ChoiceDialog<>(null, choices1);
 
 
         if (result.get() == buttonTypeOne) {
-            dialog1.setTitle("Choice Delete");
-            dialog1.setHeaderText("Want do you want to delete? (The orders will be managed by their code)");
-            dialog1.setContentText("Choose an option:");
+            dialog1.setTitle("Opción Eliminar");
+            dialog1.setHeaderText("¿Qué quieres eliminar? (Los pedidos serán administrados por su código)");
+            dialog1.setContentText("Escoge una opción:");
             Optional<String> result1 = dialog1.showAndWait();
             List<String> choices2 = new ArrayList<>();
             if (result1.isPresent()) {
                 election = result1.get();
                 switch (election) {
-                    case "Users":
+                    case "Usuario":
                         for (int i = 0; i < mainRestaurant.getUsers().size(); i++) {
                             choices2.add(mainRestaurant.getUsers().get(i).getUserName());
                         }
                         break;
-                    case "Employees":
+                    case "Empleado":
                         for (int i = 0; i < mainRestaurant.getEmployees().size(); i++) {
                             choices2.add(mainRestaurant.getEmployees().get(i).getName());
                         }
                         break;
-                    case "Clients":
+                    case "Cliente":
                         for (int i = 0; i < mainRestaurant.getClientList().size(); i++) {
                             choices2.add(mainRestaurant.getClientList().get(i).getName());
                         }
                         break;
 
-                    case "Orders":
+                    case "Pedido":
                         for (int i = 0; i < mainRestaurant.getOrderList().size(); i++) {
                             choices2.add(mainRestaurant.getOrderList().get(i).getCode());
                         }
                         break;
-                    case "Ingredients":
+                    case "Ingrediente":
                         for (int i = 0; i < mainRestaurant.getIngredientsList().size(); i++) {
                             choices2.add(mainRestaurant.getIngredientsList().get(i).getNameI());
                         }
                         break;
-                    case "Products":
+                    case "Producto":
                         for (int i = 0; i < mainRestaurant.getProducts().size(); i++) {
                             choices2.add(mainRestaurant.getProducts().get(i).getNameP());
                         }
                         break;
-                    case "Type of products":
+                    case "Tipo de Producto":
                         for (int i = 0; i < mainRestaurant.getTypeProducts().size(); i++) {
                             choices2.add(mainRestaurant.getTypeProducts().get(i).getName());
                         }
                         break;
                 }
+
             }
 
             ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
-            dialog2.setTitle("Delete");
-            dialog2.setHeaderText("Which one will be deleted?");
-            dialog2.setContentText("Choose an " + election + ":");
+            dialog2.setTitle("Eliminar");
+            dialog2.setHeaderText("¿Cuál será eliminado?");
+            dialog2.setContentText("Elija un " + election + ":");
             Optional<String> result2 = dialog2.showAndWait();
             if (result2.isPresent()) {
                 slelectedOne = result2.get();
                 switch (election) {
-                    case "Users":
+                    case "Usuario":
                         if (mainRestaurant.delete(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         } else {
                             Alert alert2 = new Alert(AlertType.WARNING);
-                            alert2.setHeaderText("Result");
+                            alert2.setHeaderText("Resultado");
                             alert2.setContentText("Something went wrong");
                             alert2.showAndWait();
                         }
                         break;
-                    case "Employees":
+                    case "Empleado":
                         if (mainRestaurant.deleteEmployee(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("La acción se realizó con éxito");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
-                    case "Clients":
+                    case "Cliente":
                         if (mainRestaurant.deleteClient(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
                             alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
-                    case "Orders":
+                    case "Pedido":
                         if (mainRestaurant.deleteOrder(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
-                    case "Ingredients":
+                    case "Ingrediente":
                         if (mainRestaurant.deleteIngredient(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
-                    case "Products":
+                    case "Producto":
                         if (mainRestaurant.deleteProduct(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
 
-                    case "Type of products":
+                    case "Tipo de Producto":
                         if (mainRestaurant.deleteType(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
@@ -1159,46 +1208,46 @@ public class MasterGUI {
             }
 
         } else if (result.get() == buttonTypeTwo) {
-            dialog1.setTitle("Choice Disable");
-            dialog1.setHeaderText("Want do you want to disable? (The orders will be managed by their code)");
-            dialog1.setContentText("Choose one:");
+            dialog1.setTitle("Opción Deshabilitar");
+            dialog1.setHeaderText("¿Qué quieres deshabilitar? (Los pedidos serán administrados por su código)");
+            dialog1.setContentText("Elige uno:");
             Optional<String> result2 = dialog1.showAndWait();
             List<String> choices2 = new ArrayList<>();
             if (result2.isPresent()) {
                 election = result2.get();
                 switch (election) {
-                    case "Users":
+                    case "Usuario":
                         for (int i = 0; i < mainRestaurant.getUsers().size(); i++) {
                             choices2.add(mainRestaurant.getUsers().get(i).getUserName());
                         }
                         break;
-                    case "Employees":
+                    case "Empleado":
                         for (int i = 0; i < mainRestaurant.getEmployees().size(); i++) {
                             choices2.add(mainRestaurant.getEmployees().get(i).getName());
                         }
                         break;
-                    case "Clients":
+                    case "Cliente":
                         for (int i = 0; i < mainRestaurant.getClientList().size(); i++) {
                             choices2.add(mainRestaurant.getClientList().get(i).getName());
                         }
                         break;
 
-                    case "Orders":
+                    case "Pedido":
                         for (int i = 0; i < mainRestaurant.getOrderList().size(); i++) {
                             choices2.add(mainRestaurant.getOrderList().get(i).getCode());
                         }
                         break;
-                    case "Ingredients":
+                    case "Ingrediente":
                         for (int i = 0; i < mainRestaurant.getIngredientsList().size(); i++) {
                             choices2.add(mainRestaurant.getIngredientsList().get(i).getNameI());
                         }
                         break;
-                    case "Products":
+                    case "Producto":
                         for (int i = 0; i < mainRestaurant.getProducts().size(); i++) {
                             choices2.add(mainRestaurant.getProducts().get(i).getNameP());
                         }
                         break;
-                    case "Type of products":
+                    case "Tipo de Producto":
                         for (int i = 0; i < mainRestaurant.getTypeProducts().size(); i++) {
                             choices2.add(mainRestaurant.getOrderList().get(i).getCode());
                         }
@@ -1207,68 +1256,68 @@ public class MasterGUI {
             }
 
             ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
-            dialog2.setTitle("Disable");
-            dialog2.setHeaderText("Which one will be disable?");
-            dialog2.setContentText("Choose an" + election + ":");
+            dialog2.setTitle("Deshabilitar");
+            dialog2.setHeaderText("¿Cuál se deshabilitará?");
+            dialog2.setContentText("Elija un" + election + ":");
             Optional<String> result3 = dialog2.showAndWait();
             if (result3.isPresent()) {
                 slelectedOne = result3.get();
                 switch (election) {
-                    case "Users":
+                    case "Usuario":
                         if (mainRestaurant.toDisable(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                             initializeTables();
                         }
                         break;
-                    case "Employees":
+                    case "Empleado":
                         if (mainRestaurant.disableEmployee(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
-                    case "Clients":
+                    case "Cliente":
                         if (mainRestaurant.disableClient(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
-                    case "Orders":
+                    case "Pedido":
                         if (mainRestaurant.disableOrder(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
                             alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
-                    case "Ingredients":
+                    case "Ingrediente":
                         if (mainRestaurant.disableIngredients(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
-                    case "Products":
+                    case "Producto":
                         if (mainRestaurant.disableProduct(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
 
-                    case "Type of products":
+                    case "Tipo de Producto":
                         if (mainRestaurant.disableType(slelectedOne)) {
                             Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("Action was made Successfully");
+                            alert2.setHeaderText("Resultado");
+                            alert2.setContentText("¡La acción se realizó con éxito!");
                             alert2.showAndWait();
                         }
                         break;
@@ -1279,7 +1328,6 @@ public class MasterGUI {
             }
 
         }
-
 
     }
 
@@ -1315,6 +1363,7 @@ public class MasterGUI {
         ClastNameC.setCellValueFactory(new PropertyValueFactory<Client, String>("lastName"));
         CidC.setCellValueFactory(new PropertyValueFactory<Client, String>("identification"));
         Caddress.setCellValueFactory(new PropertyValueFactory<Client, String>("address"));
+        Ctelefono.setCellValueFactory(new PropertyValueFactory<Client,String>("telephone"));
 
     //_____________________________ EMPLOYEE TABLE ________________________________________________________
         ObservableList<Employee> employeeObservableList;
@@ -1414,6 +1463,9 @@ public class MasterGUI {
 
         Caddress.setCellFactory(TextFieldTableCell.forTableColumn());
         Caddress.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setIdentification(event.getNewValue()));
+
+        Ctelefono.setCellFactory(TextFieldTableCell.forTableColumn());
+        Ctelefono.setOnEditCommit(event -> event.getTableView().getItems().get(event.getTablePosition().getRow()).setTelephone(event.getNewValue()));
         TClients.setEditable(true);
     }
 

@@ -55,8 +55,8 @@
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="351.0" prefHeight="148.0" prefWidth="200.0" style="-fx-border-color: gray;" visible="false" wrapText="true" />
-      <Label layoutX="30.0" layoutY="305.0" prefHeight="30.0" prefWidth="184.0" text="Comentarios" visible="false">
+      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="351.0" prefHeight="148.0" prefWidth="200.0" style="-fx-border-color: gray;" wrapText="true" />
+      <Label layoutX="30.0" layoutY="305.0" prefHeight="30.0" prefWidth="184.0" text="Comentarios">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -71,5 +71,25 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
+      <Label layoutX="729.0" layoutY="26.0" text="Fecha">
+         <font>
+            <Font name="System Bold Italic" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelDate" layoutX="763.0" layoutY="73.0" text=":">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="709.0" layoutY="351.0" text="Precio actual">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPrice" layoutX="763.0" layoutY="384.0" text="0">
+         <font>
+            <Font name="System Bold Italic" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

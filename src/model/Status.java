@@ -4,5 +4,6 @@ public enum Status {
     REQUESTED,
     IN_PROGRESS,
     SENT,
-    DELIVERED;
+    DELIVERED,
+    CANCELD;
 }

@@ -44,5 +44,6 @@ public class Client extends Person implements Comparable<Client>{
     @Override
     public int compareTo(Client other) {
         return  getName().compareTo(other.getName());
+
     }
 }

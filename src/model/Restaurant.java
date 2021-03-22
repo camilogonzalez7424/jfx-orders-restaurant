@@ -133,39 +133,7 @@ public class Restaurant {
         users.add(new User(nameE,lastnameE,identificationE,userName,password));
     }
 
-    /**
-    * UpdateInfo
-    * it updates the info of an object (user) <br>
-    * <b> pre: the list users must have at least an user <br>
-    * @param username,  the username of the user
-    * @param password , the password of the user
-    * @param update , the new information
-    * @param type , for indicating the type of field that will be updated
-    * */
-    public void updateInfo(String username, String password, String update , int type){
-        boolean found=false;
-        for (int i = 0; i <users.size() && !found; i++) {
-            if (username.equals(users.get(i).getUserName())&& password.equals(users.get(i).getPassword())){
-                switch (type){
-                    case 1: users.get(i).setName(update);
-                        break;
-                    case 2: users.get(i).setLastName(update);
-                        break;
-                    case 3: users.get(i).setIdentification(update);
-                        break;
-                    case 4: (users.get(i)).setUserName(update);
-                             break;
-                    case 5: (users.get(i)).setPassword(update);
-                             break;
-                    default:
-                }
-                found = true;
 
-            }
-
-        }
-
-    }
 
 
     /**
@@ -289,25 +257,6 @@ public class Restaurant {
     }
 
 
-    public void updateInfoEmplyoee(String update , String name, int type){
-        boolean found = false;
-        for (int i = 0; i <employees.size() && !found; i++) {
-            if (name.equals(employees.get(i).getName())){
-                switch (type){
-                    case 1: employees.get(i).setName(update);
-                             break;
-                    case 2: employees.get(i).setLastName(update);
-                             break;
-                    case 3: employees.get(i).setIdentification(update);
-                            break;
-                    default:
-                }
-                found =true;
-            }
-        }
-
-    }
-
     public boolean deleteEmployee(String name){
         boolean deleEmployee = false;
         for (int i = 0; i <employees.size() && !deleEmployee; i++) {
@@ -412,33 +361,7 @@ public class Restaurant {
         }
     }
 
-    /**
-     * Update info client.
-     *
-     * @param name      the name
-     * @param update    the update
-     * @param type      the type
-     */
-    public void updateInfoClient(String name, String update,int type){
-        boolean found=false;
-        for (int i = 0; i <clientList.size() && !found; i++) {
-            if (name.equals(clientList.get(i).getName())){
-                switch (type){
-                    case 0: (clientList.get(i)).setName(update);
-                        break;
-                    case 1: (clientList.get(i)).setLastName(update);
-                        break;
-                    case 2: (clientList.get(i)).setIdentification(update);
-                        break;
-                    case 3: (clientList.get(i)).setAddress(update);
-                        break;
-                    default:
-                }
-                found = true;
-            }
-        }
 
-    }
 
     /**
      * Delete client boolean.
@@ -528,32 +451,7 @@ public class Restaurant {
         }
     }
 
-    /**
-     * Update info product.
-     *
-     * @param update the update
-     * @param nameP  the name p
-     * @param type   the type
-     */
-    public void updateInfoProduct(String update , String nameP, int type){
-        boolean found = false;
-        for (int i = 0; i <products.size() && !found; i++) {
-            if (nameP.equals(products.get(i).getNameP())){
-                switch (type){
-                    case 1: products.get(i).setNameP(update);
-                        break;
-                    case 2: products.get(i).setSize(update);
-                        break;
-                    case 3: products.get(i);
-                        break;
-                    case 4: products.get(i);
-                    default:
-                }
-                found =true;
-            }
-        }
 
-    }
 
     /**
      * Delete product boolean.
@@ -595,10 +493,21 @@ public class Restaurant {
 //__________________________ ORDERS REQUIREMENTS _______________________________________________________________________
 
 
-    public void createOrder(String employee, int client, String address, ArrayList<Product> productsIn){
-        Client newClient = clientList.get(client);
-        Employee employeeAttending=null;
+    public void createOrder(String employee, int client, String address, ArrayList<Product> productsIn, String name){
         boolean out=false;
+        Client newClient=null;
+        Employee employeeAttending=null;
+        if (client>=0){
+            newClient = clientList.get(client);
+        }else{
+            for (int i = 0; i <clientList.size() && !out ; i++) {
+                 if(name.equals(clientList.get(i).getName())){
+                     newClient = clientList.get(i);
+                 }
+
+            }
+        }
+
         for (int i = 0; i <employees.size() && !out ; i++) {
             if (employee.equals(employees.get(i).getName())){
                 employeeAttending = employees.get(i);
@@ -606,9 +515,14 @@ public class Restaurant {
             }
         }
 
+        if (employeeAttending!=null && newClient!=null){
+            Order newOrder = new Order(newClient,employeeAttending,address);
+            newOrder.setProductsList(productsIn);
+            orderList.add(newOrder);
 
-
-
+        }else{
+            System.out.println("hay algo null");
+        }
 
 
     }
@@ -618,17 +532,37 @@ public class Restaurant {
      *
      * @param feedback the feedback
      */
-    public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn){
-
-        Client newClient1 = clientList.get(client);
+    public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn, String name){
+        Client newClient1 = null;
         Employee employeeAttending=null;
         boolean out=false;
+        if (client>=0){
+            newClient1 = clientList.get(client);
+        }else{
+            for (int i = 0; i <clientList.size() && !out ; i++) {
+                if(name.equals(clientList.get(i).getName())){
+                    newClient1 = clientList.get(i);
+                }
+
+            }
+        }
+
         for (int i = 0; i <employees.size() && !out ; i++) {
             if (employee.equals(employees.get(i).getName())){
                 employeeAttending = employees.get(i);
                 out= true;
             }
         }
+
+        if (employeeAttending!=null && newClient1!=null){
+            Order newOrder = new Order(newClient1,employeeAttending,address);
+            newOrder.setProductsList(productsIn);
+            orderList.add(newOrder);
+
+        }else{
+            System.out.println("hay algo null");
+        }
+
 
 
 
@@ -825,16 +759,7 @@ public class Restaurant {
         typeProducts.add(new TypeProduct(name));
    }
 
-    public void updateInfoType(String update , String name){
-        boolean found = false;
-        for (int i = 0; i <typeProducts.size() && !found; i++) {
-            if (name.equals(typeProducts.get(i).getName())){
-                typeProducts.get(i).setName(update);
-                found =true;
-            }
-        }
 
-    }
 
     public boolean deleteType(String name){
         boolean deletedType = false;

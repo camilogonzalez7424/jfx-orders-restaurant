@@ -27,31 +27,52 @@
                   <DropShadow />
                </effect>
             </AnchorPane>
-            <JFXButton alignment="BASELINE_LEFT" contentDisplay="CENTER" graphicTextGap="60.0" layoutX="7.0" layoutY="110.0" onAction="#setTabUsers" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Users" textAlignment="JUSTIFY">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="110.0" onAction="#setTabUsers" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Usuarios" textAlignment="JUSTIFY">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
-            </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="7.0" layoutY="170.0" onAction="#setTabEmployee" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Employees" textAlignment="CENTER">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="7.0" layoutY="290.0" onAction="#setTabOrders" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Orders" textAlignment="CENTER">
-               <cursor>
-                  <Cursor fx:constant="OPEN_HAND" />
-               </cursor>
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font></JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="3.0" layoutY="524.0" onAction="#exitButton" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Exit" textAlignment="CENTER">
                <graphic>
-                  <ImageView fitHeight="20.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/grupo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="170.0" onAction="#setTabEmployee" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Empleados" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/demandante-de-empleo.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="290.0" onAction="#setTabOrders" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Pedidos" textAlignment="CENTER">
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/portapapeles.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="530.0" onAction="#exitButton" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Salir" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/flecha.png" />
                      </image>
@@ -75,37 +96,65 @@
                   <Font name="Carlito Bold Italic" size="14.0" />
                </font>
             </Label>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="5.0" layoutY="230.0" onAction="#setTabClients" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Clients" textAlignment="CENTER">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="230.0" onAction="#setTabClients" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Clientes" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/clasificacion.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="7.0" layoutY="404.0" onAction="#setTabProduct" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Products" textAlignment="CENTER">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="410.0" onAction="#setTabProduct" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Productos" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/comida-rapida.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="7.0" layoutY="344.0" onAction="#setTabIngredients" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Ingredients" textAlignment="CENTER">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="350.0" onAction="#setTabIngredients" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Ingredientes" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/ingredientes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
-            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="60.0" layoutX="3.0" layoutY="464.0" onAction="#setTabType" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Type of products" textAlignment="CENTER">
+            <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="470.0" onAction="#setTabType" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Tipos de Productos">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
                <font>
-                  <Font name="System Bold Italic" size="12.0" />
+                  <Font name="System Bold Italic" size="14.0" />
                </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/productos-lacteos.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
             </JFXButton>
          </children>
          <effect>
@@ -117,58 +166,77 @@
             <JFXTabPane fx:id="managementTabs" prefHeight="437.0" prefWidth="473.0" style="-fx-background-color: gray;" tabClosingPolicy="ALL_TABS" />
          </center>
          <right>
-            <Pane prefHeight="437.0" prefWidth="562.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="440.0" prefWidth="480.0" BorderPane.alignment="CENTER">
                <children>
-                  <MenuButton layoutX="22.0" layoutY="20.0" mnemonicParsing="false" text="I want to manage">
+                  <MenuButton layoutX="22.0" layoutY="20.0" mnemonicParsing="false" text="Administrar">
                     <items>
-                      <MenuItem mnemonicParsing="false" onAction="#newEmployee" text="Employees" />
-                      <MenuItem mnemonicParsing="false" onAction="#newClient" text="Clients" />
-                        <MenuItem mnemonicParsing="false" onAction="#newIngredient" text="Ingredients" />
-                        <MenuItem mnemonicParsing="false" onAction="#newType" text="Type of products" />
-                        <MenuItem mnemonicParsing="false" onAction="#newProduct" text="Products" />
+                      <MenuItem mnemonicParsing="false" onAction="#newEmployee" text="Empleados" />
+                      <MenuItem mnemonicParsing="false" onAction="#newClient" text="Clientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#newIngredient" text="Ingredientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#newType" text="Tipos de Productos" />
+                        <MenuItem mnemonicParsing="false" onAction="#newProduct" text="Productos" />
                     </items>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor>
                   </MenuButton>
-                  <Label fx:id="currentManage" layoutX="241.0" layoutY="77.0" text="Manage">
+                  <Label fx:id="currentManage" layoutX="192.0" layoutY="77.0" text="Administrador">
                      <font>
                         <Font name="System Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <JFXButton layoutX="44.0" layoutY="77.0" onAction="#create" style="-fx-background-color: gray;" text="Create" />
-                  <JFXTextField fx:id="txtNameM" alignment="CENTER" layoutX="44.0" layoutY="136.0" promptText="Name" visible="false" />
-                  <JFXTextField fx:id="txtLastNameM" alignment="CENTER" layoutX="44.0" layoutY="198.0" promptText="Last name" visible="false" />
-                  <JFXTextField fx:id="txtIdM" alignment="CENTER" layoutX="44.0" layoutY="279.0" promptText="Identification" visible="false" />
-                  <JFXTextField fx:id="txtAdreesM" alignment="CENTER" layoutX="213.0" layoutY="136.0" promptText="Address" visible="false" />
+                  <JFXButton layoutX="44.0" layoutY="77.0" onAction="#create" style="-fx-background-color: gray;" text="Crear">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor></JFXButton>
+                  <JFXTextField fx:id="txtNameM" alignment="CENTER" layoutX="44.0" layoutY="136.0" promptText="Nombre" visible="false" />
+                  <JFXTextField fx:id="txtLastNameM" alignment="CENTER" layoutX="44.0" layoutY="198.0" promptText="Apellido" visible="false" />
+                  <JFXTextField fx:id="txtIdM" alignment="CENTER" layoutX="44.0" layoutY="279.0" promptText="Identificación" visible="false" />
+                  <JFXTextField fx:id="txtAdreesM" alignment="CENTER" layoutX="213.0" layoutY="136.0" promptText="Dirrección" visible="false" />
                   <ImageView fitHeight="150.0" fitWidth="225.0" layoutX="22.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/4.jpg" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="204.0" layoutY="385.0" promptText="Price" visible="false" />
-                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="226.0" layoutY="279.0" promptText="New Ingredient" visible="false" />
-                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="220.0" layoutY="205.0" promptText="New Type" visible="false" />
-                  <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Type" visible="false" />
-                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="336.0" promptText="product's name" visible="false" />
-                  <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Main Actions" />
-                  <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Size" visible="false" />
+
+                  <JFXTextField fx:id="txtPriceM" alignment="CENTER" layoutX="204.0" layoutY="385.0" promptText="Precio" visible="false" />
+                  <JFXTextField fx:id="txtIngredient" alignment="CENTER" layoutX="226.0" layoutY="279.0" promptText="Nuevo Ingrediente" visible="false" />
+                  <JFXTextField fx:id="txtType" alignment="CENTER" layoutX="204.0" layoutY="434.0" promptText="Nuevo Tipo" visible="false" />
+                  <JFXComboBox fx:id="comboType" layoutX="56.0" layoutY="372.0" prefHeight="26.0" prefWidth="99.0" promptText="Tipo" visible="false" />
+                  <JFXTextField fx:id="txtProduct" alignment="CENTER" layoutX="213.0" layoutY="336.0" promptText="Nombre del Prodcto" visible="false" />
+                  <JFXButton layoutX="220.0" layoutY="20.0" onAction="#mainActions" style="-fx-background-color: gray;" text="Acciones">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="OPEN_HAND" />
+                     </cursor></JFXButton>
+                  <JFXComboBox fx:id="comboSize" layoutX="56.0" layoutY="323.0" prefHeight="26.0" prefWidth="116.0" promptText="Tamaño" visible="false" />
+                  <JFXTextField fx:id="txtTelephoneU" alignment="CENTER" layoutX="226.0" layoutY="204.0" promptText="Telefono" visible="false" />
                </children>
             </Pane>
          </right>
          <top>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="Import">
+                <Menu mnemonicParsing="false" text="Importar">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="From file " />
+                    <MenuItem mnemonicParsing="false" text="Desde el archivo" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Create report">
+                <Menu mnemonicParsing="false" text="Crear Reporte">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
+                    <MenuItem mnemonicParsing="false" text="Nuevo Reporte" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Create Order">
+                <Menu mnemonicParsing="false" text="Gestion Pedidos">
                   <items>
-                    <MenuItem mnemonicParsing="false" onAction="#orderPane" text="New" />
+                    <MenuItem mnemonicParsing="false" onAction="#orderPane" text="Nuevo Pedido" />
+                        <MenuItem mnemonicParsing="false" text="Actualizar estado de pedido" />
+                        <MenuItem mnemonicParsing="false" text="Cancelar peido" />
                   </items>
                 </Menu>
               </menus>

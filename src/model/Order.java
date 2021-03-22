@@ -14,6 +14,7 @@ public class Order implements Serializable {
     private  Date date;
     private boolean available;
     private String orderAddress;
+    private int amountProducts;
 
     //Relationship.
     private  Client clientRequest;
@@ -33,6 +34,7 @@ public class Order implements Serializable {
         this.clientRequest =clientRequest;
         this.employee = employee;
         this.orderAddress = orderAddress;
+        amountProducts =0;
 
     }
 
@@ -40,6 +42,7 @@ public class Order implements Serializable {
 
     public void setProductsList(ArrayList<Product> productsList) {
         this.productsList = productsList;
+        amountProducts=productsList.size();
     }
 
     public User getCreatorU() {

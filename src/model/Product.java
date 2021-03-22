@@ -15,6 +15,7 @@ public class Product implements Serializable {
     private String isAvailableP;
     private int price;
     private boolean available;
+    private  int amountOfRequest;
 
     private String auxPrice;
 
@@ -39,12 +40,25 @@ public class Product implements Serializable {
         isAvailableP = "YES";
         auxPrice = String.valueOf(price);
         ingredients = new ArrayList<>();
+        amountOfRequest =0;
     }
 
 
 
     //Getters and Setters.
 
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getAmountOfRequest() {
+        return amountOfRequest;
+    }
+
+    public void setAmountOfRequest(int amountOfRequest) {
+        this.amountOfRequest = amountOfRequest;
+    }
 
     public ArrayList<Ingredient> getIngredients() {
         return ingredients;
