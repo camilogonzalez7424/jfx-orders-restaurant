@@ -145,5 +145,14 @@ public class Product implements Serializable {
         this.available = available;
     }
 
-
+    public int compareTo(Product element) {
+        int res = 0;
+        if (this.price < element.getPrice()) {
+            res = -1;
+        }
+        if (this.price > element.getPrice()) {
+            res = 1;
+        }
+        return res;
+    }
 }

@@ -1557,31 +1557,17 @@ public class MasterGUI {
        System.out.println("ete es el buenoo");
    }
 
-   /* @FXML
+    @FXML
     public void sortProduct(ActionEvent event) {
-        ArrayList<Integer> a = new ArrayList<>();
-        for(int i = 0; i < mainRestaurant.getProducts().size(); i++) {
-            a.add(mainRestaurant.getProducts().get(i).getPrice());
-        }
-        System.out.println(a);
-        Integer[] array = new Integer[a.size()];
-        for(int i = 0; i < array.length; i++){
-            array = a.toArray(new Integer [0]);
-        }
-        //insertionSort
-        System.out.println(Arrays.toString(array));
 
-        for(int i =1; i < array.length; i++) {
-            for(int j = i; j>0 && array[j-1]>array[j];j--) {
-                int temp = array[j];
-                array[j] = array[j-1];
-                array[j-1] = temp;
-            }
-        }
-        System.out.println(Arrays.toString(array));
+        mainRestaurant.insertionSortArrayList(mainRestaurant.getProducts());
+        initializeTables();
 
 
-    }*/
+    }
+
+
+
 
 
 

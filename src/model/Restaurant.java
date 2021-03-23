@@ -2,6 +2,7 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -332,6 +333,48 @@ public class Restaurant {
           }
     }
 
+    /*public void insertionSort(){
+        ArrayList<Integer> a = new ArrayList<>();
+        for(int i = 0; i < p.size(); i++) {
+            a.add(products.get(i).getPrice());
+        }
+        System.out.println(a);
+        Integer[] array = new Integer[a.size()];
+        for(int i = 0; i < array.length; i++){
+            array = a.toArray(new Integer [0]);
+        }
+        //insertionSort
+        System.out.println(Arrays.toString(array));
+
+        for(int i =1; i < array.length; i++) {
+            for(int j = i; j>0 && array[j-1]>array[j];j--) {
+                int temp = array[j];
+                array[j] = array[j-1];
+                array[j-1] = temp;
+            }
+        }
+        System.out.println(Arrays.toString(array));
+        for(int i = 1; i < products.size(); i++){
+            for(int j = i; j>0 && products.get(j-1).getPrice()>products.get(j).getPrice();j--){
+                int temp = products.get(j).getPrice();
+                products.get(j).getPrice() = products.get(j).getPrice();
+                products.get(j-1).getPrice() = temp;
+            }
+        }
+
+    }*/
+
+    public void insertionSortArrayList(List<Product> list) {
+        for (int j = 1; j < list.size(); j++) {
+            Product current = list.get(j);
+            int i = j-1;
+            while ((i > -1) && ((list.get(i).compareTo(current)) == 1)) {
+                list.set(i+1, list.get(i));
+                i--;
+            }
+            list.set(i+1, current);
+        }
+    }
 
     /**
      * Save data clients.
