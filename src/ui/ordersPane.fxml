@@ -14,7 +14,7 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="509.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="509.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="41.0" layoutY="24.0" text="Nueva orden">
          <font>
@@ -37,13 +37,13 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label layoutX="473.0" layoutY="26.0" text="Productos">
+      <Label layoutX="494.0" layoutY="27.0" text="Productos">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comboProducts" layoutX="700.0" layoutY="231.0" prefHeight="26.0" prefWidth="134.0" promptText="Productos" />
-      <JFXButton buttonType="RAISED" layoutX="728.0" layoutY="294.0" onAction="#addProductToOrder" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: gray;" text="Agregar" />
+      <JFXComboBox fx:id="comboProducts" layoutX="715.0" layoutY="207.0" prefHeight="26.0" prefWidth="134.0" promptText="Productos" />
+      <JFXButton buttonType="RAISED" layoutX="737.0" layoutY="257.0" onAction="#addProductToOrder" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: gray;" text="Agregar" />
       <TableView fx:id="TorderProduct" layoutX="459.0" layoutY="73.0" prefHeight="342.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="CproductsOrder" prefWidth="199.0" text="Productos" />
@@ -71,22 +71,22 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
-      <Label layoutX="729.0" layoutY="26.0" text="Fecha">
+      <Label layoutX="695.0" layoutY="27.0" text="Fecha del pedido">
          <font>
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <Label fx:id="labelDate" layoutX="763.0" layoutY="73.0" text=":">
+      <Label fx:id="labelDate" layoutX="695.0" layoutY="58.0" prefHeight="49.0" prefWidth="281.0" text=":">
          <font>
-            <Font size="25.0" />
+            <Font size="17.0" />
          </font>
       </Label>
-      <Label layoutX="709.0" layoutY="351.0" text="Precio actual">
+      <Label layoutX="732.0" layoutY="325.0" text="Precio actual">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="labelPrice" layoutX="763.0" layoutY="384.0" text="0">
+      <Label fx:id="labelPrice" layoutX="789.0" layoutY="370.0" text="0">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
