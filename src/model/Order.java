@@ -10,11 +10,12 @@ public class Order implements Serializable {
     //Attributes.
     private  String code;//hacerlo autogenerado
     private  String feedback;
-    private Date hour;//mirar si sirve
     private  Date date;
     private boolean available;
     private String orderAddress;
     private int amountProducts;
+
+
 
     //Relationship.
     private  Client clientRequest;
@@ -25,9 +26,10 @@ public class Order implements Serializable {
     private Status status;
 
 
+
     public Order(Client clientRequest, Employee employee,String orderAddress) {
-        code = "A";
         feedback = "";
+        code = "";
         status = Status.REQUESTED;
         productsList = new ArrayList<>();
         available = true;
@@ -40,10 +42,23 @@ public class Order implements Serializable {
 
     //Getters and Setters.
 
+    public String getAmountProducts() {
+        return String.valueOf(amountProducts);
+    }
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
     public void setProductsList(ArrayList<Product> productsList) {
         this.productsList = productsList;
         amountProducts=productsList.size();
     }
+
 
     public User getCreatorU() {
         return creatorU;
@@ -70,6 +85,7 @@ public class Order implements Serializable {
     }
 
     public String getCode() {
+        generateCode();
         return code;
     }
 
@@ -85,24 +101,16 @@ public class Order implements Serializable {
         this.feedback = feedback;
     }
 
-    public Date getHour() {
-        return hour;
-    }
-
-    public void setHour(Date hour) {
-        this.hour = hour;
-    }
-
-    public Date getDate() {
-        return date;
+    public String getDate() {
+        return date.toString();
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
 
-    public Client getClientRequest() {
-        return clientRequest;
+    public String getClientRequest() {
+        return clientRequest.getName();
     }
 
     public void setClientRequest(Client clientRequest) {
@@ -113,10 +121,21 @@ public class Order implements Serializable {
         return productsList;
     }
 
+    public void generateCode() {
+        char o;
+        if(code.equals("")) {
+            o = (char)(Math.random()*26+'a');
+            code+=o;
+            for (int i = 0; i <3 ; i++) {
+                code+= (int)((Math.random())*(i+9)+2+i+1);
 
+            }
+        }
 
-    public Employee getEmployee() {
-        return employee;
+    }
+
+    public String getEmployee() {
+        return employee.getName();
     }
 
     public void setEmployee(Employee employee) {

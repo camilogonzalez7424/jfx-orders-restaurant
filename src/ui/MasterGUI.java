@@ -25,13 +25,11 @@ import model.Product;
 import model.Restaurant;
 import model.TypeProduct;
 import model.User;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.*;
+import java.text.SimpleDateFormat;
+
 
 
 public class MasterGUI {
@@ -998,6 +996,11 @@ public class MasterGUI {
 
     @FXML
     public void createOrder(ActionEvent event){
+        //para dar formato de la fecha
+        Date dateOfOrder = new Date();
+        String dateFormat = "dd/MM/yy - hh:mm:ss";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+
         ArrayList<Product>pChoosen;
         String  adrress, employee,feedback;
         int nameC = mainRestaurant.getClientSearched();
@@ -1017,11 +1020,10 @@ public class MasterGUI {
                 alert.showAndWait();
 
             }else{
-                System.out.println("hay feedback y se creo la orden");
                 pChoosen = new ArrayList<>(TorderProduct.getItems());
-                mainRestaurant.createOrder(employee,nameC,feedback,adrress,pChoosen,nameNosearched);
+                mainRestaurant.createOrder(employee,nameC,feedback,adrress,pChoosen,nameNosearched,dateOfOrder);
                 mainRestaurant.setClientSearchedIndex(-1);
-
+                labelDate.setText(sdf.format(dateOfOrder));
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Exito!");
                 alert.setContentText("Se ha creado una nueva orden");
@@ -1035,23 +1037,21 @@ public class MasterGUI {
                 TorderProduct.setItems(null);
                 TorderProduct.refresh();
                 //para mañana solucionar lo de las tablas en la interfaz y la clase date en los pedidos
+
             }
         }else{
-
             if (nameNosearched.equals("") || adrress.equals("") || employee.equals("")) {
-                System.out.println("No hay feedback");
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Datos incompletos");
                 alert.setHeaderText("Por favor llene todos los campos, no olvide elegir un producto");
-                alert.setContentText("Si no busco al cliente por favor complete el campo de direccion\n"+
-                        "CONSEJO: si escribe el nombre del cliente y le da a buscar la direccion se completa sola"
-                );
+                alert.setContentText("CONSEJO: si escribe el nombre del cliente y le da a buscar \n"+"la direccion se completa sola");
                 alert.showAndWait();
             }else{
-                System.out.println("No hay feedback y se creo la orden ");
+                //System.out.println("No hay feedback y se creo la orden ");
                 pChoosen = new ArrayList<>(TorderProduct.getItems());
-                mainRestaurant.createOrder(employee,nameC,adrress,pChoosen,nameNosearched);
+                mainRestaurant.createOrder(employee,nameC,adrress,pChoosen,nameNosearched,dateOfOrder);
                 mainRestaurant.setClientSearchedIndex(-1);
+                labelDate.setText(sdf.format(dateOfOrder));
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Exito!");
                 alert.setContentText("Se ha creado una nueva orden");
@@ -1406,6 +1406,7 @@ public class MasterGUI {
         CnameI.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("nameI"));
         CavalibleI.setCellValueFactory(new PropertyValueFactory<Ingredient, String>("isAvailable"));
 
+    //___________________________________ PRODUCTS TABLE___________________________________________________________
         ObservableList<Product> productsObservableList;
         productsObservableList = FXCollections.observableArrayList(mainRestaurant.getProducts());
         Tproducts.setItems(productsObservableList);
@@ -1415,12 +1416,22 @@ public class MasterGUI {
         CavalibeP.setCellValueFactory(new PropertyValueFactory<Product,String>("isAvailableP"));
         CtypeP.setCellValueFactory(new PropertyValueFactory<Product,String>("type"));
 
-
+    //____________________________ TYPE OF PRODUCTS TABLE______________________________________________________________
         ObservableList<TypeProduct>typeProductObservableList;
         typeProductObservableList = FXCollections.observableArrayList(mainRestaurant.getTypeProducts());
         Ttype.setItems(typeProductObservableList);
         CnameType.setCellValueFactory(new PropertyValueFactory<TypeProduct,String>("name") );
         CnameAvalibleT.setCellValueFactory(new PropertyValueFactory<TypeProduct,String>("isAvalibleT"));
+    //___________________________________ORDERS TABLE_________________________________________________
+        ObservableList<Order>orderObservableList;
+        orderObservableList = FXCollections.observableArrayList(mainRestaurant.getOrderList());
+        Torders.setItems(orderObservableList);
+        Ccode.setCellValueFactory(new PropertyValueFactory<Order,String>("code"));
+        Cdate.setCellValueFactory(new  PropertyValueFactory<Order,String>("date"));
+        Cclient.setCellValueFactory(new PropertyValueFactory<Order,String>("clientRequest"));
+        Cemployee.setCellValueFactory(new PropertyValueFactory<Order,String>("employee"));
+        Cstatus.setCellValueFactory(new PropertyValueFactory<Order,String>("status"));
+        CamountP.setCellValueFactory(new PropertyValueFactory<Order,String>("amountProducts"));
 
 
         updateInfoFromTableviewUsers();
@@ -1518,11 +1529,6 @@ public class MasterGUI {
     }
 
 
-    /**
-     * <b> Pre: para cambiar el si esta disponible debe escribir 'true' o 'false'</b>
-     *
-     *
-     */
 
     public void updateInfoFromTableviewIngredients(){
          CnameI.setCellFactory(TextFieldTableCell.forTableColumn());
