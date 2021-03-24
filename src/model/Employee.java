@@ -1,11 +1,13 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * The type Employee.
  */
 public class Employee extends  Person {
 
-    private int amountOfOrders;
+    private ArrayList<Order> amountOfOrders;
 
     /**
      * Instantiates a new Employee.
@@ -16,7 +18,14 @@ public class Employee extends  Person {
      */
     public Employee(String name, String lastname, String identification) {
         super(name,lastname,identification);
-         amountOfOrders = 0;
+         amountOfOrders = new ArrayList<>();
     }
 
+    public ArrayList<Order> getAmountOfOrders() {
+        return amountOfOrders;
+    }
+
+    public void setAmountOfOrders(ArrayList<Order> amountOfOrders) {
+        this.amountOfOrders = amountOfOrders;
+    }
 }

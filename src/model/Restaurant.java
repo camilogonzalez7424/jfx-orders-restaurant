@@ -540,6 +540,7 @@ public class Restaurant {
     public void createOrder(String employee, int client, String address, ArrayList<Product> productsIn, String name, Date date){
         boolean out=false;
         Client newClient=null;
+        int amount =0;
         Employee employeeAttending=null;
         if (client>=0){
             newClient = clientList.get(client);
@@ -565,6 +566,7 @@ public class Restaurant {
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
             orderList.add(newOrder);
+            employeeAttending.getAmountOfOrders().add(newOrder);
 
         }else{
             System.out.println("hay algo null");
@@ -581,6 +583,7 @@ public class Restaurant {
     public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn, String name, Date date){
         Client newClient1 = null;
         Employee employeeAttending=null;
+        int amount =0;
         boolean out=false;
         if (client>=0){
             newClient1 = clientList.get(client);
@@ -605,6 +608,7 @@ public class Restaurant {
             Order newOrder = new Order(newClient1,employeeAttending,address);
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
+            employeeAttending.getAmountOfOrders().add(newOrder);
             orderList.add(newOrder);
 
         }else{

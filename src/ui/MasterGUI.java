@@ -298,6 +298,7 @@ public class MasterGUI {
             mainRestaurant.loadDataIngredients();
             mainRestaurant.loadDataType();
             mainRestaurant.loadDataProduct();
+            mainRestaurant.loadDataOrder();
         } catch (Exception e) {
             System.out.println("Nothing yet");
         }
@@ -856,6 +857,7 @@ public class MasterGUI {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Lo sentimos");
             alert.setContentText("No hay clientes para hacer pedidos, por favor registra uno");
+            alert.showAndWait();
         }else{
             FXMLLoader open = new FXMLLoader(getClass().getResource("ordersPane.fxml"));
             open.setController(this);
