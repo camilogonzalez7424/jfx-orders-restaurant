@@ -29,6 +29,7 @@ public class Order implements Serializable {
 
     public Order(Client clientRequest, Employee employee,String orderAddress) {
         feedback = "";
+        code = "";
         status = Status.REQUESTED;
         productsList = new ArrayList<>();
         available = true;
