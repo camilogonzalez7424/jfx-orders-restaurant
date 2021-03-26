@@ -1,6 +1,7 @@
 package ui;
 
 import com.jfoenix.controls.*;
+import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,11 +14,13 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Duration;
 import model.Client;
 import model.Employee;
 import model.Ingredient;
@@ -48,7 +51,13 @@ public class MasterGUI {
     //____________________ A. MENU PANEL _______________
 
     @FXML
+    private AnchorPane slider;
+
+    @FXML
     private Label MenuClose;
+
+    @FXML
+    private Label Menu;
 
     @FXML
     private JFXTabPane managementTabs;
@@ -1577,6 +1586,42 @@ public class MasterGUI {
 
 
     }
+
+    @FXML
+    public void menuAction(MouseEvent event) {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
+
+        slide.setToX(0);
+        slide.play();
+
+        slider.setTranslateX(-330);
+
+        slide.setOnFinished((ActionEvent e)-> {
+            Menu.setVisible(false);
+            MenuClose.setVisible(true);
+        });
+    }
+
+
+    @FXML
+    public void menuCloseAction(MouseEvent event) {
+        TranslateTransition slide = new TranslateTransition();
+        slide.setDuration(Duration.seconds(0.4));
+        slide.setNode(slider);
+
+        slide.setToX(-330);
+        slide.play();
+
+        slider.setTranslateX(0);
+
+        slide.setOnFinished((ActionEvent e)-> {
+            Menu.setVisible(true);
+            MenuClose.setVisible(false);
+    });
+
+}
 
 
 

@@ -20,7 +20,7 @@
 
 <AnchorPane minHeight="700.0" minWidth="1260.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="430.0" prefWidth="225.0" style="-fx-background-color: #f0f7ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1033.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="slider" layoutY="40.0" prefHeight="686.0" prefWidth="255.0" style="-fx-background-color: #f0f7ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1033.0" AnchorPane.topAnchor="40.0">
          <children>
             <AnchorPane prefHeight="430.0" prefWidth="45.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <effect>
@@ -84,18 +84,6 @@
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font></JFXButton>
-            <Label fx:id="MenuClose" graphicTextGap="30.0" layoutX="14.0" layoutY="22.0" prefHeight="22.0" prefWidth="210.0" text="MENU" textAlignment="CENTER">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <font>
-                  <Font name="Carlito Bold Italic" size="14.0" />
-               </font>
-            </Label>
             <JFXButton alignment="BASELINE_LEFT" graphicTextGap="20.0" layoutX="7.0" layoutY="230.0" onAction="#setTabClients" prefHeight="60.0" prefWidth="225.0" ripplerFill="WHITE" styleClass="menuItem" stylesheets="@../../style/Style.css" text="Clientes" textAlignment="CENTER">
                <cursor>
                   <Cursor fx:constant="OPEN_HAND" />
@@ -249,5 +237,29 @@
             </MenuBar>
          </top>
       </BorderPane>
+      <Label fx:id="MenuClose" graphicTextGap="30.0" layoutX="23.0" layoutY="3.0" onMouseClicked="#menuCloseAction" prefHeight="22.0" prefWidth="210.0" text="MENU" textAlignment="CENTER">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Carlito Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="Menu" graphicTextGap="30.0" layoutX="23.0" layoutY="3.0" onMouseClicked="#menuAction" prefHeight="22.0" prefWidth="210.0" text="ME...">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="Carlito Bold Italic" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
