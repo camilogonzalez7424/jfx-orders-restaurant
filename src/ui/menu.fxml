@@ -235,7 +235,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Crear Reporte">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Nuevo Reporte" />
+                    <MenuItem mnemonicParsing="false" onAction="#exportOrder" text="Reporte Pedidos" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Gestion Pedidos">

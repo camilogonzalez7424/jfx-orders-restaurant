@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
@@ -25,6 +26,9 @@ import model.Product;
 import model.Restaurant;
 import model.TypeProduct;
 import model.User;
+
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.*;
@@ -437,21 +441,21 @@ public class MasterGUI {
         borderPane.setCenter(loginBack);
     }
 
-    /*@FXML
-    public void exportContact(ActionEvent event) {
+
+    public void exportOrder(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Export File");
-        File file =fileChooser.showSaveDialog(mainPanel.getScene().getWindow());
+        File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
-            contactManager.exportData(file.getAbsolutePath());
+            mainRestaurant.exportDataOrder(file.getAbsolutePath());
         } catch (FileNotFoundException e) {
 
         }
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Export Contacts");
-        alert.setContentText("Contacts were export");
+        alert.setTitle("Pedidos Exportadas");
+        alert.setContentText("Los pedidos fueron exportados");
         alert.showAndWait();
-    }*/
+    }
 
     @FXML
     public void setTabUsers(ActionEvent event) throws IOException {
@@ -828,11 +832,11 @@ public class MasterGUI {
             case "Cliente":
                 newClient(event);
                 initializeTables();
-                //TClients.refresh();
                 break;
             case "Producto":
                 newProduct(event);
                 initializeTables();
+                Tproducts.refresh();
                 break;
             case "Tipo de Producto":
                 newType(event);
@@ -856,7 +860,7 @@ public class MasterGUI {
         if (mainRestaurant.getClientList().isEmpty()){
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Lo sentimos");
-            alert.setContentText("No hay clientes para hacer pedidos, por favor registra uno");
+            alert.setContentText("No hay clientes para hacer pedidos, " + "\npor favor registra uno.");
             alert.showAndWait();
         }else{
             FXMLLoader open = new FXMLLoader(getClass().getResource("ordersPane.fxml"));

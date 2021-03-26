@@ -334,36 +334,6 @@ public class Restaurant {
           }
     }
 
-    /*public void insertionSort(){
-        ArrayList<Integer> a = new ArrayList<>();
-        for(int i = 0; i < p.size(); i++) {
-            a.add(products.get(i).getPrice());
-        }
-        System.out.println(a);
-        Integer[] array = new Integer[a.size()];
-        for(int i = 0; i < array.length; i++){
-            array = a.toArray(new Integer [0]);
-        }
-        //insertionSort
-        System.out.println(Arrays.toString(array));
-
-        for(int i =1; i < array.length; i++) {
-            for(int j = i; j>0 && array[j-1]>array[j];j--) {
-                int temp = array[j];
-                array[j] = array[j-1];
-                array[j-1] = temp;
-            }
-        }
-        System.out.println(Arrays.toString(array));
-        for(int i = 1; i < products.size(); i++){
-            for(int j = i; j>0 && products.get(j-1).getPrice()>products.get(j).getPrice();j--){
-                int temp = products.get(j).getPrice();
-                products.get(j).getPrice() = products.get(j).getPrice();
-                products.get(j-1).getPrice() = temp;
-            }
-        }
-
-    }*/
 
     public void insertionSortArrayList(List<Product> list) {
         for (int j = 1; j < list.size(); j++) {
@@ -580,7 +550,7 @@ public class Restaurant {
      *
      * @param feedback the feedback
      */
-    public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn, String name, Date date){
+    public void createOrder(String employee, int client, String feedback,String address, ArrayList<Product> productsIn, String name, Date date){
         Client newClient1 = null;
         Employee employeeAttending=null;
         int amount =0;
@@ -608,6 +578,7 @@ public class Restaurant {
             Order newOrder = new Order(newClient1,employeeAttending,address);
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
+            newOrder.setFeedback(feedback);
             employeeAttending.getAmountOfOrders().add(newOrder);
             orderList.add(newOrder);
 
@@ -786,15 +757,17 @@ public class Restaurant {
      * Export data order.
      *
      * @param fileName  the file name
-     * @param separator the separator
      * @throws FileNotFoundException the file not found exception
      */
-    public void exportDataOrder(String fileName,String separator) throws FileNotFoundException{
+    public void exportDataOrder(String fileName) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
+        String separator = ";";
 
         for(int i=0;i<orderList.size();i++){
             Order myOrder = orderList.get(i);
-            pw.println(myOrder.getCode()+separator+myOrder.getFeedback());
+            System.out.println(myOrder.getFeedback());
+            pw.println(myOrder.getClientRequest()+separator+myOrder.getOrderAddress()+separator);
+            System.out.println(myOrder.getFeedback());
         }
 
         pw.close();
