@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -273,9 +274,17 @@ public class MasterGUI {
     @FXML
     private JFXPasswordField txtLoginPass;
 
-    //---------------------------------
+    @FXML
+    private Tooltip toolTipPass;
 
-    //________________ A. REGISTER PANEL _________________
+
+
+
+
+
+    //____________________________________________________________________
+
+    //_____________________ A. REGISTER PANEL ____________________________
     @FXML
     private JFXTextField txtPassword;
 
@@ -349,6 +358,8 @@ public class MasterGUI {
             alert.setContentText("Revisa tus datos" + "\n" + "o crea una cuenta por favor :)");
             alert.showAndWait();
 
+
+
         }
 
 
@@ -370,6 +381,18 @@ public class MasterGUI {
         borderPane.setCenter(signUpPane);
 
     }
+
+
+    @FXML
+    void showPass(MouseEvent event) {
+
+        toolTipPass.setText("");
+        txtLoginPass.textProperty().bindBidirectional(toolTipPass.textProperty());
+        toolTipPass.setAutoHide(false);
+    }
+
+
+
     //_____________________________________________
 
 

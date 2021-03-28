@@ -4,6 +4,8 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -45,6 +47,13 @@
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
+               <tooltip>
+                  <Tooltip fx:id="toolTipPass" anchorLocation="WINDOW_TOP_LEFT" autoHide="true" contentDisplay="CENTER" text="Oculta" textAlignment="JUSTIFY">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </Tooltip>
+               </tooltip>
             </JFXPasswordField>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="186.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -56,6 +65,15 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </JFXTextField>
+            <Label layoutX="398.0" layoutY="413.0" onMouseClicked="#showPass" text="Ver">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/ver.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Label>
          </children>
       </Pane>
    </children>
