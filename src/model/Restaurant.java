@@ -759,16 +759,17 @@ public class Restaurant {
      * @param fileName  the file name
      * @throws FileNotFoundException the file not found exception
      */
-    public void exportDataOrder(String fileName) throws FileNotFoundException{
+    public void exportDataOrder(String fileName, String separator) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
-        String separator = ";";
 
-        for(int i=0;i<orderList.size();i++){
-            Order myOrder = orderList.get(i);
-            System.out.println(myOrder.getFeedback());
-            pw.println(myOrder.getClientRequest()+separator+myOrder.getOrderAddress()+separator);
-            System.out.println(myOrder.getFeedback());
-        }
+            for (int i = 0; i < orderList.size(); i++) {
+                Order myOrder = orderList.get(i);
+                pw.println(myOrder.getClientRequest() + separator + myOrder.getOrderAddress() +
+                        separator + myOrder.getEmployee() + separator + myOrder.getStatus() +
+                        separator + myOrder.getDate() + separator + myOrder.getFeedback());
+
+            }
+
 
         pw.close();
     }

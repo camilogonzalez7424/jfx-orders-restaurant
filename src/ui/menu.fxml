@@ -248,8 +248,11 @@
          <font>
             <Font name="Carlito Bold Italic" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
       </Label>
-      <Label fx:id="Menu" graphicTextGap="30.0" layoutX="23.0" layoutY="3.0" onMouseClicked="#menuAction" prefHeight="22.0" prefWidth="210.0" text="ME...">
+      <Label fx:id="Menu" graphicTextGap="30.0" layoutX="23.0" layoutY="3.0" onMouseClicked="#menuAction" prefHeight="22.0" prefWidth="210.0">
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -260,6 +263,9 @@
          <font>
             <Font name="Carlito Bold Italic" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
       </Label>
    </children>
 </AnchorPane>

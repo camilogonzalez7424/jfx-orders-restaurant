@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Order implements Serializable {
-    private  static final long serialVersionUID = 1;
+    private  static final long serialVersionUID = 2;
 
     //Attributes.
     private  String code;//hacerlo autogenerado
@@ -19,6 +19,7 @@ public class Order implements Serializable {
 
     //Relationship.
     private  Client clientRequest;
+    private Client clientPhone;
     private ArrayList<Product> productsList;
     private  Employee employee;
     private  User creatorU;
@@ -34,6 +35,7 @@ public class Order implements Serializable {
         productsList = new ArrayList<>();
         available = true;
         this.clientRequest =clientRequest;
+        this.clientPhone = clientPhone;
         this.employee = employee;
         this.orderAddress = orderAddress;
         amountProducts =0;
@@ -116,6 +118,10 @@ public class Order implements Serializable {
     public void setClientRequest(Client clientRequest) {
         this.clientRequest = clientRequest;
     }
+
+    public String getClientPhone(){return  clientPhone.getTelephone();}
+
+    public void setClientPhone(Client clientPhone){this.clientPhone = clientPhone;}
 
     public ArrayList<Product> getProductsList() {
         return productsList;

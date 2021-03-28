@@ -475,11 +475,30 @@ public class MasterGUI {
 
 
     public void exportOrder(ActionEvent event) {
+
+        List<String> choices = new ArrayList<>();
+        choices.add("-");
+        choices.add("/");
+        choices.add(",");
+        choices.add(":");
+        choices.add("~");
+        choices.add("\\");
+
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(";", choices);
+        dialog.setTitle("Elige el separador");
+        dialog.setHeaderText("Elija el separador con el cual se exportara el reporte\nSi no desea escoger oprima aceptar y por defecto será \";\". ");
+        dialog.setContentText("Elige el separador:");
+
+        Optional<String> result = dialog.showAndWait();
+        String separator = result.get();
+
+
+
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Export File");
         File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
-            mainRestaurant.exportDataOrder(file.getAbsolutePath());
+            mainRestaurant.exportDataOrder(file.getAbsolutePath() , separator);
         } catch (FileNotFoundException e) {
 
         }
@@ -487,6 +506,8 @@ public class MasterGUI {
         alert.setTitle("Pedidos Exportadas");
         alert.setContentText("Los pedidos fueron exportados");
         alert.showAndWait();
+
+
     }
 
     @FXML
