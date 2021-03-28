@@ -216,14 +216,18 @@
          <top>
             <MenuBar BorderPane.alignment="CENTER">
               <menus>
-                <Menu mnemonicParsing="false" text="Importar">
+                <Menu mnemonicParsing="false" text="Importar Reportes">
                   <items>
-                    <MenuItem mnemonicParsing="false" text="Desde el archivo" />
+                    <MenuItem mnemonicParsing="false" onAction="#importOrder" text="Importar Pedidos" />
+                        <MenuItem mnemonicParsing="false" onAction="#importClient" text="Importar Clientes" />
+                        <MenuItem mnemonicParsing="false" onAction="#importProduct" text="Importar Productos" />
                   </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Crear Reporte">
+                <Menu mnemonicParsing="false" text="Exportar Reportes">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#exportOrder" text="Reporte Pedidos" />
+                        <MenuItem mnemonicParsing="false" onAction="#exportEmployee" text="Reporte Empleados" />
+                        <MenuItem mnemonicParsing="false" onAction="#exportProduct" text="Reporte Productos" />
                   </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Gestion Pedidos">

@@ -471,6 +471,18 @@ public class MasterGUI {
         Parent loginBack = fxmlLoader.load();
 
         borderPane.setCenter(loginBack);
+
+
+    }
+
+    @FXML
+    public void exportEmployee(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void exportProduct(ActionEvent event) {
+
     }
 
 
@@ -495,18 +507,52 @@ public class MasterGUI {
 
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Export File");
+        fileChooser.setTitle("Abrir archivo de Exportación");
         File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
             mainRestaurant.exportDataOrder(file.getAbsolutePath() , separator);
         } catch (FileNotFoundException e) {
-
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Exportar Pedidos");
+            alert.setContentText("No se pudo exportar la información,\nSe produjo un error");
+            alert.showAndWait();
         }
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Pedidos Exportadas");
         alert.setContentText("Los pedidos fueron exportados");
         alert.showAndWait();
 
+
+    }
+
+    @FXML
+    public void importClient(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de recursos");
+        File f =fileChooser.showOpenDialog(borderPane.getScene().getWindow());
+        if(f != null) {
+            try {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Import Contacts");
+                mainRestaurant.importClient(f.getAbsolutePath());
+                alert.setContentText("Contact were import");
+                alert.showAndWait();
+            } catch (IOException e) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Import Contacts");
+                alert.setContentText("Import couldn´t be imported, an error ocurred");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    @FXML
+    public void importOrder(ActionEvent event) {
+
+    }
+
+    @FXML
+    public void importProduct(ActionEvent event) {
 
     }
 

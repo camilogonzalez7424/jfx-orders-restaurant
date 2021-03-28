@@ -1,5 +1,7 @@
 package model;
 
+import javafx.scene.control.Separator;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -762,16 +764,31 @@ public class Restaurant {
     public void exportDataOrder(String fileName, String separator) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
 
+        pw.println("Nombre"+separator+"Dirección"+separator+"Empleado"+separator+"Estado"+separator);
+
             for (int i = 0; i < orderList.size(); i++) {
                 Order myOrder = orderList.get(i);
-                pw.println(myOrder.getClientRequest() + separator + myOrder.getOrderAddress() +
-                        separator + myOrder.getEmployee() + separator + myOrder.getStatus() +
+                pw.println(myOrder.getClientRequest() + separator +"  "+myOrder.getOrderAddress() +
+                        separator +"  "+ myOrder.getEmployee() + separator +"  "+myOrder.getStatus() +
                         separator + myOrder.getDate() + separator + myOrder.getFeedback());
 
             }
 
 
         pw.close();
+    }
+//__________________________________ IMPORT DATA ____________________________
+    public void importClient(String fileName) throws IOException{
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String separator = ",";
+        String line = br.readLine();
+        while(line!=null){
+                String[] parts = line.split(separator);
+                createClient(parts[0], parts[1], parts[2], parts[3], parts[4]);
+                line = br.readLine();
+            }
+
+        br.close();
     }
 
 
