@@ -2,7 +2,6 @@ package model;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -18,6 +17,7 @@ public class Restaurant {
 
     //Atributes
     private  int clientSearchedIndex; // es el indice del cliente que se busca a la hora de hacer una orden
+
     //Relationship.
     private ArrayList<Client> clientList;
     private ArrayList<Product> products;
@@ -42,9 +42,11 @@ public class Restaurant {
         ingredientsList = new ArrayList<>();
         typeProducts = new ArrayList<>();
         clientSearchedIndex=0;
+
     }
 
     //Getters and Setters.
+
 
 
     public int getClientSearched() {
@@ -114,7 +116,7 @@ public class Restaurant {
         for (int i = 0; i <users.size() && !can ; i++) {
             if (userName.equals(users.get(i).getUserName()) && passWord.equals(users.get(i).getPassword())) {
                 can = true;
-
+                setCurrentUser(users.get(i));
             }
         }
 
@@ -132,7 +134,10 @@ public class Restaurant {
      * @param password        the password is type String.
      */
     public void createUser(String nameE, String lastnameE, String identificationE, String userName , String password){
-        users.add(new User(nameE,lastnameE,identificationE,userName,password));
+        User newUser =new User(nameE,lastnameE,identificationE,userName,password);
+        users.add(newUser);
+        employees.add(newUser);
+        setCurrentUser(newUser);
     }
 
 
@@ -149,9 +154,11 @@ public class Restaurant {
         boolean deleted = false;
         for (int i = 0; i <users.size() && !deleted; i++) {
             if(userName.equals(users.get(i).getUserName())){
-                users.remove(i);
-                deleted=true;
+                    users.remove(i);
+                    deleted=true;
             }
+
+
         }
 
         return deleted;
@@ -194,12 +201,10 @@ public class Restaurant {
      */
     public void loadDataUser() throws IOException, ClassNotFoundException {
         File f = new File(SAVE_PATH_FILE_USERS);
-        boolean loaded = false;
         if(f.exists()){
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
             users = (ArrayList<User>) ois.readObject();
             ois.close();
-            loaded = true;
         }
 
     }
@@ -209,10 +214,10 @@ public class Restaurant {
 
     /**/
    public void  createIngredient(String name) {
-        ingredientsList.add(new Ingredient(name));
+       Ingredient newIngredient = new Ingredient(name);
+       newIngredient.setCreatorU(getCurrentUser());
+       ingredientsList.add(newIngredient);
    }
-
-
     public boolean deleteIngredient(String name){
         boolean deletedIngredient = false;
         for (int i = 0; i <ingredientsList.size() && !deletedIngredient; i++) {
@@ -254,8 +259,11 @@ public class Restaurant {
 
 // ------------------------------------- EMPLOYEES REQUIREMENTS-------------------------------------------------
 
-    public  void  createEmployee(String name, String lastname, String identification){
-       employees.add(new Employee(name,lastname,identification));
+    public void createEmployee(String name, String lastname, String identification){
+       Employee newEmployee = new Employee(name,lastname,identification);
+       newEmployee.setCurrentUser(getCurrentUser());
+       employees.add(newEmployee);
+
     }
 
 
@@ -263,6 +271,7 @@ public class Restaurant {
         boolean deleEmployee = false;
         for (int i = 0; i <employees.size() && !deleEmployee; i++) {
             if(name.equals(employees.get(i).getName())){
+                users.remove(employees.get(i));
                 employees.remove(i);
                 deleEmployee=true;
             }
@@ -273,9 +282,12 @@ public class Restaurant {
 
     public boolean disableEmployee(String name){
         boolean disable = false;
+        int index;
         for (int i = 0; i <employees.size() && !disable ; i++) {
             if(name.equals(employees.get(i).getName())){
                 employees.get(i).setHabilitate(false);
+                index = users.indexOf(employees.get(i));
+                users.get(index).setHabilitate(false);
                 disable = true;
             }
         }
@@ -302,9 +314,6 @@ public class Restaurant {
 
 // __________________________ CLIENTS REQUIREMENTS ____________________________________-
 
-
-
-
     /**
      * Create client.
      * @param name           the name
@@ -314,6 +323,7 @@ public class Restaurant {
      */
     public void createClient(String name, String lastName, String identification, String address,String telephone){
         Client newClient = new Client(name, lastName, identification, address,telephone);
+        newClient.setCurrentUser(getCurrentUser());
         Collections.sort(clientList);
         addSorted(newClient);
     }
@@ -454,13 +464,16 @@ public class Restaurant {
      * @param price the price
      * @param name the nameT
      */
-    public void createProduct(String nameP, String size, int price, String name){
+    public void createProduct(String nameP, String size, int price, String name, ArrayList<Ingredient> ichoosen){
         TypeProduct nameT;
         boolean found=false;
         for (int i = 0; i <typeProducts.size() && !found; i++) {
             if (typeProducts.get(i).getName().equals(name)){
                 nameT = typeProducts.get(i);
-                products.add(new Product(nameP,size,price,nameT));
+                Product newProduct =new Product(nameP,size,price,nameT);
+                newProduct.setIngredients(ichoosen);
+                newProduct.setCreatorU(getCurrentUser());
+                products.add(newProduct);
                 found = true;
             }
         }
@@ -565,6 +578,7 @@ public class Restaurant {
             Order newOrder = new Order(newClient,employeeAttending,address);
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
+            newOrder.setCreatorU(getCurrentUser());
             orderList.add(newOrder);
             employeeAttending.getAmountOfOrders().add(newOrder);
 
@@ -583,7 +597,6 @@ public class Restaurant {
     public void createOrder(String employee, int client, String address,String feedback, ArrayList<Product> productsIn, String name, Date date){
         Client newClient1 = null;
         Employee employeeAttending=null;
-        int amount =0;
         boolean out=false;
         if (client>=0){
             newClient1 = clientList.get(client);
@@ -608,7 +621,9 @@ public class Restaurant {
             Order newOrder = new Order(newClient1,employeeAttending,address);
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
+            newOrder.setCreatorU(getCurrentUser());
             employeeAttending.getAmountOfOrders().add(newOrder);
+
             orderList.add(newOrder);
 
         }else{
@@ -806,7 +821,8 @@ public class Restaurant {
 //______________________TYPE REQUIREMNTS__________________________________________
 
    public void createType(String name){
-        typeProducts.add(new TypeProduct(name));
+        TypeProduct newType = new TypeProduct(name);
+        typeProducts.add(newType);
    }
 
 
@@ -849,6 +865,9 @@ public class Restaurant {
         }
 
     }
+
+
+
 
 
 

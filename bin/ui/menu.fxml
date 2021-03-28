@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="700.0" minWidth="1260.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="700.0" minWidth="1260.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="430.0" prefWidth="225.0" style="-fx-background-color: #f0f7ff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1033.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -163,7 +163,7 @@
       </AnchorPane>
       <BorderPane layoutX="227.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="227.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <JFXTabPane fx:id="managementTabs" prefHeight="437.0" prefWidth="473.0" style="-fx-background-color: gray;" tabClosingPolicy="ALL_TABS" />
+            <JFXTabPane fx:id="managementTabs" prefHeight="437.0" prefWidth="473.0" style="-fx-background-color: gray;" tabClosingPolicy="ALL_TABS" BorderPane.alignment="CENTER" />
          </center>
          <right>
             <Pane prefHeight="440.0" prefWidth="480.0" BorderPane.alignment="CENTER">
@@ -222,6 +222,7 @@
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor></JFXComboBox>
                   <JFXTextField fx:id="txtTelephoneU" alignment="CENTER" layoutX="240.0" layoutY="198.0" promptText="Telefono" visible="false" />
+                  <JFXButton fx:id="buttonAddIngredient" layoutX="242.0" layoutY="538.0" onAction="#addIngredientToProduct" style="-fx-background-color: gray;" text="Agregar Ingrediente" visible="false" />
                </children>
             </Pane>
          </right>
@@ -241,8 +242,8 @@
                 <Menu mnemonicParsing="false" text="Gestion Pedidos">
                   <items>
                     <MenuItem mnemonicParsing="false" onAction="#orderPane" text="Nuevo Pedido" />
-                        <MenuItem mnemonicParsing="false" text="Actualizar estado de pedido" />
-                        <MenuItem mnemonicParsing="false" text="Cancelar peido" />
+                        <MenuItem mnemonicParsing="false" onAction="#updateOrderStatus" text="Actualizar estado de pedido" />
+                        <MenuItem mnemonicParsing="false" onAction="#cancelOrder" text="Cancelar peido" />
                   </items>
                 </Menu>
               </menus>

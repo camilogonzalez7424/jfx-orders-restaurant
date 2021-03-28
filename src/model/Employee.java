@@ -28,4 +28,6 @@ public class Employee extends  Person {
     public void setAmountOfOrders(ArrayList<Order> amountOfOrders) {
         this.amountOfOrders = amountOfOrders;
     }
+
+
 }
