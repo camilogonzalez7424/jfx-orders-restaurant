@@ -5,13 +5,11 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -30,9 +28,7 @@ import java.io.FileNotFoundException;
 import javafx.util.Duration;
 import model.*;
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.List;
 import java.text.SimpleDateFormat;
@@ -1476,6 +1472,8 @@ public class MasterGUI {
                             alert.showAndWait();
                             Torders.refresh();
                             break;
+					default:
+						break;
                     }
                 }
                 
