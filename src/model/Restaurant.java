@@ -898,6 +898,28 @@ public class Restaurant {
 
     }
 
+    //---------- Order option--------
+    public void orderIngredients(){
+        boolean changed = true;
+        for(int i =1; i<ingredientsList.size() && changed; i++) {
+            changed=false;
+            for(int j=0; j<ingredientsList.size()-1; j++) {
+                if(ingredientsList.get(j).getNameI().compareToIgnoreCase(ingredientsList.get(j+1).getNameI())<0) {
+                    Ingredient temp = ingredientsList.get(j);
+                    ingredientsList.set(j,ingredientsList.get(j+1));
+                    ingredientsList.set((j+1),temp);
+                    changed = true;
+                }
+            }
+
+
+        }
+    }
+
+    public void sortEmployees(){
+        Comparator<Employee> employeeNameComparator = (employee1, employee2) -> employee1.getName().compareToIgnoreCase(employee2.getName());
+        Collections.sort(employees,employeeNameComparator);
+    }
 
 
 

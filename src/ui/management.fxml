@@ -139,6 +139,7 @@
                         <TableColumn fx:id="CavalibleI" prefWidth="319.0" text="Esta Disponible" />
                      </columns>
                   </TableView>
+                  <JFXButton alignment="CENTER" buttonType="RAISED" layoutX="65.0" layoutY="83.0" onAction="#sortIngredients" style="-fx-background-color: gray;" text="Ordenar" />
                </children>
             </AnchorPane>
          </content>
