@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Order implements Serializable {
-    private  static final long serialVersionUID = 2;
+    private  static final long serialVersionUID = 3;
 
     //Attributes.
     private  String code;//hacerlo autogenerado
@@ -14,12 +14,12 @@ public class Order implements Serializable {
     private boolean available;
     private String orderAddress;
     private int amountProducts;
+    private int price;
 
 
 
     //Relationship.
     private  Client clientRequest;
-    private Client clientPhone;
     private ArrayList<Product> productsList;
     private  Employee employee;
     private  User creatorU;
@@ -35,10 +35,10 @@ public class Order implements Serializable {
         productsList = new ArrayList<>();
         available = true;
         this.clientRequest =clientRequest;
-        this.clientPhone = clientPhone;
         this.employee = employee;
         this.orderAddress = orderAddress;
         amountProducts =0;
+        price = 0;
 
     }
 
@@ -46,6 +46,19 @@ public class Order implements Serializable {
 
     public String getAmountProducts() {
         return String.valueOf(amountProducts);
+    }
+
+    public int getPrice() {
+        if(productsList.size() != 0){
+            for(int i = 0; i < productsList.size(); i++){
+            price += productsList.get(i).getPrice();
+             }
+        }
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getOrderAddress() {
@@ -60,6 +73,8 @@ public class Order implements Serializable {
         this.productsList = productsList;
         amountProducts=productsList.size();
     }
+
+    public Client getClient(){ return  clientRequest;}
 
 
     public User getCreatorU() {
@@ -119,9 +134,6 @@ public class Order implements Serializable {
         this.clientRequest = clientRequest;
     }
 
-    public String getClientPhone(){return  clientPhone.getTelephone();}
-
-    public void setClientPhone(Client clientPhone){this.clientPhone = clientPhone;}
 
     public ArrayList<Product> getProductsList() {
         return productsList;

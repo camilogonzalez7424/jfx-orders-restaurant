@@ -536,12 +536,76 @@ public class MasterGUI {
 
     @FXML
     public void exportEmployee(ActionEvent event) {
+        List<String> choices = new ArrayList<>();
+        choices.add("-");
+        choices.add("/");
+        choices.add(",");
+        choices.add(":");
+        choices.add("~");
+        choices.add("\\");
 
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(";", choices);
+        dialog.setTitle("Elige el separador");
+        dialog.setHeaderText("Elija el separador con el cual se exportara el reporte\nSi no desea escoger oprima aceptar y por defecto será \";\". ");
+        dialog.setContentText("Elige el separador:");
+
+        Optional<String> result = dialog.showAndWait();
+        String separator = result.get();
+
+
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de Exportación");
+        File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
+        try {
+            mainRestaurant.exportDataEmployee(file.getAbsolutePath() , separator);
+        } catch (FileNotFoundException e) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Exportar Empleados");
+            alert.setContentText("No se pudo exportar la información,\nSe produjo un error");
+            alert.showAndWait();
+        }
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Empleados Exportados");
+        alert.setContentText("Los empleados fueron exportados");
+        alert.showAndWait();
     }
 
     @FXML
     public void exportProduct(ActionEvent event) {
+        List<String> choices = new ArrayList<>();
+        choices.add("-");
+        choices.add("/");
+        choices.add(",");
+        choices.add(":");
+        choices.add("~");
+        choices.add("\\");
 
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(";", choices);
+        dialog.setTitle("Elige el separador");
+        dialog.setHeaderText("Elija el separador con el cual se exportara el reporte\nSi no desea escoger oprima aceptar y por defecto será \";\". ");
+        dialog.setContentText("Elige el separador:");
+
+        Optional<String> result = dialog.showAndWait();
+        String separator = result.get();
+
+
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de Exportación");
+        File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
+        try {
+            mainRestaurant.exportDataProduct(file.getAbsolutePath() , separator);
+        } catch (FileNotFoundException e) {
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Exportar Productos");
+            alert.setContentText("No se pudo exportar la información,\nSe produjo un error");
+            alert.showAndWait();
+        }
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Productos Exportados");
+        alert.setContentText("Los Productos fueron exportados");
+        alert.showAndWait();
     }
 
 
@@ -577,12 +641,13 @@ public class MasterGUI {
             alert.showAndWait();
         }
         Alert alert = new Alert(AlertType.INFORMATION);
-        alert.setTitle("Pedidos Exportadas");
+        alert.setTitle("Pedidos Exportados");
         alert.setContentText("Los pedidos fueron exportados");
         alert.showAndWait();
 
 
     }
+//________________________________________ IMPORT GUI __________________________
 
     @FXML
     public void importClient(ActionEvent event) {
@@ -613,15 +678,15 @@ public class MasterGUI {
         if(f != null) {
             try {
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Importar Clientes");
+                alert.setTitle("Importar Pedidos");
                 mainRestaurant.importOrder(f.getAbsolutePath());
-                alert.setContentText("Los clientes fueron importados");
+                alert.setContentText("Los pedidos fueron importados");
                 alert.showAndWait();
 
 
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("Importar Clientes");
+                alert.setTitle("Importar Pedidos");
                 alert.setContentText("No se pudo importar los datos, ocurrio un error.");
                 alert.showAndWait();
             }
@@ -636,14 +701,14 @@ public class MasterGUI {
         if(f != null) {
             try {
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Import Contacts");
+                alert.setTitle("Importar Productos");
                 mainRestaurant.importProduct(f.getAbsolutePath());
-                alert.setContentText("Contact were import");
+                alert.setContentText("Los Productos fueron Importados");
                 alert.showAndWait();
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.WARNING);
-                alert.setTitle("Import Contacts");
-                alert.setContentText("Import couldn´t be imported, an error ocurred");
+                alert.setTitle("Importar Productos");
+                alert.setContentText("No se pudo importar los datos, ocurrio un error.");
                 alert.showAndWait();
             }
         }
@@ -1396,19 +1461,22 @@ public class MasterGUI {
                             alert.setHeaderText(null);
                             alert.setContentText("La orden "+result.get()+" ha sido actualizada");
                             alert.showAndWait();
-                                          break;
+                            Torders.refresh();
+                            break;
                         case IN_PROGRESS: mainRestaurant.getOrderList().get(i).setStatus(Status.SENT);
                             alert.setTitle("Accion completa");
                             alert.setHeaderText(null);
                             alert.setContentText("La orden "+result.get()+" ha sido actualizada");
                             alert.showAndWait();
-                                          break;
+                            Torders.refresh();
+                            break;
                         case  SENT: mainRestaurant.getOrderList().get(i).setStatus(Status.DELIVERED);
                             alert.setTitle("Accion completa");
                             alert.setHeaderText(null);
                             alert.setContentText("La orden "+result.get()+" ha sido actualizada");
                             alert.showAndWait();
-                                          break;
+                            Torders.refresh();
+                            break;
                     }
                 }
                 

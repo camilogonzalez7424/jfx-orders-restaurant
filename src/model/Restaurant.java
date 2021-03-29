@@ -5,10 +5,7 @@ import javafx.scene.control.Separator;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class Restaurant {
     public final static String SAVE_PATH_FILE_USERS = "data/users.txt";
@@ -696,10 +693,20 @@ public class Restaurant {
      */
     public void exportDataEmployee(String fileName,String separator) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
-
         for(int i=0;i<employees.size();i++){
+            int delivered = 0;
+            int price = 0;
             Employee myEmployee = employees.get(i);
-            pw.println(myEmployee.getName()+separator+myEmployee.getLastName()+separator+myEmployee.getIdentification());
+            for (int j = 0; j < myEmployee.getAmountOfOrders().size(); j++ ){
+                System.out.println(myEmployee.getAmountOfOrders().get(j).getStatus());
+                if(myEmployee.getAmountOfOrders().get(j).getStatus().equals(Status.DELIVERED)){
+                    System.out.println("Hello Pri");
+                    delivered = myEmployee.getAmountOfOrders().size();
+                    price += myEmployee.getAmountOfOrders().get(j).getPrice();
+                }
+            }
+
+            pw.println(myEmployee.getName()+separator+delivered+separator+price);
         }
 
         pw.close();
@@ -717,8 +724,7 @@ public class Restaurant {
 
         for(int i=0;i< products.size();i++){
             Product myProduct = products.get(i);
-            pw.println(myProduct.getNameP()+separator+myProduct.getSize()+separator+
-                    myProduct.getPrice()+separator+myProduct.getType());
+            pw.println(myProduct.getNameP()+separator+myProduct.getAmountOfRequest()+separator+(myProduct.getAmountOfRequest()*myProduct.getPrice()));
         }
 
         pw.close();
@@ -730,19 +736,37 @@ public class Restaurant {
      * @param fileName  the file name
      * @throws FileNotFoundException the file not found exception
      */
+    //CORREGIR.
     public void exportDataOrder(String fileName, String separator) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
 
         pw.println("Nombre"+separator+"Dirección"+separator+"Empleado"+separator+"Estado"+separator);
-
             for (int i = 0; i < orderList.size(); i++) {
+                String values = "";
+                String values1 = "";
+                String toReport = "";
                 Order myOrder = orderList.get(i);
-                pw.println(myOrder.getClientRequest() + separator +"  "+myOrder.getOrderAddress() +
-                        separator +"  "+ myOrder.getEmployee() + separator +"  "+myOrder.getStatus() +
-                        separator + myOrder.getDate() + separator + myOrder.getFeedback());
-
+                for(int j = 0; j<myOrder.getProductsList().size(); j++){
+                    values += myOrder.getProductsList().get(j).getNameP();
+                    values1 += myOrder.getProductsList().get(j).getPrice();
+                    toReport += values+separator+values1;
+                }
+                String out[] = toReport.split(separator);
+                int n = 0;
+                pw.print(myOrder.getClientRequest() + separator +"  "+myOrder.getOrderAddress() +
+                        separator +myOrder.getClient().getTelephone()+separator+"  "+ myOrder.getEmployee() + separator +"  "+myOrder.getStatus() +
+                        separator + myOrder.getDate() + separator + myOrder.getFeedback()+separator);
+                while (n < out.length-1){
+                   if((2*n)< out.length && (2*(n+1)< out.length)) {
+                       pw.print(out[2 * n] + separator + out[2 * (n + 1)]);
+                   }
+                    n++;
+                }
+                pw.println();
             }
+
         pw.close();
+
     }
 
 
@@ -762,10 +786,14 @@ public class Restaurant {
 
     public void importOrder(String fileName) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
-        String separator = ";";
+        String separator = "~";
         String line = br.readLine();
         while(line!=null){
+            int amount = 0;
             String[] parts = line.split(separator);
+
+
+
 
 
             createEmployee(parts[0],parts[1],parts[2]);
@@ -782,6 +810,9 @@ public class Restaurant {
             importProduct.setIngredients(newIngredient);
             newProduct.add(importProduct);
             products.add(importProduct);
+            amount = importProduct.getAmountOfRequest();
+            amount += 1;
+            importProduct.setAmountOfRequest(amount);
 
             createClient(parts[10],parts[11],parts[12],parts[13],parts[14]);
 
