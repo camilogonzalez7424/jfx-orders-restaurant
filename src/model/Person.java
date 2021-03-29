@@ -78,4 +78,5 @@ public abstract class Person implements Serializable {
     public void setHabilitate(boolean habilitate) {
         this.habilitate = habilitate;
     }
+
 }

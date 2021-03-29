@@ -74,6 +74,7 @@
                   </ImageView>
                </graphic>
             </Label>
+            <Label fx:id="labelTime" layoutX="346.0" layoutY="40.0" prefHeight="32.0" prefWidth="123.0" />
          </children>
       </Pane>
    </children>

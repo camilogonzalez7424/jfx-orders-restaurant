@@ -94,6 +94,7 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </JFXButton>
+            <Label fx:id="labelTime1" layoutX="261.0" layoutY="4.0" prefHeight="28.0" prefWidth="162.0" />
          </children>
       </AnchorPane>
    </center>

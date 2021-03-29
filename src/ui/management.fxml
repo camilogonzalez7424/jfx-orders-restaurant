@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="778.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="778.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
       <Tab fx:id="TabUser" text="Usuarios">
          <content>
@@ -86,7 +86,7 @@
                         <Font name="System Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Torders" layoutY="154.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="771.0">
+                  <TableView fx:id="Torders" layoutY="154.0" onMouseExited="#saveDataUpdated" prefHeight="292.0" prefWidth="769.0">
                      <columns>
                         <TableColumn fx:id="Ccode" prefWidth="125.0" text="Codigo" />
                         <TableColumn fx:id="Cdate" prefWidth="118.0" text="Fecha" />
@@ -104,21 +104,22 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="178.0" layoutY="102.0" text="Lista de Productos">
+                  <Label layoutX="213.0" layoutY="65.0" text="Lista de Productos">
                      <font>
                         <Font name="System Bold Italic" size="30.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="Tproducts" layoutY="175.0" onMouseExited="#saveDataUpdated" prefHeight="350.0" prefWidth="660.0">
+                  <TableView fx:id="Tproducts" layoutY="153.0" onMouseExited="#saveDataUpdated" prefHeight="372.0" prefWidth="639.0">
                      <columns>
                         <TableColumn fx:id="CnameP" prefWidth="156.0" text="Nombre" />
                         <TableColumn fx:id="CsizeP" prefWidth="129.0" text="Tamaño" />
                         <TableColumn fx:id="CpriceP" prefWidth="119.0" text="Precio" />
-                        <TableColumn fx:id="CavalibeP" prefWidth="132.0" text="Esta Disponible" />
                         <TableColumn fx:id="CtypeP" prefWidth="96.0" text="Tipo" />
+                        <TableColumn fx:id="CavalibeP" prefWidth="132.0" text="Esta Disponible" />
                      </columns>
                   </TableView>
-                  <JFXButton buttonType="RAISED" layoutX="534.0" layoutY="102.0" onAction="#sortProduct" style="-fx-background-color: gray;" text="Ordenar" />
+                  <JFXButton buttonType="RAISED" layoutX="62.0" layoutY="70.0" onAction="#sortProduct" style="-fx-background-color: gray;" text="Ordenar" />
+                  <JFXButton buttonType="RAISED" layoutX="35.0" layoutY="107.0" onAction="#showIngredientsOfProducts" style="-fx-background-color: gray;" text="Ver ingredientes" />
                </children>
             </AnchorPane>
          </content>

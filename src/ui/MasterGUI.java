@@ -1,6 +1,9 @@
 package ui;
 
 import com.jfoenix.controls.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -12,6 +15,7 @@ import javafx.geometry.Point2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
@@ -21,21 +25,17 @@ import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
-import javafx.util.Duration;
-import model.Client;
-import model.Employee;
-import model.Ingredient;
-import model.Order;
-import model.Product;
-import model.Restaurant;
-import model.TypeProduct;
-import model.User;
-
 import java.io.File;
 import java.io.FileNotFoundException;
+
+import javafx.util.Duration;
+import model.*;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.List;
 import java.text.SimpleDateFormat;
 
 
@@ -44,6 +44,7 @@ public class MasterGUI {
 
     //Relationship.
     private Restaurant mainRestaurant;
+
 
     /* NOTES:
        Attributes = A.
@@ -83,6 +84,11 @@ public class MasterGUI {
 
     @FXML
     private JFXTextField txtPriceM;
+
+    @FXML
+    private JFXButton buttonAddIngredient;
+
+
 
     @FXML
     private JFXTabPane management;
@@ -187,6 +193,22 @@ public class MasterGUI {
     private TableColumn<Product, String> CtypeP;
 
     @FXML
+    private TableView<Ingredient> TingredientP;
+
+    @FXML
+    private TableColumn<Ingredient, String> CingredientProduc;
+
+    @FXML
+    private JFXComboBox<String> comboAddIngredient;
+
+    @FXML
+    private JFXTreeView<String> TreeIng;
+    @FXML
+    private AnchorPane treePane;
+
+
+
+    @FXML
     private Tab TabIngredients;
 
     @FXML
@@ -259,6 +281,9 @@ public class MasterGUI {
     @FXML
     private Label labelPrice;
 
+    @FXML
+    private Label labelTime2;
+
 
 
     //_____________ A. MAIN PANEL ____________
@@ -277,6 +302,8 @@ public class MasterGUI {
     @FXML
     private Tooltip toolTipPass;
 
+    @FXML
+    private Label labelTime;
 
 
 
@@ -300,6 +327,9 @@ public class MasterGUI {
     @FXML
     private JFXTextField txtId;
 
+    @FXML
+    private  Label labelTime1;
+
     //------------------------------------------------------------
 
     //_________________ MASTERGUI _______________________
@@ -321,6 +351,16 @@ public class MasterGUI {
             mainRestaurant.loadDataType();
             mainRestaurant.loadDataProduct();
             mainRestaurant.loadDataOrder();
+
+            Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+                LocalTime currentTime = LocalTime.now();
+                labelTime.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
+            }),
+                    new KeyFrame(Duration.seconds(1))
+            );
+            clock.setCycleCount(Animation.INDEFINITE);
+            clock.play();
+
         } catch (Exception e) {
             System.out.println("Nothing yet");
         }
@@ -342,12 +382,20 @@ public class MasterGUI {
      */
     @FXML
     public void logIn(ActionEvent event) throws IOException {
-
         if (mainRestaurant.canLogin(txtLoginUser.getText(), txtLoginPass.getText())) {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("menu.fxml"));
             fxmlLoader.setController(this);
             Parent menuPane = fxmlLoader.load();
             borderPane.setCenter(menuPane);
+
+            Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+                LocalTime currentTime = LocalTime.now();
+                labelTime2.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
+            }),
+                    new KeyFrame(Duration.seconds(1))
+            );
+            clock.setCycleCount(Animation.INDEFINITE);
+            clock.play();
 
 
 
@@ -357,6 +405,7 @@ public class MasterGUI {
             alert.setHeaderText("Mira el problema");
             alert.setContentText("Revisa tus datos" + "\n" + "o crea una cuenta por favor :)");
             alert.showAndWait();
+
 
 
 
@@ -379,6 +428,15 @@ public class MasterGUI {
         Parent signUpPane = fxmlLoader.load();
 
         borderPane.setCenter(signUpPane);
+
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime currentTime = LocalTime.now();
+            labelTime1.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
 
     }
 
@@ -445,6 +503,7 @@ public class MasterGUI {
      */
     @FXML
     public void toBack(ActionEvent event) throws IOException {
+        mainRestaurant.setLastUser(mainRestaurant.getLastUser());
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
         fxmlLoader.setController(this);
         Parent loginBack = fxmlLoader.load();
@@ -533,8 +592,52 @@ public class MasterGUI {
         if(f != null) {
             try {
                 Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("Import Contacts");
+                alert.setTitle("Importar Clientes");
                 mainRestaurant.importClient(f.getAbsolutePath());
+                alert.setContentText("Los clientes fueron importados");
+                alert.showAndWait();
+            } catch (IOException e) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Importar Clientes");
+                alert.setContentText("No se pudo importar los datos, ocurrio un error.");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    @FXML
+    public void importOrder(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de recursos");
+        File f =fileChooser.showOpenDialog(borderPane.getScene().getWindow());
+        if(f != null) {
+            try {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Importar Clientes");
+                mainRestaurant.importOrder(f.getAbsolutePath());
+                alert.setContentText("Los clientes fueron importados");
+                alert.showAndWait();
+
+
+            } catch (IOException e) {
+                Alert alert = new Alert(AlertType.WARNING);
+                alert.setTitle("Importar Clientes");
+                alert.setContentText("No se pudo importar los datos, ocurrio un error.");
+                alert.showAndWait();
+            }
+        }
+    }
+
+    @FXML
+    public void importProduct(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Abrir archivo de recursos");
+        File f =fileChooser.showOpenDialog(borderPane.getScene().getWindow());
+        if(f != null) {
+            try {
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Import Contacts");
+                mainRestaurant.importProduct(f.getAbsolutePath());
                 alert.setContentText("Contact were import");
                 alert.showAndWait();
             } catch (IOException e) {
@@ -544,16 +647,6 @@ public class MasterGUI {
                 alert.showAndWait();
             }
         }
-    }
-
-    @FXML
-    public void importOrder(ActionEvent event) {
-
-    }
-
-    @FXML
-    public void importProduct(ActionEvent event) {
-
     }
 
     @FXML
@@ -683,6 +776,7 @@ public class MasterGUI {
             txtProduct.setVisible(false);
             comboType.setVisible(false);
             txtTelephoneU.setVisible(false);
+            buttonAddIngredient.setVisible(false);
 
         }
 
@@ -740,6 +834,8 @@ public class MasterGUI {
             txtType.setVisible(false);
             txtProduct.setVisible(false);
             comboType.setVisible(false);
+            buttonAddIngredient.setVisible(false);
+
             txtTelephoneU.setVisible(true);
 
         }
@@ -788,6 +884,7 @@ public class MasterGUI {
             txtProduct.setVisible(false);
             comboType.setVisible(false);
             txtTelephoneU.setVisible(false);
+            buttonAddIngredient.setVisible(false);
 
         }
 
@@ -833,6 +930,8 @@ public class MasterGUI {
             txtProduct.setVisible(false);
             comboType.setVisible(false);
             txtTelephoneU.setVisible(false);
+            buttonAddIngredient.setVisible(false);
+
 
         }
 
@@ -840,8 +939,8 @@ public class MasterGUI {
 
     @FXML
     public void newProduct(ActionEvent event) {
-        if (comboSize.isVisible() && txtProduct.isVisible() && comboType.isVisible()&& txtPriceM.isVisible()) {
-            if(txtProduct.getText().isEmpty() && comboSize.isPressed() && comboType.isPressed()){
+        if (comboSize.isVisible() && txtProduct.isVisible() && comboType.isVisible()&& txtPriceM.isVisible() && buttonAddIngredient.isVisible()) {
+            if(txtProduct.getText().isEmpty() && txtPriceM.getText().isEmpty()){
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("¡Datos Incompletos!");
                 alert.setHeaderText("Mira el problema");
@@ -852,19 +951,27 @@ public class MasterGUI {
                 txtProduct.setText("");
             }else{
                 try {
-                    String name,size;
-                    String type;
-                    int price;
-                    name = txtProduct.getText();
-                    size = comboSize.getValue();
-                    type = comboType.getValue();
-                    price = Integer.parseInt(txtPriceM.getText());
-                    mainRestaurant.createProduct(name,size,price,type);
-                    mainRestaurant.saveDataProduct();
-                    Alert alert = new Alert(AlertType.INFORMATION);
-                    alert.setContentText("¡Un nuevo Producto fue creado!");
-                    alert.showAndWait();
+                    ArrayList<Ingredient>iChoosen = new ArrayList<>(TingredientP.getItems());
+                    if(iChoosen.isEmpty()){
+                        Alert alert = new Alert(AlertType.WARNING);
+                        alert.setHeaderText(null);
+                        alert.setContentText("Te falta agregar ingredientes");
+                        alert.showAndWait();
+                    }else{
+                        String name,size;
+                        String type;
+                        int price;
+                        name = txtProduct.getText();
+                        size = comboSize.getValue();
+                        type = comboType.getValue();
+                        price = Integer.parseInt(txtPriceM.getText());
+                        mainRestaurant.createProduct(name,size,price,type,iChoosen);
+                        mainRestaurant.saveDataProduct();
+                        Alert alert = new Alert(AlertType.INFORMATION);
+                        alert.setContentText("¡Un nuevo Producto fue creado!");
+                        alert.showAndWait();
 
+                    }
                     txtProduct.setText("");
                     txtPriceM.setText("");
 
@@ -892,12 +999,11 @@ public class MasterGUI {
             txtProduct.setVisible(true);
             comboType.setVisible(true);
             txtTelephoneU.setVisible(false);
+            buttonAddIngredient.setVisible(true);
 
 
-           /* for (int i = 0; i <mainRestaurant.getTypeProducts().size(); i++) {
-                comboType.getItems().addAll(mainRestaurant.getTypeProducts().get(i).getName());
 
-            }*/
+
 
             for(int i = 0; i < mainRestaurant.getTypeProducts().size(); i++) {
                 if(!comboType.getItems().isEmpty()) {
@@ -920,6 +1026,105 @@ public class MasterGUI {
         }
 
     }
+
+    @FXML
+    public void addIngredientToProduct(ActionEvent event) throws IOException {
+        if(mainRestaurant.getIngredientsList().isEmpty()){
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Lo sentimos");
+            alert.setHeaderText("Mira el problema");
+            alert.setContentText("No hay ingredientes para agregar :(");
+            alert.showAndWait();
+        }else{
+            FXMLLoader open = new FXMLLoader(getClass().getResource("addIngredientsToProduct.fxml"));
+            open.setController(this);
+            Parent root = open.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.setTitle("Agregar Ingrediente");
+            for (int i = 0; i <mainRestaurant.getIngredientsList().size() ; i++) {
+                comboAddIngredient.getItems().addAll(mainRestaurant.getIngredientsList().get(i).getNameI());
+            }
+            stage.showAndWait();
+
+
+        }
+
+    }
+
+    @FXML
+    public void addIngredientTolist(ActionEvent event){
+     String ingredient = comboAddIngredient.getValue();
+     ArrayList<Ingredient>ingredientsChoosen = new ArrayList<>();
+     boolean out = false;
+        for (int i = 0; i <mainRestaurant.getIngredientsList().size() && !out ; i++) {
+            if(mainRestaurant.getIngredientsList().get(i).getNameI().equals(ingredient)){
+                ingredientsChoosen.add(mainRestaurant.getIngredientsList().get(i));
+                out = true;
+            }
+        }
+
+        if(TingredientP.getItems().isEmpty()){
+            ObservableList<Ingredient> ingredientObservableList2;
+            ingredientObservableList2 = FXCollections.observableList(ingredientsChoosen);
+            TingredientP.setItems(ingredientObservableList2);
+            CingredientProduc.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("nameI"));
+        }else{
+            initilializeTableIngredients(ingredient);
+        }
+
+
+
+
+    }
+
+    private void initilializeTableIngredients(String ingredient){
+        boolean out = false;
+        for (int i = 0; i <mainRestaurant.getIngredientsList().size() && !out ; i++) {
+            if(mainRestaurant.getIngredientsList().get(i).getNameI().equals(ingredient)){
+                ObservableList<Ingredient> ingredientObservableList2;
+                ingredientObservableList2 = TingredientP.getItems();
+                ingredientObservableList2.add(mainRestaurant.getIngredientsList().get(i));
+                TingredientP.setItems(ingredientObservableList2);
+                CingredientProduc.setCellValueFactory(new PropertyValueFactory<Ingredient,String>("nameI"));
+                out = true;
+            }
+        }
+    }
+
+    @FXML
+    public void showIngredientsOfProducts(ActionEvent event) throws IOException {
+        FXMLLoader open = new FXMLLoader(getClass().getResource("ingredientsOfProducts.fxml"));
+        TreeIng = open.load();
+        TreeItem<String> rootItem = new TreeItem<>("Productos");
+        rootItem.setExpanded(true);
+        for (int i = 0; i <mainRestaurant.getProducts().size() ; i++) {
+            TreeItem<String>item = new TreeItem<>(mainRestaurant.getProducts().get(i).getNameP());
+            for (int j = 0; j <mainRestaurant.getProducts().get(i).getIngredients().size() ; j++) {
+                TreeItem<String>childItem = new TreeItem<>(mainRestaurant.getProducts().get(i).getIngredients().get(j).getNameI());
+                item.getChildren().add(childItem);
+            }
+            item.setExpanded(true);
+            rootItem.getChildren().add(item);
+        }
+
+        TreeIng.setRoot(rootItem);
+        Parent root = TreeIng;
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.setTitle("Ingredientes");
+        stage.show();
+
+
+
+
+    }
+
+
 
     @FXML
     public void create(ActionEvent event) throws IOException {
@@ -1019,7 +1224,7 @@ public class MasterGUI {
                     Alert alert = new Alert(AlertType.INFORMATION);
                     alert.setTitle("Informacion");
                     alert.setHeaderText(null);
-                    alert.setContentText("La busqueda tardó: "+TimeUnit.SECONDS.convert((end-star),TimeUnit.NANOSECONDS)+" Segundos");
+                    alert.setContentText("La busqueda tardó: "+(end-star)+" Nano Segundos");
                     alert.showAndWait();
                 }else{
                     Alert alert = new Alert(AlertType.INFORMATION);
@@ -1167,6 +1372,79 @@ public class MasterGUI {
 
     }
 
+    @FXML
+    public void updateOrderStatus(ActionEvent event){
+        Alert alert = new Alert(AlertType.INFORMATION);
+        List<String> choices = new ArrayList<>();
+        for(int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+            if(!(mainRestaurant.getOrderList().get(i).getStatus().equals(Status.DELIVERED))){
+                choices.add(mainRestaurant.getOrderList().get(i).getCode());
+            }
+        }
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(null,choices);
+        dialog.setTitle("Eliga un pedido");
+        dialog.setHeaderText("¿Cual pedido quiere actualizar?");
+        dialog.setContentText("Eliga el codigo del pedido:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()){
+            for (int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+                if (mainRestaurant.getOrderList().get(i).getCode().equals(result.get())){
+                    switch (mainRestaurant.getOrderList().get(i).getStatus()){
+                        case REQUESTED: mainRestaurant.getOrderList().get(i).setStatus(Status.IN_PROGRESS);
+                            alert.setTitle("Accion completa");
+                            alert.setHeaderText(null);
+                            alert.setContentText("La orden "+result.get()+" ha sido actualizada");
+                            alert.showAndWait();
+                                          break;
+                        case IN_PROGRESS: mainRestaurant.getOrderList().get(i).setStatus(Status.SENT);
+                            alert.setTitle("Accion completa");
+                            alert.setHeaderText(null);
+                            alert.setContentText("La orden "+result.get()+" ha sido actualizada");
+                            alert.showAndWait();
+                                          break;
+                        case  SENT: mainRestaurant.getOrderList().get(i).setStatus(Status.DELIVERED);
+                            alert.setTitle("Accion completa");
+                            alert.setHeaderText(null);
+                            alert.setContentText("La orden "+result.get()+" ha sido actualizada");
+                            alert.showAndWait();
+                                          break;
+                    }
+                }
+                
+            }
+        }
+
+    }
+
+    @FXML
+    public void cancelOrder(ActionEvent event){
+        Alert alert = new Alert(AlertType.INFORMATION);
+        List<String> choices = new ArrayList<>();
+        for(int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+            if(!(mainRestaurant.getOrderList().get(i).getStatus().equals(Status.DELIVERED))){
+                choices.add(mainRestaurant.getOrderList().get(i).getCode());
+            }
+        }
+        ChoiceDialog<String> dialog = new ChoiceDialog<>(null,choices);
+        dialog.setTitle("Eliga un pedido");
+        dialog.setHeaderText("¿Cual pedido quiere Cancelar?");
+        dialog.setContentText("Eliga el codigo del pedido:");
+        Optional<String> result = dialog.showAndWait();
+        if(result.isPresent()){
+            for (int i = 0; i <mainRestaurant.getOrderList().size() ; i++) {
+                if(mainRestaurant.getOrderList().get(i).getCode().equals(result.get())){
+                    mainRestaurant.getOrderList().get(i).setStatus(Status.CANCELD);
+                    alert.setTitle("Accion completa");
+                    alert.setHeaderText(null);
+                    alert.setContentText("La orden "+result.get()+" ha sido cancelada");
+                    alert.showAndWait();
+                }
+            }
+        }
+
+    }
+
 
 
 
@@ -1246,86 +1524,85 @@ public class MasterGUI {
                         }
                         break;
                 }
+                ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
+                dialog2.setTitle("Eliminar");
+                dialog2.setHeaderText("¿Cuál será eliminado?");
+                dialog2.setContentText("Elija un " + election + ":");
+                Optional<String> result2 = dialog2.showAndWait();
+                if (result2.isPresent()) {
+                    slelectedOne = result2.get();
+                    switch (election) {
+                        case "Usuario":
+                            if (mainRestaurant.delete(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            } else {
+                                Alert alert2 = new Alert(AlertType.WARNING);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("Something went wrong");
+                                alert2.showAndWait();
+                            }
+                            break;
+                        case "Empleado":
+                            if (mainRestaurant.deleteEmployee(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("La acción se realizó con éxito");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
+                        case "Cliente":
+                            if (mainRestaurant.deleteClient(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Result");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
+                        case "Pedido":
+                            if (mainRestaurant.deleteOrder(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
+                        case "Ingrediente":
+                            if (mainRestaurant.deleteIngredient(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
+                        case "Producto":
+                            if (mainRestaurant.deleteProduct(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
 
-            }
+                        case "Tipo de Producto":
+                            if (mainRestaurant.deleteType(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
 
-            ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
-            dialog2.setTitle("Eliminar");
-            dialog2.setHeaderText("¿Cuál será eliminado?");
-            dialog2.setContentText("Elija un " + election + ":");
-            Optional<String> result2 = dialog2.showAndWait();
-            if (result2.isPresent()) {
-                slelectedOne = result2.get();
-                switch (election) {
-                    case "Usuario":
-                        if (mainRestaurant.delete(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        } else {
-                            Alert alert2 = new Alert(AlertType.WARNING);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("Something went wrong");
-                            alert2.showAndWait();
-                        }
-                        break;
-                    case "Empleado":
-                        if (mainRestaurant.deleteEmployee(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("La acción se realizó con éxito");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-                    case "Cliente":
-                        if (mainRestaurant.deleteClient(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-                    case "Pedido":
-                        if (mainRestaurant.deleteOrder(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-                    case "Ingrediente":
-                        if (mainRestaurant.deleteIngredient(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-                    case "Producto":
-                        if (mainRestaurant.deleteProduct(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-
-                    case "Tipo de Producto":
-                        if (mainRestaurant.deleteType(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
+                    }
 
                 }
 
@@ -1377,79 +1654,81 @@ public class MasterGUI {
                         }
                         break;
                 }
-            }
 
-            ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
-            dialog2.setTitle("Deshabilitar");
-            dialog2.setHeaderText("¿Cuál se deshabilitará?");
-            dialog2.setContentText("Elija un" + election + ":");
-            Optional<String> result3 = dialog2.showAndWait();
-            if (result3.isPresent()) {
-                slelectedOne = result3.get();
-                switch (election) {
-                    case "Usuario":
-                        if (mainRestaurant.toDisable(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                            initializeTables();
-                        }
-                        break;
-                    case "Empleado":
-                        if (mainRestaurant.disableEmployee(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
-                    case "Cliente":
-                        if (mainRestaurant.disableClient(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
-                    case "Pedido":
-                        if (mainRestaurant.disableOrder(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Result");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
-                    case "Ingrediente":
-                        if (mainRestaurant.disableIngredients(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
-                    case "Producto":
-                        if (mainRestaurant.disableProduct(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
+                ChoiceDialog<String> dialog2 = new ChoiceDialog<>(null, choices2);
+                dialog2.setTitle("Deshabilitar");
+                dialog2.setHeaderText("¿Cuál se deshabilitará?");
+                dialog2.setContentText("Elija un" + election + ":");
+                Optional<String> result3 = dialog2.showAndWait();
+                if (result3.isPresent()) {
+                    slelectedOne = result3.get();
+                    switch (election) {
+                        case "Usuario":
+                            if (mainRestaurant.toDisable(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                                initializeTables();
+                            }
+                            break;
+                        case "Empleado":
+                            if (mainRestaurant.disableEmployee(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
+                        case "Cliente":
+                            if (mainRestaurant.disableClient(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
+                        case "Pedido":
+                            if (mainRestaurant.disableOrder(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Result");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
+                        case "Ingrediente":
+                            if (mainRestaurant.disableIngredients(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
+                        case "Producto":
+                            if (mainRestaurant.disableProduct(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
 
-                    case "Tipo de Producto":
-                        if (mainRestaurant.disableType(slelectedOne)) {
-                            Alert alert2 = new Alert(AlertType.INFORMATION);
-                            alert2.setHeaderText("Resultado");
-                            alert2.setContentText("¡La acción se realizó con éxito!");
-                            alert2.showAndWait();
-                        }
-                        break;
+                        case "Tipo de Producto":
+                            if (mainRestaurant.disableType(slelectedOne)) {
+                                Alert alert2 = new Alert(AlertType.INFORMATION);
+                                alert2.setHeaderText("Resultado");
+                                alert2.setContentText("¡La acción se realizó con éxito!");
+                                alert2.showAndWait();
+                            }
+                            break;
+
+                    }
+
 
                 }
-
-
             }
+
+
 
         }
 
@@ -1606,7 +1885,6 @@ public class MasterGUI {
 
     //Dejar de ultimo
     public void updateInfoFromTableviewOrders(){
-
     }
 
     /**
@@ -1665,12 +1943,12 @@ public class MasterGUI {
         mainRestaurant.saveIngredients();
         mainRestaurant.saveTypes();
         mainRestaurant.saveDataOrder();
+        initializeTables();
        System.out.println("ete es el buenoo");
    }
 
     @FXML
     public void sortProduct(ActionEvent event) {
-
         mainRestaurant.insertionSortArrayList(mainRestaurant.getProducts());
         initializeTables();
 

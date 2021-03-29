@@ -3,8 +3,9 @@ package model;
 import javafx.scene.control.Separator;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -20,6 +21,7 @@ public class Restaurant {
 
     //Atributes
     private  int clientSearchedIndex; // es el indice del cliente que se busca a la hora de hacer una orden
+
     //Relationship.
     private ArrayList<Client> clientList;
     private ArrayList<Product> products;
@@ -44,9 +46,11 @@ public class Restaurant {
         ingredientsList = new ArrayList<>();
         typeProducts = new ArrayList<>();
         clientSearchedIndex=0;
+
     }
 
     //Getters and Setters.
+
 
 
     public int getClientSearched() {
@@ -116,7 +120,7 @@ public class Restaurant {
         for (int i = 0; i <users.size() && !can ; i++) {
             if (userName.equals(users.get(i).getUserName()) && passWord.equals(users.get(i).getPassword())) {
                 can = true;
-
+                setCurrentUser(users.get(i));
             }
         }
 
@@ -134,7 +138,10 @@ public class Restaurant {
      * @param password        the password is type String.
      */
     public void createUser(String nameE, String lastnameE, String identificationE, String userName , String password){
-        users.add(new User(nameE,lastnameE,identificationE,userName,password));
+        User newUser =new User(nameE,lastnameE,identificationE,userName,password);
+        users.add(newUser);
+        employees.add(newUser);
+        setCurrentUser(newUser);
     }
 
 
@@ -151,9 +158,11 @@ public class Restaurant {
         boolean deleted = false;
         for (int i = 0; i <users.size() && !deleted; i++) {
             if(userName.equals(users.get(i).getUserName())){
-                users.remove(i);
-                deleted=true;
+                    users.remove(i);
+                    deleted=true;
             }
+
+
         }
 
         return deleted;
@@ -196,12 +205,10 @@ public class Restaurant {
      */
     public void loadDataUser() throws IOException, ClassNotFoundException {
         File f = new File(SAVE_PATH_FILE_USERS);
-        boolean loaded = false;
         if(f.exists()){
             ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
             users = (ArrayList<User>) ois.readObject();
             ois.close();
-            loaded = true;
         }
 
     }
@@ -211,10 +218,10 @@ public class Restaurant {
 
     /**/
    public void  createIngredient(String name) {
-        ingredientsList.add(new Ingredient(name));
+       Ingredient newIngredient = new Ingredient(name);
+       newIngredient.setCreatorU(getCurrentUser());
+       ingredientsList.add(newIngredient);
    }
-
-
     public boolean deleteIngredient(String name){
         boolean deletedIngredient = false;
         for (int i = 0; i <ingredientsList.size() && !deletedIngredient; i++) {
@@ -256,8 +263,11 @@ public class Restaurant {
 
 // ------------------------------------- EMPLOYEES REQUIREMENTS-------------------------------------------------
 
-    public  void  createEmployee(String name, String lastname, String identification){
-       employees.add(new Employee(name,lastname,identification));
+    public void createEmployee(String name, String lastname, String identification){
+       Employee newEmployee = new Employee(name,lastname,identification);
+       newEmployee.setCurrentUser(getCurrentUser());
+       employees.add(newEmployee);
+
     }
 
 
@@ -265,6 +275,7 @@ public class Restaurant {
         boolean deleEmployee = false;
         for (int i = 0; i <employees.size() && !deleEmployee; i++) {
             if(name.equals(employees.get(i).getName())){
+                users.remove(employees.get(i));
                 employees.remove(i);
                 deleEmployee=true;
             }
@@ -275,9 +286,12 @@ public class Restaurant {
 
     public boolean disableEmployee(String name){
         boolean disable = false;
+        int index;
         for (int i = 0; i <employees.size() && !disable ; i++) {
             if(name.equals(employees.get(i).getName())){
                 employees.get(i).setHabilitate(false);
+                index = users.indexOf(employees.get(i));
+                users.get(index).setHabilitate(false);
                 disable = true;
             }
         }
@@ -304,9 +318,6 @@ public class Restaurant {
 
 // __________________________ CLIENTS REQUIREMENTS ____________________________________-
 
-
-
-
     /**
      * Create client.
      * @param name           the name
@@ -316,6 +327,7 @@ public class Restaurant {
      */
     public void createClient(String name, String lastName, String identification, String address,String telephone){
         Client newClient = new Client(name, lastName, identification, address,telephone);
+        newClient.setCurrentUser(getCurrentUser());
         Collections.sort(clientList);
         addSorted(newClient);
     }
@@ -426,13 +438,16 @@ public class Restaurant {
      * @param price the price
      * @param name the nameT
      */
-    public void createProduct(String nameP, String size, int price, String name){
+    public void createProduct(String nameP, String size, int price, String name, ArrayList<Ingredient> ichoosen){
         TypeProduct nameT;
         boolean found=false;
         for (int i = 0; i <typeProducts.size() && !found; i++) {
             if (typeProducts.get(i).getName().equals(name)){
                 nameT = typeProducts.get(i);
-                products.add(new Product(nameP,size,price,nameT));
+                Product newProduct =new Product(nameP,size,price,nameT);
+                newProduct.setIngredients(ichoosen);
+                newProduct.setCreatorU(getCurrentUser());
+                products.add(newProduct);
                 found = true;
             }
         }
@@ -516,20 +531,26 @@ public class Restaurant {
         Employee employeeAttending=null;
         if (client>=0){
             newClient = clientList.get(client);
+
         }else{
             for (int i = 0; i <clientList.size() && !out ; i++) {
                  if(name.equals(clientList.get(i).getName())){
                      newClient = clientList.get(i);
                      out = true;
+
                  }
+
 
             }
         }
 
+        out = false;
         for (int i = 0; i <employees.size() && !out ; i++) {
+
             if (employee.equals(employees.get(i).getName())){
                 employeeAttending = employees.get(i);
                 out= true;
+
             }
         }
 
@@ -537,8 +558,11 @@ public class Restaurant {
             Order newOrder = new Order(newClient,employeeAttending,address);
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
+            newOrder.setCreatorU(getCurrentUser());
             orderList.add(newOrder);
             employeeAttending.getAmountOfOrders().add(newOrder);
+
+
 
         }else{
             System.out.println("hay algo null");
@@ -555,7 +579,6 @@ public class Restaurant {
     public void createOrder(String employee, int client, String feedback,String address, ArrayList<Product> productsIn, String name, Date date){
         Client newClient1 = null;
         Employee employeeAttending=null;
-        int amount =0;
         boolean out=false;
         if (client>=0){
             newClient1 = clientList.get(client);
@@ -569,6 +592,7 @@ public class Restaurant {
             }
         }
 
+        out = false;
         for (int i = 0; i <employees.size() && !out ; i++) {
             if (employee.equals(employees.get(i).getName())){
                 employeeAttending = employees.get(i);
@@ -581,7 +605,9 @@ public class Restaurant {
             newOrder.setDate(date);
             newOrder.setProductsList(productsIn);
             newOrder.setFeedback(feedback);
+            newOrder.setCreatorU(getCurrentUser());
             employeeAttending.getAmountOfOrders().add(newOrder);
+
             orderList.add(newOrder);
 
         }else{
@@ -662,26 +688,6 @@ public class Restaurant {
 //_________________________ EXPORT DATA _________________________________________
 
     /**
-     * Export data user.
-     *
-     * @param fileName  the file name
-     * @param separator the separator
-     * @throws FileNotFoundException the file not found exception
-     */
-    public void exportDataUser(String fileName,String separator) throws FileNotFoundException{
-        PrintWriter pw = new PrintWriter(fileName);
-
-        for(int i=0;i<users.size();i++){
-            User myUser = users.get(i);
-            pw.println(myUser.getName()+separator+myUser.getLastName()
-                +separator+myUser.getIdentification()
-                +separator+myUser.getUserName()+separator+myUser.getPassword());
-        }
-
-        pw.close();
-    }
-
-    /**
      * Export data employee.
      *
      * @param fileName  the file name
@@ -694,43 +700,6 @@ public class Restaurant {
         for(int i=0;i<employees.size();i++){
             Employee myEmployee = employees.get(i);
             pw.println(myEmployee.getName()+separator+myEmployee.getLastName()+separator+myEmployee.getIdentification());
-        }
-
-        pw.close();
-    }
-
-    /**
-     * Export data client.
-     *
-     * @param fileName  the file name
-     * @param separator the separator
-     * @throws FileNotFoundException the file not found exception
-     */
-    public void exportDataClient(String fileName,String separator) throws FileNotFoundException{
-        PrintWriter pw = new PrintWriter(fileName);
-
-        for(int i=0;i<clientList.size();i++){
-            Client myClient = clientList.get(i);
-            pw.println(myClient.getName()+separator+myClient.getLastName()
-                    +separator+myClient.getIdentification()+separator+myClient.getAddress());
-        }
-
-        pw.close();
-    }
-
-    /**
-     * Export data ingredient.
-     *
-     * @param fileName  the file name
-     * @param separator the separator
-     * @throws FileNotFoundException the file not found exception
-     */
-    public void exportDataIngredient(String fileName,String separator) throws FileNotFoundException{
-        PrintWriter pw = new PrintWriter(fileName);
-
-        for(int i=0;i<ingredientsList.size();i++){
-            Ingredient myIngredient = ingredientsList.get(i);
-            pw.println(myIngredient.getNameI());
         }
 
         pw.close();
@@ -773,10 +742,10 @@ public class Restaurant {
                         separator + myOrder.getDate() + separator + myOrder.getFeedback());
 
             }
-
-
         pw.close();
     }
+
+
 //__________________________________ IMPORT DATA ____________________________
     public void importClient(String fileName) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -791,13 +760,70 @@ public class Restaurant {
         br.close();
     }
 
+    public void importOrder(String fileName) throws IOException{
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String separator = ";";
+        String line = br.readLine();
+        while(line!=null){
+            String[] parts = line.split(separator);
+
+
+            createEmployee(parts[0],parts[1],parts[2]);
+
+            ArrayList<Ingredient> newIngredient = new ArrayList<>();
+            ArrayList<Product> newProduct = new ArrayList<>();
+            Ingredient newIngredient1 = new Ingredient(parts[9]);
+            newIngredient.add(newIngredient1);
+            ingredientsList.add(newIngredient1);
+            TypeProduct newType = new TypeProduct(parts[8]);
+            typeProducts.add(newType);
+
+            Product importProduct = new Product(parts[5],parts[6],Integer.parseInt(parts[7]),newType);
+            importProduct.setIngredients(newIngredient);
+            newProduct.add(importProduct);
+            products.add(importProduct);
+
+            createClient(parts[10],parts[11],parts[12],parts[13],parts[14]);
+
+
+            Date fecha = new Date();
+            SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd/mm/yy");
+            try {
+                fecha = formatoDeFecha.parse(parts[15]);
+                createOrder(parts[0], Integer.parseInt(parts[3]), parts[4],newProduct, parts[10],fecha);
+            }catch (ParseException e){
+                System.out.println("JEJE");
+            }
+            line = br.readLine();
+        }
+        br.close();
+    }
+
+    public void importProduct(String fileName) throws IOException{
+        ArrayList<Ingredient> newIngredient = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader(fileName));
+        String separator = ",";
+        String line = br.readLine();
+        while(line!=null){
+            String[] parts = line.split(separator);
+            newIngredient.add(new Ingredient(parts[4]));
+            createType(parts[3]);
+            createProduct(parts[0], parts[1],Integer.parseInt(parts[2]), parts[3], newIngredient);
+            line = br.readLine();
+        }
+        br.close();
+    }
+
+
+
 
 //_______________________________________________________________________________
 
 //______________________TYPE REQUIREMNTS__________________________________________
 
    public void createType(String name){
-        typeProducts.add(new TypeProduct(name));
+        TypeProduct newType = new TypeProduct(name);
+        typeProducts.add(newType);
    }
 
 
@@ -840,6 +866,9 @@ public class Restaurant {
         }
 
     }
+
+
+
 
 
 
