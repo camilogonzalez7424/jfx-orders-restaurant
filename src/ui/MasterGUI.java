@@ -19,7 +19,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import model.*;
-
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -1030,7 +1029,7 @@ public class MasterGUI {
                     int m =(i+j)/2;
                     if(mainRestaurant.getClientList().get(m).getName().equals(name)){
                         found = m;
-                    }else if(name.compareTo(mainRestaurant.getClientList().get(m).getName())>0){
+                    }else if(name.compareToIgnoreCase(mainRestaurant.getClientList().get(m).getName())>0){
                         i=m+1;
                     }else{
                          j = m-1;
@@ -1590,6 +1589,7 @@ public class MasterGUI {
         Ctelefono.setCellValueFactory(new PropertyValueFactory<Client,String>("telephone"));
 
     //_____________________________ EMPLOYEE TABLE ________________________________________________________
+        mainRestaurant.sortEmployees();
         ObservableList<Employee> employeeObservableList;
         ArrayList<Employee> availableEmployees = new ArrayList<>();
         for (int i = 0; i < mainRestaurant.getEmployees().size() ; i++) {
@@ -1774,6 +1774,12 @@ public class MasterGUI {
         initializeTables();
 
 
+
+    }
+
+    @FXML
+    public void sortIngredients(){
+     mainRestaurant.orderIngredients();
     }
 
 
