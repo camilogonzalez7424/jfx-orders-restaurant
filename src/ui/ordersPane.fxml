@@ -14,14 +14,14 @@
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="509.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="509.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="41.0" layoutY="24.0" text="Nueva orden">
          <font>
             <Font name="System Bold Italic" size="27.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="txtClientName" alignment="CENTER" layoutX="26.0" layoutY="126.0" prefHeight="33.0" prefWidth="210.0" promptText="Nombre del cliente">
+      <JFXTextField fx:id="txtClientName" alignment="CENTER" focusColor="#efb810" layoutX="26.0" layoutY="126.0" prefHeight="33.0" prefWidth="210.0" promptText="Nombre del cliente" unFocusColor="#1d1b20">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
@@ -31,7 +31,7 @@
             <Image url="@../img/testimonios.png" />
          </image>
       </ImageView>
-      <JFXComboBox fx:id="comboEmployee" layoutX="202.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" />
+      <JFXComboBox fx:id="comboEmployee" focusColor="#efb810" layoutX="202.0" layoutY="244.0" prefHeight="26.0" prefWidth="202.0" unFocusColor="#1d1b20" />
       <Label layoutX="21.0" layoutY="244.0" text="¿Quien lo entrega?">
          <font>
             <Font name="System Bold Italic" size="17.0" />
@@ -42,26 +42,32 @@
             <Font name="System Bold Italic" size="23.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="comboProducts" layoutX="715.0" layoutY="207.0" prefHeight="26.0" prefWidth="134.0" promptText="Productos" />
-      <JFXButton buttonType="RAISED" layoutX="737.0" layoutY="257.0" onAction="#addProductToOrder" prefHeight="26.0" prefWidth="78.0" style="-fx-background-color: gray;" text="Agregar" />
+      <JFXComboBox fx:id="comboProducts" focusColor="#efb810" layoutX="715.0" layoutY="207.0" prefHeight="26.0" prefWidth="134.0" promptText="Productos" unFocusColor="#1d1b20" />
+      <JFXButton buttonType="RAISED" layoutX="737.0" layoutY="257.0" onAction="#addProductToOrder" prefHeight="36.0" prefWidth="100.0" styleClass="orderAdd" stylesheets="@../../style/Style.css" text="Agregar" textFill="#efb810">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></JFXButton>
       <TableView fx:id="TorderProduct" layoutX="459.0" layoutY="73.0" prefHeight="342.0" prefWidth="200.0">
         <columns>
           <TableColumn fx:id="CproductsOrder" prefWidth="199.0" text="Productos" />
         </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" layoutX="465.0" layoutY="448.0" onAction="#createOrder" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: gray;" text="Terminar la orden" />
-      <JFXTextField fx:id="txtAddressOrder" alignment="CENTER" layoutX="26.0" layoutY="174.0" prefHeight="33.0" prefWidth="210.0" promptText="Direccion">
+      <JFXButton buttonType="RAISED" layoutX="465.0" layoutY="448.0" onAction="#createOrder" prefHeight="30.0" prefWidth="211.0" styleClass="orderF" stylesheets="@../../style/Style.css" text="Terminar la orden" textFill="#efb810">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font></JFXButton>
+      <JFXTextField fx:id="txtAddressOrder" alignment="CENTER" focusColor="#efb810" layoutX="26.0" layoutY="174.0" prefHeight="33.0" prefWidth="210.0" promptText="Direccion" unFocusColor="#1d1b20">
          <font>
             <Font name="System Bold Italic" size="18.0" />
          </font>
       </JFXTextField>
-      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="351.0" prefHeight="148.0" prefWidth="200.0" style="-fx-border-color: gray;" wrapText="true" />
+      <JFXTextArea fx:id="txtFeedBack" layoutX="22.0" layoutY="351.0" prefHeight="148.0" prefWidth="200.0" style="-fx-border-color: E6A82D;" wrapText="true" />
       <Label layoutX="30.0" layoutY="305.0" prefHeight="30.0" prefWidth="184.0" text="Comentarios">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="264.0" layoutY="143.0" onAction="#searchClient" prefHeight="26.0" prefWidth="88.0" style="-fx-background-color: gray;" text="Buscar">
+      <JFXButton buttonType="RAISED" layoutX="264.0" layoutY="143.0" onAction="#searchClient" prefHeight="26.0" prefWidth="88.0" styleClass="search" stylesheets="@../../style/Style.css" text="Buscar" textFill="#efb810">
          <ripplerFill>
             <LinearGradient endX="1.0">
                <stops>

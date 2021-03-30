@@ -17,7 +17,7 @@
       <Pane prefHeight="600.0" prefWidth="500.0" style="-fx-background-image: url('/img/4.jpg'); -fx-background-size: 100% 100%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="0.0" />
       <Pane layoutX="500.0" prefHeight="600.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="510.0" onAction="#logIn" prefHeight="28.0" prefWidth="100.0" ripplerFill="#3c05e5" style="-fx-background-color: black;" text="Ingresar" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="320.0" layoutY="515.0" onAction="#logIn" prefHeight="50.0" prefWidth="150.0" ripplerFill="#efb810" styleClass="loginButton" stylesheets="@../../style/Style.css" text="Ingresar" textAlignment="CENTER" textFill="#efb810">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -25,7 +25,7 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="100.0" layoutY="510.0" onAction="#signUp" ripplerFill="WHITE" style="-fx-background-color: black;" text="Registrarse" textAlignment="CENTER" textFill="WHITE">
+            <JFXButton alignment="CENTER" contentDisplay="CENTER" layoutX="72.0" layoutY="515.0" onAction="#signUp" prefHeight="50.0" prefWidth="150.0" ripplerFill="#efb810" styleClass="signUpButton" stylesheets="@../../style/Style.css" text="Registrarse" textAlignment="CENTER" textFill="#efb810">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -33,17 +33,17 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="110.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/clave.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="108.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="114.0" fitWidth="78.0" layoutX="110.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/usuario.png" />
                </image>
             </ImageView>
-            <JFXPasswordField fx:id="txtLoginPass" focusColor="#0495c4" layoutX="196.0" layoutY="398.0" promptText="Contraseña" unFocusColor="#f80000">
+            <JFXPasswordField fx:id="txtLoginPass" focusColor="#efb810" layoutX="200.0" layoutY="400.0" promptText="Contraseña" unFocusColor="#1d1b20">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -55,17 +55,17 @@
                   </Tooltip>
                </tooltip>
             </JFXPasswordField>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="186.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="148.0" fitWidth="150.0" layoutX="180.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/password.png" />
                </image>
             </ImageView>
-            <JFXTextField fx:id="txtLoginUser" focusColor="#0495c4" layoutX="196.0" layoutY="300.0" promptText="Usuario" unFocusColor="#f80000">
+            <JFXTextField fx:id="txtLoginUser" focusColor="#e6a82d" layoutX="200.0" layoutY="300.0" promptText="Usuario" unFocusColor="#1d1b20">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </JFXTextField>
-            <Label layoutX="398.0" layoutY="413.0" onMouseClicked="#showPass" text="Ver">
+            <Label layoutX="390.0" layoutY="410.0" onMouseClicked="#showPass" styleClass="show" stylesheets="@../../style/Style.css" text="Ver">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,8 +73,20 @@
                      </image>
                   </ImageView>
                </graphic>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
             </Label>
-            <Label fx:id="labelTime" layoutX="346.0" layoutY="40.0" prefHeight="32.0" prefWidth="123.0" />
+            <Label fx:id="labelTime" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="7.0" prefHeight="50.0" prefWidth="150.0" styleClass="loginTime" stylesheets="@../../style/Style.css" textAlignment="CENTER" textFill="#efb810">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor></Label>
          </children>
       </Pane>
    </children>

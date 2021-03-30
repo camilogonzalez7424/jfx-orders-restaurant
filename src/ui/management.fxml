@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="778.0" rotateGraphic="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<JFXTabPane fx:id="management" blendMode="ADD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="778.0" rotateGraphic="true" style="-fx-background-color: black;" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <tabs>
-      <Tab fx:id="TabUser" text="Usuarios">
+      <Tab fx:id="TabUser" style="-fx-background-color: black;" text="Usuarios">
          <content>
             <Pane disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="634.0">
                <children>
@@ -34,7 +34,7 @@
             </Pane>
          </content>
       </Tab>
-      <Tab fx:id="TabEmployee" text="Empleados">
+      <Tab fx:id="TabEmployee" style="-fx-background-color: black;" text="Empleados">
          <content>
             <Pane>
                <children>
@@ -55,7 +55,7 @@
             </Pane>
          </content>
       </Tab>
-      <Tab fx:id="TabClients" text="Clientes">
+      <Tab fx:id="TabClients" style="-fx-background-color: black;" text="Clientes">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="385.0" prefWidth="678.0">
                <children>
@@ -77,7 +77,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabOrders" text="Pedidos">
+      <Tab fx:id="TabOrders" style="-fx-background-color: black;" text="Pedidos">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="762.0">
                <children>
@@ -100,7 +100,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabProduct" text="Productos">
+      <Tab fx:id="TabProduct" style="-fx-background-color: black;" text="Productos">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -124,7 +124,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabIngredients" text="Ingredientes">
+      <Tab fx:id="TabIngredients" style="-fx-background-color: black;" text="Ingredientes">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -144,7 +144,7 @@
             </AnchorPane>
          </content>
       </Tab>
-      <Tab fx:id="TabType" text="Tipos de Producto">
+      <Tab fx:id="TabType" style="-fx-background-color: black;" text="Tipos de Producto">
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>

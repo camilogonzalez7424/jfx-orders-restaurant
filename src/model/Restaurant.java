@@ -7,13 +7,37 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+/**
+ * The type Restaurant.
+ */
 public class Restaurant {
+    /**
+     * The constant SAVE_PATH_FILE_USERS.
+     */
     public final static String SAVE_PATH_FILE_USERS = "data/users.txt";
+    /**
+     * The constant SAVE_PATH_FILE_CLIENTS.
+     */
     public final static String SAVE_PATH_FILE_CLIENTS = "data/clients.txt";
+    /**
+     * The constant SAVE_PATH_FILE_INGREDIENTS.
+     */
     public final static String SAVE_PATH_FILE_INGREDIENTS = "data/ingredients.txt";
+    /**
+     * The constant SAVE_PATH_FILE_EMPLOYEES.
+     */
     public final static String SAVE_PATH_FILE_EMPLOYEES = "data/employees.txt";
+    /**
+     * The constant SAVE_PATH_FILE_PRODUCTS.
+     */
     public final static String SAVE_PATH_FILE_PRODUCTS = "data/products.txt";
+    /**
+     * The constant SAVE_PATH_FILE_ORDERS.
+     */
     public final static String SAVE_PATH_FILE_ORDERS = "data/orders.txt";
+    /**
+     * The constant SAVE_PATH_FILE_TYPES.
+     */
     public final static String SAVE_PATH_FILE_TYPES = "data/types.txt";
 
     //Atributes
@@ -48,56 +72,119 @@ public class Restaurant {
 
     //Getters and Setters.
 
-
-
+    /**
+     * Gets client searched.
+     *
+     * @return the client searched
+     */
     public int getClientSearched() {
         return clientSearchedIndex;
     }
 
+    /**
+     * Sets client searched index.
+     *
+     * @param clientSearched the client searched
+     */
     public void setClientSearchedIndex(int clientSearched) {
         clientSearchedIndex = clientSearched;
     }
 
+    /**
+     * Gets type products.
+     *
+     * @return the type products
+     */
     public ArrayList<TypeProduct> getTypeProducts() {
         return typeProducts;
     }
 
+    /**
+     * Gets ingredients list.
+     *
+     * @return the ingredients list
+     */
     public ArrayList<Ingredient> getIngredientsList() {
         return ingredientsList;
     }
 
+    /**
+     * Gets client list.
+     *
+     * @return the client list
+     */
     public ArrayList<Client> getClientList() {
         return clientList;
     }
 
+    /**
+     * Gets products.
+     *
+     * @return the products
+     */
     public ArrayList<Product> getProducts() {
         return products;
     }
 
+    /**
+     * Gets order list.
+     *
+     * @return the order list
+     */
     public ArrayList<Order> getOrderList() {
         return orderList;
     }
 
+    /**
+     * Gets users.
+     *
+     * @return the users
+     */
     public List<User> getUsers() {
         return users;
     }
 
+    /**
+     * Gets employees.
+     *
+     * @return the employees
+     */
     public ArrayList<Employee> getEmployees() {
         return employees;
     }
 
+    /**
+     * Gets current user.
+     *
+     * @return the current user
+     */
     public User getCurrentUser() {
         return currentUser;
     }
 
+    /**
+     * Gets last user.
+     *
+     * @return the last user
+     */
     public User getLastUser() {
         return lastUser;
     }
 
+    /**
+     * Sets current user.
+     *
+     * @param currentUser the current user
+     */
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;
     }
 
+    /**
+     * Sets last user.
+     *
+     * @param lastUser the last user
+     */
     public void setLastUser(User lastUser) {
         this.lastUser = lastUser;
     }
@@ -108,6 +195,7 @@ public class Restaurant {
      * This method checks that the user's data is correct for enter the main menu.
      * <b> pre: </b> previous has to exist a user created.
      * <b> pos: </b> if the data is correct the user can enter the main menu.
+     *
      * @param userName the userName is type String.
      * @param passWord the passWord is type String.
      * @return the can is type boolean.
@@ -125,9 +213,11 @@ public class Restaurant {
     }
 
     //--------------------------------------USERS REQUIREMENTS--------------------------------------------
+
     /**
      * Create user.
      * This method create and add a new user in a arraylist <br>
+     *
      * @param nameE           the nameE is type String.
      * @param lastnameE       the lastnameR is type String.
      * @param identificationE the identificationE is type String.
@@ -142,14 +232,13 @@ public class Restaurant {
     }
 
 
-
-
     /**
      * Delete <br>
      * it deletes the an object from the list (User)
      * <b> pre: the list users must have at least an user <br>
+     *
      * @param userName , the username of the user
-     * @return  boolean , true if it was found false if it was not found
+     * @return boolean , true if it was found false if it was not found
      */
     public boolean delete(String userName){
         boolean deleted = false;
@@ -164,11 +253,13 @@ public class Restaurant {
 
         return deleted;
     }
+
     /**
      * ToDisable <br>
      * it deletes the an object from the list (User) <br>
-     * @param  username , the user name of the user
-     * @return  boolean , true if it was found false if it was not found
+     *
+     * @param username , the user name of the user
+     * @return boolean , true if it was found false if it was not found
      */
     public boolean toDisable(String username){
         boolean disable = false;
@@ -185,6 +276,7 @@ public class Restaurant {
     /**
      * Save data users.
      * This method save the data of the users in the system (file.txt)
+     *
      * @throws IOException the io exception
      */
     public void saveDataUsers() throws IOException {
@@ -197,6 +289,7 @@ public class Restaurant {
     /**
      * Load data user.
      * This method load the data of the users.
+     *
      * @throws IOException            the io exception
      * @throws ClassNotFoundException the class not found exception
      */
@@ -213,12 +306,23 @@ public class Restaurant {
 
   //-----------------------REQUIREMENTS INGREDIENTS----------------------------------------------------------
 
-    /**/
-   public void  createIngredient(String name) {
+    /**
+     * Create ingredient.
+     *
+     * @param name the name
+    */
+   public void createIngredient(String name) {
        Ingredient newIngredient = new Ingredient(name);
        newIngredient.setCreatorU(getCurrentUser());
        ingredientsList.add(newIngredient);
    }
+
+    /**
+     * Delete ingredient boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean deleteIngredient(String name){
         boolean deletedIngredient = false;
         for (int i = 0; i <ingredientsList.size() && !deletedIngredient; i++) {
@@ -230,6 +334,12 @@ public class Restaurant {
         return deletedIngredient;
     }
 
+    /**
+     * Disable ingredients boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean disableIngredients(String name){
         boolean disable = false;
         for (int i = 0; i <ingredientsList.size() && !disable ; i++) {
@@ -241,12 +351,23 @@ public class Restaurant {
         return disable;
     }
 
+    /**
+     * Save ingredients.
+     *
+     * @throws IOException the io exception
+     */
     public void saveIngredients() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_INGREDIENTS));
         oos.writeObject(ingredientsList);
         oos.close();
     }
 
+    /**
+     * Load data ingredients.
+     *
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     public void loadDataIngredients() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_INGREDIENTS);
         if(f1.exists()){
@@ -260,6 +381,13 @@ public class Restaurant {
 
 // ------------------------------------- EMPLOYEES REQUIREMENTS-------------------------------------------------
 
+    /**
+     * Create employee.
+     *
+     * @param name           the name
+     * @param lastname       the lastname
+     * @param identification the identification
+     */
     public void createEmployee(String name, String lastname, String identification){
        Employee newEmployee = new Employee(name,lastname,identification);
        newEmployee.setCurrentUser(getCurrentUser());
@@ -268,6 +396,12 @@ public class Restaurant {
     }
 
 
+    /**
+     * Delete employee boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean deleteEmployee(String name){
         boolean deleEmployee = false;
         for (int i = 0; i <employees.size() && !deleEmployee; i++) {
@@ -281,6 +415,12 @@ public class Restaurant {
 
     }
 
+    /**
+     * Disable employee boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean disableEmployee(String name){
         boolean disable = false;
         int index;
@@ -295,12 +435,23 @@ public class Restaurant {
         return disable;
     }
 
+    /**
+     * Save data employees.
+     *
+     * @throws IOException the io exception
+     */
     public void saveDataEmployees() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_EMPLOYEES));
         oos.writeObject(employees);
         oos.close();
     }
 
+    /**
+     * Load data employees.
+     *
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     public void loadDataEmployees() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_EMPLOYEES);
         if(f1.exists()){
@@ -317,10 +468,12 @@ public class Restaurant {
 
     /**
      * Create client.
+     *
      * @param name           the name
      * @param lastName       the last name
      * @param identification the identification
      * @param address        the address
+     * @param telephone      the telephone
      */
     public void createClient(String name, String lastName, String identification, String address,String telephone){
         Client newClient = new Client(name, lastName, identification, address,telephone);
@@ -331,8 +484,9 @@ public class Restaurant {
 
     /**
      * <b> Pre: the list musts be sorted</b>
+     *
+     * @param newClient the new client
      */
-
     public void addSorted(Client newClient){
           if(clientList.isEmpty()){
               clientList.add(newClient);
@@ -346,6 +500,11 @@ public class Restaurant {
     }
 
 
+    /**
+     * Insertion sort array list.
+     *
+     * @param list the list
+     */
     public void insertionSortArrayList(List<Product> list) {
         for (int j = 1; j < list.size(); j++) {
             Product current = list.get(j);
@@ -385,7 +544,6 @@ public class Restaurant {
             loaded = true;
         }
     }
-
 
 
     /**
@@ -430,10 +588,11 @@ public class Restaurant {
     /**
      * Create product.
      *
-     * @param nameP the nameP is type String
-     * @param size  the size
-     * @param price the price
-     * @param name the nameT
+     * @param nameP    the nameP is type String
+     * @param size     the size
+     * @param price    the price
+     * @param name     the nameT
+     * @param ichoosen the ichoosen
      */
     public void createProduct(String nameP, String size, int price, String name, ArrayList<Ingredient> ichoosen){
         TypeProduct nameT;
@@ -480,7 +639,6 @@ public class Restaurant {
     }
 
 
-
     /**
      * Delete product boolean.
      *
@@ -521,6 +679,16 @@ public class Restaurant {
 //__________________________ ORDERS REQUIREMENTS _______________________________________________________________________
 
 
+    /**
+     * Create order.
+     *
+     * @param employee   the employee
+     * @param client     the client
+     * @param address    the address
+     * @param productsIn the products in
+     * @param name       the name
+     * @param date       the date
+     */
     public void createOrder(String employee, int client, String address, ArrayList<Product> productsIn, String name, Date date){
         boolean out=false;
         Client newClient=null;
@@ -571,7 +739,13 @@ public class Restaurant {
     /**
      * Create order.
      *
-     * @param feedback the feedback
+     * @param employee   the employee
+     * @param client     the client
+     * @param feedback   the feedback
+     * @param address    the address
+     * @param productsIn the products in
+     * @param name       the name
+     * @param date       the date
      */
     public void createOrder(String employee, int client, String feedback,String address, ArrayList<Product> productsIn, String name, Date date){
         Client newClient1 = null;
@@ -618,7 +792,6 @@ public class Restaurant {
 
 
     }
-
 
 
     /**
@@ -734,9 +907,10 @@ public class Restaurant {
      * Export data order.
      *
      * @param fileName  the file name
+     * @param separator the separator
      * @throws FileNotFoundException the file not found exception
      */
-    //CORREGIR.
+//CORREGIR.
     public void exportDataOrder(String fileName, String separator) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
 
@@ -770,6 +944,12 @@ public class Restaurant {
     }
 
 
+    /**
+     * Import client.
+     *
+     * @param fileName the file name
+     * @throws IOException the io exception
+     */
 //__________________________________ IMPORT DATA ____________________________
     public void importClient(String fileName) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -784,6 +964,12 @@ public class Restaurant {
         br.close();
     }
 
+    /**
+     * Import order.
+     *
+     * @param fileName the file name
+     * @throws IOException the io exception
+     */
     public void importOrder(String fileName) throws IOException{
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         String separator = "~";
@@ -830,6 +1016,12 @@ public class Restaurant {
         br.close();
     }
 
+    /**
+     * Import product.
+     *
+     * @param fileName the file name
+     * @throws IOException the io exception
+     */
     public void importProduct(String fileName) throws IOException{
         ArrayList<Ingredient> newIngredient = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader(fileName));
@@ -852,13 +1044,23 @@ public class Restaurant {
 
 //______________________TYPE REQUIREMNTS__________________________________________
 
-   public void createType(String name){
+    /**
+     * Create type.
+     *
+     * @param name the name
+     */
+    public void createType(String name){
         TypeProduct newType = new TypeProduct(name);
         typeProducts.add(newType);
    }
 
 
-
+    /**
+     * Delete type boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean deleteType(String name){
         boolean deletedType = false;
         for (int i = 0; i <typeProducts.size() && !deletedType; i++) {
@@ -871,6 +1073,12 @@ public class Restaurant {
 
     }
 
+    /**
+     * Disable type boolean.
+     *
+     * @param name the name
+     * @return the boolean
+     */
     public boolean disableType(String name){
         boolean disable = false;
         for (int i = 0; i <typeProducts.size() && !disable ; i++) {
@@ -882,12 +1090,23 @@ public class Restaurant {
         return disable;
     }
 
+    /**
+     * Save types.
+     *
+     * @throws IOException the io exception
+     */
     public void saveTypes() throws IOException {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(SAVE_PATH_FILE_TYPES));
         oos.writeObject(typeProducts);
         oos.close();
     }
 
+    /**
+     * Load data type.
+     *
+     * @throws IOException            the io exception
+     * @throws ClassNotFoundException the class not found exception
+     */
     public void loadDataType() throws IOException, ClassNotFoundException {
         File f1 = new File(SAVE_PATH_FILE_TYPES);
         if(f1.exists()){
@@ -898,7 +1117,10 @@ public class Restaurant {
 
     }
 
-    //---------- Order option--------
+    /**
+     * Order ingredients.
+     */
+//---------- Order option--------
     public void orderIngredients(){
         boolean changed = true;
         for(int i =1; i<ingredientsList.size() && changed; i++) {
@@ -916,6 +1138,9 @@ public class Restaurant {
         }
     }
 
+    /**
+     * Sort employees.
+     */
     public void sortEmployees(){
         Comparator<Employee> employeeNameComparator = (employee1, employee2) -> employee1.getName().compareToIgnoreCase(employee2.getName());
         Collections.sort(employees,employeeNameComparator);
