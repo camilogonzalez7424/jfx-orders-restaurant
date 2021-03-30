@@ -1,14 +1,167 @@
+
+/*___________________ MENU ______________________________*/
 .menuItem:hover{
-    -fx-background-color: #00e8ff;
+    -fx-background-color: WHITE;
     -fx-border-color: BLACK;
     -fx-border-width: 0px 0px 0px 5px;
 }
 
+.menuIcon{
+    -fx-background-color: #EFB810;
+
+}
+
+.menuOption{
+    -fx-background-color: #1D1B20;
+
+}
+
+.menuTime{
+    -fx-background-color:  #1D1B20;
+    -fx-border-color:  #EFB810;
+    -fx-border-width:  2px 2px 2px 2px;
+}
+
+.menuAction{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.menuCreate{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.menuBar{
+    -fx-background-color: #EFB810;
+}
+
+.menuAdd{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.menuAdmin{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+/*__________________ REGISTER ___________________________*/
 .create:hover{
-    -fx-background-color: #ffff;
-    -fx-border-color: #c800c8;
+    -fx-background-color: White;
+    -fx-border-color: #E6A82D;
+    -fx-border-width: 0px 0px 3px 0px;
+
+}
+
+.create{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+
+
+}
+
+.exit:hover{
+    -fx-background-color: White;
+    -fx-border-color: #EFB810;
     -fx-border-width: 0px 0px 3px 0px;
 }
+
+.exit{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.registerTime{
+    -fx-background-color:  #1D1B20;
+    -fx-border-color:  #E6A82D;
+    -fx-border-width:  2px 2px 2px 2px;
+}
+
+/*_____________________ LOGIN _____________________________*/
+.show:hover{
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-color: #EFB810;
+
+}
+
+.loginButton:hover{
+    -fx-background-color: White;
+    -fx-border-color: #EFB810;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.loginButton{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+
+}
+
+.signUpButton:hover{
+    -fx-background-color: White;
+    -fx-border-color: #EFB810;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.signUpButton{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.loginTime{
+    -fx-background-color:  #1D1B20;
+    -fx-border-color:  #EFB810;
+    -fx-border-width:  2px 2px 2px 2px;
+}
+
+.orderAdd{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.orderF{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
+.search{
+    -fx-border-radius: 40px;
+    -fx-border-width:  2px 2px 2px 2px;
+    -fx-border-color:  #EFB810;
+    -fx-background-color:   #1D1B20;
+    -fx-background-radius: 40px;
+}
+
 
 /*
 .menu:hover{

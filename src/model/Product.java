@@ -29,8 +29,10 @@ public class Product implements Serializable {
      * Instantiates a new Product.
      *
      * @param nameP the nameP is of type String.
+     * @param size  the size
+     * @param price the price
+     * @param type  the type
      */
-
     public Product(String nameP, String size, int price, TypeProduct type) {
         this.nameP = nameP;
         this.size = size;
@@ -145,6 +147,12 @@ public class Product implements Serializable {
         this.available = available;
     }
 
+    /**
+     * Compare to int.
+     *
+     * @param element the element
+     * @return the int
+     */
     public int compareTo(Product element) {
         int res = 0;
         if (this.price < element.getPrice()) {
