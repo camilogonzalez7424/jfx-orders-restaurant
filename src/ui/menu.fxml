@@ -256,7 +256,7 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+                  <Image url="@../img/menu1.png" />
                </image>
             </ImageView>
          </graphic>
@@ -271,7 +271,7 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+                  <Image url="@../img/menu1.png" />
                </image>
             </ImageView>
          </graphic>

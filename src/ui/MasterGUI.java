@@ -28,6 +28,7 @@ import java.io.FileNotFoundException;
 import javafx.util.Duration;
 import model.*;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.List;
@@ -486,6 +487,15 @@ public class MasterGUI {
             Parent menuPane = fxmlLoader.load();
             borderPane.setCenter(menuPane);
 
+            Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+                LocalTime currentTime = LocalTime.now();
+                labelTime2.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
+            }),
+                    new KeyFrame(Duration.seconds(1))
+            );
+            clock.setCycleCount(Animation.INDEFINITE);
+            clock.play();
+
         }
     }
 
@@ -531,6 +541,8 @@ public class MasterGUI {
 
     @FXML
     public void exportEmployee(ActionEvent event) {
+        String date = "";
+        String dateF = "";
         List<String> choices = new ArrayList<>();
         choices.add("-");
         choices.add("/");
@@ -547,13 +559,33 @@ public class MasterGUI {
         Optional<String> result = dialog.showAndWait();
         String separator = result.get();
 
+        TextInputDialog initialDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"00"+":"+"00");
+        initialDate.setTitle("Fecha Inicial");
+        initialDate.setHeaderText("Escribe! De lo contrario el programa podra como fecha inical las datos actuales ");
+        initialDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
 
+        Optional<String> resultDate = initialDate.showAndWait();
+        if (resultDate.isPresent()){
+            date = resultDate.get();
+        }
+
+        TextInputDialog finalDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"23"+":"+"59");
+        finalDate.setTitle("Fecha Final");
+        finalDate.setHeaderText("Escribe! De lo contrario el programa pondra como fecha final las datos actuales ");
+        finalDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
+
+        Optional<String> resultDateF = finalDate.showAndWait();
+        if (resultDateF.isPresent()){
+            dateF = resultDateF.get();
+        }
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Abrir archivo de Exportación");
         File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
-            mainRestaurant.exportDataEmployee(file.getAbsolutePath() , separator);
+            mainRestaurant.exportDataEmployee(file.getAbsolutePath() , separator, date, dateF);
         } catch (FileNotFoundException e) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Exportar Empleados");
@@ -568,6 +600,8 @@ public class MasterGUI {
 
     @FXML
     public void exportProduct(ActionEvent event) {
+        String date = "";
+        String dateF = "";
         List<String> choices = new ArrayList<>();
         choices.add("-");
         choices.add("/");
@@ -584,13 +618,35 @@ public class MasterGUI {
         Optional<String> result = dialog.showAndWait();
         String separator = result.get();
 
+        TextInputDialog initialDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"00"+":"+"00");
+        initialDate.setTitle("Fecha Inicial");
+        initialDate.setHeaderText("Escribe! De lo contrario el programa podra como fecha inical las datos actuales ");
+        initialDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
+
+        Optional<String> resultDate = initialDate.showAndWait();
+        if (resultDate.isPresent()){
+            date = resultDate.get();
+        }
+
+        TextInputDialog finalDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"23"+":"+"59");
+        finalDate.setTitle("Fecha Final");
+        finalDate.setHeaderText("Escribe! De lo contrario el programa pondra como fecha final las datos actuales ");
+        finalDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
+
+        Optional<String> resultDateF = finalDate.showAndWait();
+        if (resultDateF.isPresent()){
+            dateF = resultDateF.get();
+        }
+
 
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Abrir archivo de Exportación");
         File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
-            mainRestaurant.exportDataProduct(file.getAbsolutePath() , separator);
+            mainRestaurant.exportDataProduct(file.getAbsolutePath() , separator, date, dateF);
         } catch (FileNotFoundException e) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Exportar Productos");
@@ -605,6 +661,8 @@ public class MasterGUI {
 
 
     public void exportOrder(ActionEvent event) {
+        String date = "";
+        String dateF = "";
 
         List<String> choices = new ArrayList<>();
         choices.add("-");
@@ -622,13 +680,35 @@ public class MasterGUI {
         Optional<String> result = dialog.showAndWait();
         String separator = result.get();
 
+        TextInputDialog initialDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"00"+":"+"00");
+        initialDate.setTitle("Fecha Inicial");
+        initialDate.setHeaderText("Escribe! De lo contrario el programa podra como fecha inical las datos actuales ");
+        initialDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
+
+        Optional<String> resultDate = initialDate.showAndWait();
+        if (resultDate.isPresent()){
+            date = resultDate.get();
+        }
+
+        TextInputDialog finalDate = new TextInputDialog(String.valueOf(LocalDate.now().getDayOfMonth())+"/"+String.valueOf(LocalDate.now().getMonth())+"/"+String.valueOf(LocalDate.now().getYear())+
+                " "+"23"+":"+"59");
+        finalDate.setTitle("Fecha Final");
+        finalDate.setHeaderText("Escribe! De lo contrario el programa pondra como fecha final las datos actuales ");
+        finalDate.setContentText("Por favor con el siguiente formato:\n"+"\"dd/MM/AAAA h:min\"");
+
+        Optional<String> resultDateF = finalDate.showAndWait();
+        if (resultDateF.isPresent()){
+            dateF = resultDateF.get();
+        }
+
 
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Abrir archivo de Exportación");
         File file = fileChooser.showSaveDialog(borderPane.getScene().getWindow());
         try {
-            mainRestaurant.exportDataOrder(file.getAbsolutePath() , separator);
+            mainRestaurant.exportDataOrder(file.getAbsolutePath() , separator, date, dateF);
         } catch (FileNotFoundException e) {
             Alert alert = new Alert(AlertType.WARNING);
             alert.setTitle("Exportar Pedidos");

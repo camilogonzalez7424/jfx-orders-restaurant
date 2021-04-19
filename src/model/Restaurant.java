@@ -864,22 +864,24 @@ public class Restaurant {
      * @param separator the separator
      * @throws FileNotFoundException the file not found exception
      */
-    public void exportDataEmployee(String fileName,String separator) throws FileNotFoundException{
+    public void exportDataEmployee(String fileName,String separator,String date, String dateF) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
-        for(int i=0;i<employees.size();i++){
+        pw.println("Empleado"+separator+"Entregas"+separator+"Fecha Inicial"+separator+"Fecha Final");
+
+        for (Employee employee : employees) {
             int delivered = 0;
             int price = 0;
-            Employee myEmployee = employees.get(i);
-            for (int j = 0; j < myEmployee.getAmountOfOrders().size(); j++ ){
-                System.out.println(myEmployee.getAmountOfOrders().get(j).getStatus());
-                if(myEmployee.getAmountOfOrders().get(j).getStatus().equals(Status.DELIVERED)){
+           // Employee myEmployee = employee;
+            for (int j = 0; j < employee.getAmountOfOrders().size(); j++) {
+                System.out.println(employee.getAmountOfOrders().get(j).getStatus());
+                if (employee.getAmountOfOrders().get(j).getStatus().equals(Status.DELIVERED)) {
                     System.out.println("Hello Pri");
-                    delivered = myEmployee.getAmountOfOrders().size();
-                    price += myEmployee.getAmountOfOrders().get(j).getPrice();
+                    delivered += employee.getAmountOfOrders().size();
+                    price += employee.getAmountOfOrders().get(j).getPrice();
                 }
             }
 
-            pw.println(myEmployee.getName()+separator+delivered+separator+price);
+            pw.println(employee.getName() + separator + delivered + separator + price + separator + date + separator + dateF);
         }
 
         pw.close();
@@ -892,12 +894,15 @@ public class Restaurant {
      * @param separator the separator
      * @throws FileNotFoundException the file not found exception
      */
-    public void exportDataProduct(String fileName,String separator) throws FileNotFoundException{
+    public void exportDataProduct(String fileName,String separator, String date, String dateF) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
+
+        pw.println("Nombre"+separator+"Cantidad"+separator+"Precio Total"+separator+"Fecha Inicial"+separator+"Fecha Final");
+
 
         for(int i=0;i< products.size();i++){
             Product myProduct = products.get(i);
-            pw.println(myProduct.getNameP()+separator+myProduct.getAmountOfRequest()+separator+(myProduct.getAmountOfRequest()*myProduct.getPrice()));
+            pw.println(myProduct.getNameP()+separator+myProduct.getAmountOfRequest()+separator+(myProduct.getAmountOfRequest()*myProduct.getPrice())+ separator + date + separator + dateF);
         }
 
         pw.close();
@@ -911,10 +916,10 @@ public class Restaurant {
      * @throws FileNotFoundException the file not found exception
      */
 //CORREGIR.
-    public void exportDataOrder(String fileName, String separator) throws FileNotFoundException{
+    public void exportDataOrder(String fileName, String separator, String date, String dateF) throws FileNotFoundException{
         PrintWriter pw = new PrintWriter(fileName);
 
-        pw.println("Nombre"+separator+"Dirección"+separator+"Empleado"+separator+"Estado"+separator);
+        pw.println("Nombre"+separator+"Dirección"+separator+"Telefono"+separator+"Empleado"+separator+"Estado"+separator+"Hora de la solicitud"+separator+"Comentario"+separator+"Fecha Inicial"+separator+"Fecha Final");
             for (int i = 0; i < orderList.size(); i++) {
                 String values = "";
                 String values1 = "";
@@ -924,12 +929,15 @@ public class Restaurant {
                     values += myOrder.getProductsList().get(j).getNameP();
                     values1 += myOrder.getProductsList().get(j).getPrice();
                     toReport += values+separator+values1;
+                    values1 = "";
+                    values = "";
                 }
+
                 String out[] = toReport.split(separator);
                 int n = 0;
                 pw.print(myOrder.getClientRequest() + separator +"  "+myOrder.getOrderAddress() +
                         separator +myOrder.getClient().getTelephone()+separator+"  "+ myOrder.getEmployee() + separator +"  "+myOrder.getStatus() +
-                        separator + myOrder.getDate() + separator + myOrder.getFeedback()+separator);
+                        separator + myOrder.getDate() + separator + myOrder.getFeedback()+separator+date+separator+dateF);
                 while (n < out.length-1){
                    if((2*n)< out.length && (2*(n+1)< out.length)) {
                        pw.print(out[2 * n] + separator + out[2 * (n + 1)]);

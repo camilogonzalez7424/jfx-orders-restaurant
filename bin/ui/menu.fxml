@@ -220,7 +220,7 @@
                         <Cursor fx:constant="OPEN_HAND" />
                      </cursor></JFXComboBox>
                   <JFXTextField fx:id="txtTelephoneU" alignment="CENTER" focusColor="#efb810" layoutX="240.0" layoutY="198.0" promptText="Telefono" unFocusColor="#1d1b20" visible="false" />
-                  <JFXButton fx:id="buttonAddIngredient" layoutX="242.0" layoutY="538.0" onAction="#addIngredientToProduct" styleClass="menuAdd" stylesheets="@../../style/Style.css" text="Agregar Ingrediente" textFill="#efb810" />
+                  <JFXButton fx:id="buttonAddIngredient" layoutX="242.0" layoutY="538.0" onAction="#addIngredientToProduct" styleClass="menuAdd" stylesheets="@../../style/Style.css" text="Agregar Ingrediente" textFill="#efb810" visible="false" />
                </children>
             </Pane>
          </right>
@@ -256,7 +256,7 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+                  <Image url="@../img/menu1.png" />
                </image>
             </ImageView>
          </graphic>
@@ -271,7 +271,7 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../Slider/src/sample/Images/menu1.png" />
+                  <Image url="@../img/menu1.png" />
                </image>
             </ImageView>
          </graphic>
