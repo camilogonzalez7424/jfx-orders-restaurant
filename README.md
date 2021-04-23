@@ -38,12 +38,12 @@ Importar Datos:
 
 + En el siguiente link podra descargar el archivo .jar para ejecutar en cualquier SO o el archivo .exe para windows.
 
-[Link de Descarga](https://www.mediafire.com/file/stryqqq3zsh73xk/La_Casa_Dorada.zip/file)
+**Descargar** [Link](https://www.mediafire.com/file/stryqqq3zsh73xk/La_Casa_Dorada.zip/file)
 
 ## Videos
 
-[Advertising](https://www.youtube.com/watch?v=94rMXZ3tlVA) <br>
-[Demo](https://www.youtube.com/watch?v=M8ijjPvkvTY)
+**Ver**  [Advertising](https://www.youtube.com/watch?v=94rMXZ3tlVA) <br>
+**Ver**  [Demo](https://www.youtube.com/watch?v=M8ijjPvkvTY)
 
 </p>
 
