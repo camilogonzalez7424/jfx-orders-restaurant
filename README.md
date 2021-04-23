@@ -34,6 +34,16 @@ Importar Datos:
 
 2. **Para los pedidos:** El archivo debe crearse con una columna por cada atributo de los clientes, empleados, productos, tipos de productos e ingredientes. Además de la cuarta columna con enteros negativos para omitir una condición propia de la impletación. (Ver orden de los archivos en la carpeta reports/import)
 
+## Descargar Proyecto
+
++ En el siguiente link podra descargar el archivo .jar para ejecutar en cualquier SO o el archivo .exe para windows.
+
+[Link de Descarga](https://www.mediafire.com/file/stryqqq3zsh73xk/La_Casa_Dorada.zip/file)
+
+## Videos
+
+[Advertising](https://www.youtube.com/watch?v=94rMXZ3tlVA) <br>
+[Demo](https://www.youtube.com/watch?v=M8ijjPvkvTY)
 
 </p>
 
@@ -82,6 +92,12 @@ src="https://user-images.githubusercontent.com/69222739/112933352-4ab1aa00-90e5-
 <p align="center"> <img 
 src="https://user-images.githubusercontent.com/69222739/112933403-687f0f00-90e5-11eb-9d9e-ea5f3d01828c.png" width="650px">
 </p> 
+
+<p align="center"> <img
+src="https://user-images.githubusercontent.com/69222739/115803504-a3075f00-a3a6-11eb-9057-cbc49d9980d1.png">
+
+<p align="center"> <img
+src="https://user-images.githubusercontent.com/69222739/115803569-c6320e80-a3a6-11eb-8823-76b9da5a5c31.png"></p>
 
 ## Made by
 
